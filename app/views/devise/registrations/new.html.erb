@@ -1,0 +1,30 @@
+<h3>Sign up</h3>
+
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => "ym-form linearize-form ym-columnar"}) do |f| %>
+  <% if resource.errors.any? %>
+    <div class="box error">
+      <%= devise_error_messages! %>
+    </div>
+  <% end %>
+
+  <div class="ym-fbox-text">
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+  </div>
+
+  <div class="ym-fbox-text">
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </div>
+
+  <div class="ym-fbox-text">
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+  </div>
+
+  <div class="ym-fbox-button">
+    <%= f.submit "Sign up", :html => { :class => "ym-button" } %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>

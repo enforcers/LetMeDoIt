@@ -1,0 +1,122 @@
+body {
+  background-color: #afafaf;
+  font-family: arial, sans-serif;
+}
+
+body, html {
+  margin: 0;
+  font-size: small;
+}
+
+a:link, a:visited, a:active, a:hover {
+  color: #369;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+
+
+/* -------------------------------------------
+**  Page grid ===============================-
+** -----------------------------------------*/
+
+#site-background {
+  position: relative;
+  width: 100%;
+  background: #afafaf url(/images/bg-top.png) repeat-x 50% 0;
+}
+
+#site-wrap {
+  width: 980px;
+  margin: 0 auto;
+}
+
+#site-header {
+  height: 158px;
+  padding: 0 40px;
+  position: relative;
+}
+
+#site-user {
+  position: absolute;
+  right: 0;
+  top: 5px;
+}
+
+#site-logo {
+  position: absolute;
+  display: block;
+  top: 40px;
+  right: 0px;
+}
+
+#site-menu {
+  position: absolute;
+  display: block;
+  top: 130px;
+  left: 282px;
+  height: 26px;
+  background: url(/images/bg-menu-left.png);
+}
+
+#site-content {
+  padding: 40px;
+  background: #0d1926 url(/images/bg-content-top.png) repeat-x;
+}
+
+#content-wrapper {
+  width: 880px;
+  padding: 10px;
+  background-color: #eee;
+}
+
+#site-menu ul {
+  float: left;
+  background: url(/images/bg-menu-right.png) right top no-repeat;
+  padding-left: 16px;
+  margin: 0;
+  width: 320px;
+}
+
+#site-menu ul li {
+  float: left;
+  list-style: none;
+  height: 26px;
+  margin: 0;
+  background: none;
+  padding: 0;
+  border-right: 1px solid #4780ba;
+  border-left: 1px solid #28517a;
+}
+
+#site-menu ul li.first { border-left: none }
+#site-menu ul li.last { border-right: none }
+
+#site-menu ul li a {
+  position: relative;
+  color: #fff;
+  float: left;
+  font-size: 13px;
+  line-height: 26px;
+  height: 24px;
+  margin-bottom: 2px;
+  padding: 0 12px;
+}
+
+.box { margin: 20px }
+.box h2 {
+  font-size: 100%;
+  font-weight: bold;
+}
+
+.skill-rating {
+  width: 125px;
+  height: 25px;
+  background: url(/images/star.png) repeat-x;
+}
+
+.skill-rating .stars {
+  width: 0;
+  height: 25px;
+  background: url(/images/star.png) repeat-x 25px;
+}
