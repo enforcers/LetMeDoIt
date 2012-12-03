@@ -12,6 +12,7 @@
  *= require yaml/forms/gray-theme
  *= require yaml/screen/typography
  *= require yaml/add-ons/accessible-tabs/tabs
+ *= require yaml/navigation/vlist
  *= require screen
  *= require tipsy
 */

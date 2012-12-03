@@ -1,16 +1,32 @@
 LetMeDoIt::Application.routes.draw do
   resources :skills
+  resources :categories
+
+  namespace :projects do
+    get '/' => 'projects#index'
+    get '/new' => 'projects#new'
+    post '/new' => 'projects#create'
+    post '/' => 'projects#create'
+    match '/view' => 'projects#view'
+    #match '/:id' => 'projects#index'
+  end
 
   root :to => "home#index"
+
+  # PROFILES
   match '/' => 'home#index', :as => :user_root
   match '/users/:id' => 'users#show'
-
   devise_for :users, :path_names => {:sign_in => "login", :sign_out => "logout"}, :path => 'user'
 
-  namespace :admin do
-    match '/' => 'users#index'
-    resources :users
-  end
+  # PROJECTS
+  #match '/projects/index' => 'projects/projects#list'
+  #match '/projects/list:id' => 'projects/projects#list'
+  #match '/projects/new' => 'projects/projects#new'
+
+#  namespace :admin do
+#    match '/' => 'users#index'
+#    resources :users
+#  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -54,7 +54,7 @@
   <div class="ym-fbox-text">
     <%= f.label :rating %>
     <div class="skill-rating" style="float:left" original-title="test">
-      <div class="stars" style="width: <%= @skill.rating*12.5 %>px"></div>
+      <div class="stars" style="width: <%=  @skill.rating ? @skill.rating * 12.5 : 0 %>px"></div>
     </div>
     <%= f.hidden_field :rating %>
   </div>

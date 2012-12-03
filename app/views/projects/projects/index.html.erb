@@ -1,0 +1,71 @@
+<% content_for :javascript do %>
+  <script type="text/javascript">
+    $(document).ready(function(){
+    	$('table tr.project').each(function() {
+    		var project_id = $(this).find(':first').val();
+
+    		$(this).click(function() {
+    			document.location.href='<%= projects_view_path %>/' + project_id
+    		});
+
+    	})
+    });
+  </script>
+<% end %>
+
+<h3>Projects</h3>
+<div class="ym-grid">
+	<div class="ym-g20 ym-gl">
+		<div class="ym-gbox">
+			<div class="nav-wrapper">
+				<nav class="ym-vlist">
+					<ul>
+						<% if params.has_key?(:category) %>
+							<li>
+								<%= link_to "All", projects_path %>
+							</li>
+						<% else %>
+							<li class="active"><strong>All</strong></li>
+						<% end %>
+					</ul>
+					<% @categories.each do |parent| %>
+						<h6 class="ym-vtitle"><%= parent.name %></h6>
+							<ul>
+								<% parent.child_categories.each do |category| %>
+									<% if params[:category] == category.id.to_s %>
+										<li class="active"><strong><%= category.name %></strong></li>
+									<% else %>
+										<li>
+											<%= link_to category.name, projects_path(:category => category) %>
+										</li>
+									<% end %>
+								<% end %>
+							</ul>
+					<% end %>
+				</nav>
+			</div>
+		</div>
+	</div>
+	<div class="ym-g80 ym-gr">
+		<div class="ym-gbox">
+			<table >
+				<tr>
+					<th width="60%">Project Name</th>
+					<th width="25%">Client</th>
+					<th width="15%">Tasks</th>
+				</tr>
+				<% @projects.each do |project| %>
+					<tr class="project">
+						<input type="hidden" value="<%= project.id %>"/>
+						<td>
+							<h5><%= project.name %></h5>
+							<span><%= truncate project.description, :omission => "... (read more)", :length => 200 %></span>
+						</td>
+						<td><%= User.find_by_id(project.user_id).username %></td>
+						<td>5</td>
+					</tr>
+				<% end %>
+			</table>
+		</div>
+	</div>
+</div>

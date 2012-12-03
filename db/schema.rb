@@ -11,16 +11,28 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121202105315) do
+ActiveRecord::Schema.define(:version => 20121203161547) do
 
-  create_table "posts", :force => true do |t|
-    t.string   "title"
-    t.text     "content"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.string   "user_id"
-    t.string   "integer"
+  create_table "categories", :force => true do |t|
+    t.integer  "category_id"
+    t.string   "name"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
+
+  add_index "categories", ["category_id"], :name => "index_categories_on_category_id"
+
+  create_table "projects", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "user_id"
+    t.integer  "category_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "projects", ["category_id"], :name => "index_projects_on_category_id"
+  add_index "projects", ["user_id"], :name => "index_projects_on_user_id"
 
   create_table "roles", :force => true do |t|
     t.string   "name"
@@ -42,6 +54,17 @@ ActiveRecord::Schema.define(:version => 20121202105315) do
   end
 
   add_index "skills", ["user_id"], :name => "index_skills_on_user_id"
+
+  create_table "tasks", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.decimal  "budget"
+    t.integer  "project_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "tasks", ["project_id"], :name => "index_tasks_on_project_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

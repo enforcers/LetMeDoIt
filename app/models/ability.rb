@@ -6,6 +6,7 @@ class Ability
     if user.role? :admin
       can :manage, :all
     elsif user.role? :registered
+      # Grant rights for Skill Model
       can :update, Skill do |skill|
         skill.user_id == user.id
       end
@@ -14,6 +15,16 @@ class Ability
       end
       can :create, Skill
       can :read, Skill
+
+      # Grant rights for Project Model
+      can :update, Project do |project|
+        project.user_id == user.id
+      end
+      can :destroy, Project do |project|
+        project.user_id == user.id
+      end
+      can :read, Project
+      can :create, Project
     else
       can :read, :all
     end

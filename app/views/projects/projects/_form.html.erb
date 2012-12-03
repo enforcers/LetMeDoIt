@@ -1,0 +1,32 @@
+<%= form_for(@project, :url => projects_new_path, :html => { :class => "ym-form linearize-form ym-columnar"}) do |f| %>
+  <% if @project.errors.any? %>
+    <div class="box error">
+      <div id="error_explanation">
+        <h2><%= pluralize(@project.errors.count, "error") %> prohibited this Project from being saved:</h2>
+        <ul>
+          <% @project.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+  <div class="ym-fbox-text">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="ym-fbox-text">
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+  <div class="ym-fbox-select">
+    <%= f.label :category %>
+    <%= grouped_collection_select(:project, :category_id, @categories, :child_categories, :name, :id, :name) %>
+  </div>
+  <h6 class="ym-fbox-heading">To make your project available, please create at least one task within the next form</h6>
+  <div class="ym-fbox-button">
+    <%= f.submit %>
+  </div>
+<% end %>
