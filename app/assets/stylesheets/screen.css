@@ -46,7 +46,7 @@ a:link, a:visited, a:active, a:hover {
 #site-logo {
   position: absolute;
   display: block;
-  top: 40px;
+  top: 45px;
   right: 0px;
 }
 
@@ -108,6 +108,8 @@ a:link, a:visited, a:active, a:hover {
   font-size: 100%;
   font-weight: bold;
 }
+
+.notice { background: #fff }
 
 .skill-rating {
   width: 125px;
