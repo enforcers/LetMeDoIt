@@ -45,8 +45,8 @@ class SkillsController < ApplicationController
 
     respond_to do |format|
       if @skill.save
-        format.html { redirect_to @skill, notice: 'Skill was successfully created.' }
-        format.json { render json: @skill, status: :created, location: @skill }
+        format.html { redirect_to edit_user_registration_path(current_user, :showTab => 'tab-skills') }
+        format.json { render json: @skill, status: :created, location: edit_user_registration_path(current_user) }
       else
         format.html { render action: "new" }
         format.json { render json: @skill.errors, status: :unprocessable_entity }
@@ -61,7 +61,7 @@ class SkillsController < ApplicationController
 
     respond_to do |format|
       if @skill.update_attributes(params[:skill])
-        format.html { redirect_to @skill, notice: 'Skill was successfully updated.' }
+        format.html { redirect_to edit_user_registration_path(current_user, :showTab => 'tab-skills') }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -77,7 +77,7 @@ class SkillsController < ApplicationController
     @skill.destroy
 
     respond_to do |format|
-      format.html { redirect_to skills_url }
+      format.html { redirect_to edit_user_registration_path(current_user, :showTab => 'tab-skills') }
       format.json { head :no_content }
     end
   end

@@ -2,19 +2,15 @@ LetMeDoIt::Application.routes.draw do
   resources :skills
 
   root :to => "home#index"
-  match '/profiles/dashboard' => 'profiles#dashboard', :as => :user_root
-  #match '/admin/users' => 'admin/users#index', :as => :admin_root
+  match '/' => 'home#index', :as => :user_root
+  match '/users/:id' => 'users#show'
 
   devise_for :users, :path_names => {:sign_in => "login", :sign_out => "logout"}, :path => 'user'
-
-  resources :profiles, :only => [:dashboard]
 
   namespace :admin do
     match '/' => 'users#index'
     resources :users
   end
-
-  resources :posts
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

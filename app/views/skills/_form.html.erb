@@ -1,26 +1,65 @@
-<%= form_for(@skill) do |f| %>
-  <% if @skill.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@skill.errors.count, "error") %> prohibited this skill from being saved:</h2>
+<% content_for :javascript do %>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('.skill-rating').tipsy({
+        trigger: 'manual',
+        gravity: 'w'
+      });
 
-      <ul>
-      <% @skill.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+      $('.skill-rating').mousemove(function(e) {
+        var offset = $(this).offset();
+        var x = e.pageX - offset.left + 1;
+        var stars = Math.round(x*2/25)/2;
+        var text = $.strPad(stars + ' out of 5', 12);
+        $('.skill-rating .stars').width(stars*25);
+        $(this).attr('original-title', text);
+        $(this).tipsy("show");
+        $('#skill_rating').val(stars*2);
+      });
+
+      $('.skill-rating').click(function(e) {
+        $(this).off('mousemove');
+        var offset = $(this).offset();
+        var x = e.pageX - offset.left + 1;
+        var stars = Math.round(x*2/25)/2;
+        var text = $.strPad(stars + ' out of 5', 12);
+        $('.skill-rating .stars').width(stars*25);
+        $(this).attr('original-title', text);
+        $(this).tipsy("show");
+        $('#skill_rating').val(stars*2);
+      });
+    });
+  </script>
+<% end %>
+
+<%= form_for(@skill, :html => { :class => "ym-form linearize-form ym-columnar"}) do |f| %>
+  <% if @skill.errors.any? %>
+    <div class="box error">
+      <div id="error_explanation">
+        <h2><%= pluralize(@skill.errors.count, "error") %> prohibited this skill from being saved:</h2>
+        <ul>
+          <% @skill.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
+  <div class="ym-fbox-text">
+    <%= f.label :name %>
     <%= f.text_field :name %>
     <%= f.hidden_field :user_id, :value => current_user.id %>
   </div>
-  <div class="field">
-    <%= f.label :rating %><br />
-    <%= f.number_field :rating %>
+  <div class="ym-fbox-text">
+    <%= f.label :rating %>
+    <div class="skill-rating" style="float:left" original-title="test">
+      <div class="stars">
+      </div>
+    </div>
+    <%= f.hidden_field :rating %>
   </div>
-  <div class="actions">
+  <div class="ym-fbox-button">
     <%= f.submit %>
   </div>
 <% end %>

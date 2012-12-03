@@ -8,6 +8,10 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require_self
- *= require_tree .
+ *= require yaml/core/base.min
+ *= require yaml/forms/gray-theme
+ *= require yaml/screen/typography
+ *= require yaml/add-ons/accessible-tabs/tabs
+ *= require screen
+ *= require tipsy
 */

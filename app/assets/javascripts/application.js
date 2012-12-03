@@ -13,3 +13,4 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+//= require yaml/add-ons/accessible-tabs/jquery.tabs

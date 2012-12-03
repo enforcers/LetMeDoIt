@@ -2,13 +2,8 @@
 <html>
 <head>
   <title>Let Me Do It</title>
-  <%= stylesheet_link_tag "yaml/core/base.min.css", :media => "all" %>
-  <%= stylesheet_link_tag "yaml/forms/gray-theme", :media => "all" %>
-  <%= stylesheet_link_tag "yaml/screen/typography", :media => "all" %>
-  <%= stylesheet_link_tag "yaml/add-ons/accessible-tabs/tabs.css", :media => "all" %>
-  <%= stylesheet_link_tag "screen", :media => "all" %>
+  <%= stylesheet_link_tag "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
-  <%= javascript_include_tag "yaml/add-ons/accessible-tabs/jquery.tabs.js" %>
   <%= csrf_meta_tags %>
   <%= yield :javascript %>
 </head>
@@ -18,11 +13,11 @@
       <div id="site-header">
         <div id="site-user">
           <% if user_signed_in? %>
-            <%= link_to 'My Profile', user_root_path %>
-            <%= link_to('Logout', destroy_user_session_path, :method=>'delete') %>  
+            <%= link_to "My Profile", edit_user_registration_path(current_user), :class => "ym-button" %>
+            <%= link_to("Logout", destroy_user_session_path, :method=>"delete", :class => "ym-button") %>  
           <%else%>
-            <%= link_to 'Login', new_user_session_path %>  
-            <%= link_to 'Register', new_user_registration_path %>  
+            <%= link_to "Login", new_user_session_path, :class => "ym-button" %>  
+            <%= link_to "Register", new_user_registration_path, :class => "ym-button" %>  
           <%end%>
         </div>
         <div id="site-logo"><a href="/" title="Home"><img src="/images/logo.png" alt="Home" id="logo"></a></div>
@@ -43,7 +38,7 @@
       <div id="site-content">
         <div id="content-wrapper">
           <%- flash.each do |name, msg| -%>
-            <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+            <%= content_tag :div, msg, :id => "flash_#{name}", :class => "box #{name}" if msg.is_a?(String) %>
           <%- end -%>
           <%= yield %>
         </div>

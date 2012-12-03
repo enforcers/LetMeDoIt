@@ -120,3 +120,15 @@ a:link, a:visited, a:active, a:hover {
   height: 25px;
   background: url(/images/star.png) repeat-x 25px;
 }
+
+.ym-button { margin-top: 0 }
+
+#tooltip {
+  position: absolute;
+  z-index: 3000;
+  border: 1px solid #111;
+  background-color: #eee;
+  padding: 5px;
+  opacity: 0.85;
+}
+#tooltip h3, #tooltip div { margin: 0; }
