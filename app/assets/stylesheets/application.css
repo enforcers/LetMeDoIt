@@ -13,6 +13,7 @@
  *= require yaml/screen/typography
  *= require yaml/add-ons/accessible-tabs/tabs
  *= require yaml/navigation/vlist
+ *= require yaml/screen/custom.css
  *= require screen
  *= require tipsy
 */

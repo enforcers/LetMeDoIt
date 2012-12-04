@@ -13,11 +13,11 @@
       <div id="site-header">
         <div id="site-user">
           <% if user_signed_in? %>
-            <%= link_to "My Profile", edit_user_registration_path(current_user), :class => "ym-button" %>
-            <%= link_to("Logout", destroy_user_session_path, :method=>"delete", :class => "ym-button") %>  
+            <%= link_to "My Profile", edit_user_registration_path(current_user), :class => "ym-button top-page" %>
+            <%= link_to("Logout", destroy_user_session_path, :method=>"delete", :class => "ym-button top-page") %>  
           <%else%>
-            <%= link_to "Login", new_user_session_path, :class => "ym-button" %>  
-            <%= link_to "Register", new_user_registration_path, :class => "ym-button" %>  
+            <%= link_to "Login", new_user_session_path, :class => "ym-button top-page" %>  
+            <%= link_to "Register", new_user_registration_path, :class => "ym-button top-page" %>  
           <%end%>
         </div>
         <div id="site-logo"><a href="/" title="Home"><img src="/images/logo.png" alt="Home" id="logo"></a></div>

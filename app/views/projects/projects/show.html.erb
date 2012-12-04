@@ -1,35 +1,20 @@
-<h3>Show Project</h3>
-
 <div class="ym-grid">
-	<div class="ym-g20 ym-gl">
-		<div class="ym-gbox">a
+	<div class="ym-g66 ym-gl">
+		<div class="ym-gbox">
+			<h3><%= @project.name %></h3>
+			<h4>Project Description</h4>
+			<div><%= @project.description %></div>
 		</div>
 	</div>
-	<div class="ym-g80 ym-gr">
+	<div class="ym-g33 ym-gr">
 		<div class="ym-gbox">
-			<div class="ym-grid">
-				<div class="ym-g40 ym-gl">
-					<div class="ym-gbox"><strong>Project Name</strong></div>
-				</div>
-				<div class="ym-g60 ym-gl">
-					<div class="ym-gbox"><%= @project.name %></div>
-				</div>
+			<div class="icon-box person">
+				<h3><%= link_to User.find_by_id(@project.user_id).username, user_show_path(@project.user_id) %></h3>
+				<span>Is your contact</span>
 			</div>
-			<div class="ym-grid">
-				<div class="ym-g40 ym-gl">
-					<div class="ym-gbox"><strong>Project Client</strong></div>
-				</div>
-				<div class="ym-g60 ym-gl">
-					<div class="ym-gbox"><%= @project.name %></div>
-				</div>
-			</div>
-			<div class="ym-grid">
-				<div class="ym-g40 ym-gl">
-					<div class="ym-gbox"><strong>Project Description</strong></div>
-				</div>
-				<div class="ym-g60 ym-gl">
-					<div class="ym-gbox"><%= @project.description %></div>
-				</div>
+			<div class="icon-box tasks">
+				<h3>5</h3>
+				<span>Tasks on this project</span>
 			</div>
 		</div>
 	</div>
