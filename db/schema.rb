@@ -59,7 +59,6 @@ ActiveRecord::Schema.define(:version => 20121203161547) do
     t.string   "name"
     t.text     "description"
     t.decimal  "budget"
-    t.date     "due_date"
     t.integer  "project_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
