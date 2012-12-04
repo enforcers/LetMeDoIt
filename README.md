@@ -7,6 +7,8 @@ Programs
 
 + [Railsinstaller](http://railsinstaller.org/)
 + [github for Windows](http://windows.github.com/)
+	Console Guide:
+	http://rogerdudler.github.com/git-guide/index.de.html
 + [Sublime Text](http://sublimetext.com)
 
 Getting started
