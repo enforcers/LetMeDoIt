@@ -170,3 +170,7 @@ h1, h2, h3, h4, h5 {
 .icon-box.clock {
   background: url(/images/icon_clock.png) no-repeat;
 }
+
+.icon-box.deadline {
+  background: url(/images/icon_deadline.png) no-repeat;
+}
