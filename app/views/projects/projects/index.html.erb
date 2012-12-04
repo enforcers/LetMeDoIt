@@ -1,18 +1,3 @@
-<% content_for :javascript do %>
-  <script type="text/javascript">
-    $(document).ready(function(){
-    	$('table tr.project').each(function() {
-    		var project_id = $(this).find(':first').val();
-
-    		$(this).click(function() {
-    			document.location.href='<%= projects_view_path %>/' + project_id
-    		});
-
-    	})
-    });
-  </script>
-<% end %>
-
 <h3>Projects</h3>
 <div class="ym-grid">
 	<div class="ym-g20 ym-gl">
@@ -51,18 +36,20 @@
 			<table >
 				<tr>
 					<th width="60%">Project Name</th>
-					<th width="25%">Client</th>
-					<th width="15%">Tasks</th>
+					<th width="20%">Client</th>
+					<th width="20%">Tasks Available</th>
 				</tr>
 				<% @projects.each do |project| %>
 					<tr class="project">
 						<input type="hidden" value="<%= project.id %>"/>
 						<td>
-							<h5><%= project.name %></h5>
-							<span><%= truncate project.description, :omission => "... (read more)", :length => 200 %></span>
+							<%= link_to projects_project_show_path(project) do %>
+								<h5><%= project.name %></h5>
+								<span><%= truncate project.description, :omission => "... (read more)", :length => 200 %></span>
+							<% end %>
 						</td>
-						<td><%= User.find_by_id(project.user_id).username %></td>
-						<td>5</td>
+						<td><%= link_to User.find_by_id(project.user_id).username, user_show_path(project.user_id) %></td>
+						<td>5/5</td>
 					</tr>
 				<% end %>
 			</table>

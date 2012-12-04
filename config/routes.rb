@@ -2,12 +2,18 @@ LetMeDoIt::Application.routes.draw do
   resources :skills
   resources :categories
 
+  # PROJECTS
+  scope "/projects", :module => "projects" do # Workaround for custom named helper
+    match '/show/:id' => 'projects#show', :as => :project_show
+  end
+
   namespace :projects do
     get '/' => 'projects#index'
     get '/new' => 'projects#new'
     post '/new' => 'projects#create'
+    get '/edit' => 'projects#edit'
+    post '/edit' => 'projects#update'
     post '/' => 'projects#create'
-    match '/view' => 'projects#view'
     #match '/:id' => 'projects#index'
   end
 
@@ -15,13 +21,8 @@ LetMeDoIt::Application.routes.draw do
 
   # PROFILES
   match '/' => 'home#index', :as => :user_root
-  match '/users/:id' => 'users#show'
   devise_for :users, :path_names => {:sign_in => "login", :sign_out => "logout"}, :path => 'user'
-
-  # PROJECTS
-  #match '/projects/index' => 'projects/projects#list'
-  #match '/projects/list:id' => 'projects/projects#list'
-  #match '/projects/new' => 'projects/projects#new'
+  match '/user/:id' => 'users#show', :as => :user_show
 
 #  namespace :admin do
 #    match '/' => 'users#index'

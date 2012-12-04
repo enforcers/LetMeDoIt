@@ -40,8 +40,8 @@ class Projects::ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.save
-        format.html { redirect_to projects_path }
-        format.json { render json: @project, status: :created, location: projects_path }
+        format.html { redirect_to project_show_path(@project) }
+        format.json { render json: @project, status: :created, location: project_show_path(@project) }
       else
         format.html { render action: "new" }
         format.json {
@@ -55,6 +55,17 @@ class Projects::ProjectsController < ApplicationController
     end
   end
 
-  def view
+  def show
+    @project = Project.find(params[:id])
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @project }
+    end
+  end
+
+  def edit
+  end
+
+  def update
   end
 end

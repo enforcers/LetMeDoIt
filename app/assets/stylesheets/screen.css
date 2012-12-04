@@ -137,5 +137,3 @@ a:link, a:visited, a:active, a:hover {
 #tooltip h3, #tooltip div { margin: 0; }
 
 .nav-wrapper { margin-top: 1.5em }
-
-table tr.project:hover { cursor: pointer }
