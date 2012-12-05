@@ -1,0 +1,34 @@
+ <%= form_for [:projects, @task] do |f| %>
+  <% if @task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+      <ul>
+      <% @task.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :project_id, :value => params[:project_id] %>
+  <div class="ym-fbox-text">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="ym-fbox-text">
+    <%= f.label :due_date %>
+    <%= f.date_select :due_date %>
+  </div>
+  <div class="ym-fbox-text">
+    <%= f.label :budget %>
+    <%= f.text_field :budget %>
+  </div>
+  <div class="ym-fbox-text">
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

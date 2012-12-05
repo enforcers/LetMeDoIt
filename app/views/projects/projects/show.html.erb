@@ -31,6 +31,13 @@
 					<div class="ym-gbox"><%= @project.description %></div>
 				</div>
 			</div>
+
+		</div>
+		<div class="ym-gbox">
+			<%= render 'projects/tasks/index' %>
+		</div>
+		<div class="ym-fbox-button">
+		  <%= link_to "Add Task", projects_tasks_new_path(:project_id=>@project.id), :class => "ym-button" %>  
 		</div>
 	</div>
 </div>

@@ -1,16 +1,85 @@
+class Projects::TasksController < ApplicationController
+  #load_and_authorize_resource
   # GET /projects/task/new
   # GET /projects/task/new.json
+    def index
+    @tasks = params.has_key?(:project_id) ? Task.where(:project_id => params[:project_id]) : Task.all
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json {
+        render json: {
+          :tasks => @tasks
+        }
+      }
+    end
+  end
+
   def new
     @task = Task.new
-    @project = Project.find(params[:id])
+    #@project = Project.find(params[:project_id])
 
     respond_to do |format|
       format.html # new.html.erb
       format.json {
       	render :json => {
-      	  :task => @task,
-      	  :project => @project
+      	  :task => @task
       	}
       }
     end
   end
+
+  def create
+    @task = Task.new(params[:task])
+
+    respond_to do |format|
+      if @task.save
+        format.html { redirect_to projects_tasks_show_path(@task) }
+        format.json { render json: @task, status: :created, location: projects_tasks_show_path(@task) }
+      else
+        format.html { render action: "new" }
+        format.json {
+          render json: {
+            :'task.errors' => @task.errors
+          },
+          status: :unprocessable_entity
+        }
+      end
+    end
+  end
+
+  def show
+    @task = Task.find(params[:id])
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @task }
+    end
+  end
+
+  def edit
+    @task = Task.find(params[:id])
+
+  end
+  def update
+    @task = task.find(params[:id])
+
+    respond_to do |format|
+      if @task.update_attributes(params[:task])
+        format.html { redirect_to projects_tasks_show_path(@task),  notice: 'task was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @task.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+  def destroy
+    @task = task.find(params[:id])
+    @task.destroy
+
+    respond_to do |format|
+      format.html { redirect_to project_show_path(Project.find(@task.project_id)) }
+      format.json { head :no_content }
+    end
+  end
+
+end

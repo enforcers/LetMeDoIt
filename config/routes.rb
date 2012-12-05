@@ -3,9 +3,12 @@ LetMeDoIt::Application.routes.draw do
   resources :categories
 
   # PROJECTS
+
   scope "/projects", :module => "projects" do # Workaround for custom named helper
     match '/show/:id' => 'projects#show', :as => :project_show
   end
+  
+
 
   namespace :projects do
     get '/' => 'projects#index'
@@ -15,6 +18,15 @@ LetMeDoIt::Application.routes.draw do
     post '/edit' => 'projects#update'
     post '/' => 'projects#create'
     #match '/:id' => 'projects#index'
+
+    match 'tasks/show/:id' => 'tasks#show', :as => :tasks_show
+    match 'tasks/edit/:id' => 'tasks#edit', :as => :tasks_edit
+    get 'tasks/' => 'tasks#index'
+    get 'tasks/new' => 'tasks#new'
+    post 'tasks/new' => 'tasks#create'
+    get 'tasks/edit' => 'tasks#edit'
+    post 'tasks/edit' => 'tasks#update'
+    post 'tasks/' => 'tasks#create'
   end
 
   root :to => "home#index"
