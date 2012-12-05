@@ -1,5 +1,5 @@
 class Admin::AdminController < ApplicationController
-  layout "admin"
+  prepend_view_path 'app/views/admin'
   before_filter :verify_admin
 
   def verify_admin
@@ -9,5 +9,9 @@ class Admin::AdminController < ApplicationController
 
   def current_ability
     @current_ability ||= AdminAbility.new(current_user)
+  end
+
+  def dashboard
+  	render '/dashboard.html.erb'
   end
 end

@@ -1,34 +1,47 @@
-<div class="control-group">
-   <%= f.label :email, t("activerecord.attributes.user.email", :default => "Email"), :class => 'control-label' %>
-  <div class="input">
-    <%= f.text_field :email, :class => 'text_field' %>
-  </div>
+  <% if @user.errors.any? %>
+    <div class="box error">
+      <div id="error_explanation">
+        <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+        <ul>
+          <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+<div class="ym-fbox-text">
+  <%= f.label :email %>
+  <%= f.text_field :email %>
 </div>
 
-<div class="control-group">
-   <%= f.label :password, t("activerecord.attributes.user.password", :default => "password"), :class => 'control-label' %>
-  <div class="input">
-    <%= f.password_field :password, :class => 'password_field' %>
-  </div>
+<div class="ym-fbox-text">
+  <%= f.label :username %>
+  <%= f.text_field :username %>
 </div>
-<div class="control-group">
-   <%= f.label :Password, t("activerecord.attributes.user.password_confirmation", :default => "password_confirmation"), :class => 'control-label' %>
-  <div class="input">
-    <%= f.password_field :password_confirmation, :class => 'password_field' %>
-  </div>
+
+<div class="ym-fbox-text">
+  <%= f.label :password %>
+  <%= f.password_field :password %>
 </div>
+
+<div class="ym-fbox-text">
+  <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation %>
+</div>
+
+<h6 class="ym-fbox-heading">Roles</h6>
 
 <% for role in Role.find(:all) %> 
-  <div class ="control-group">
-   <%= f.label role.name , :class => 'control-label' %>
-      <div class="controls">
-        <%= check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role) %> 
-      </div> 
+  <div class ="ym-fbox-check">
+    <%= check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role) %> 
+    <%= f.label role.name %>
   </div>
 <% end %>
 
 
-<div class="form-actions">
-  <button class="btn primary" type="submit">Save</button> or
-	<%= link_to "Cancel", admin_users_path %>
+<div class="ym-fbox-button">
+  <%= f.submit "Save" %>
+	<%= link_to "Cancel", admin_users_path, :class => "ym-button" %>
 </div>
