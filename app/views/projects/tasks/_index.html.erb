@@ -1,0 +1,25 @@
+<h3>Tasks</h3>
+<div class="ym-grid">
+	<div class="ym-gbox">
+		<table >
+			<tr>
+				<th width="60%">Task Name</th>
+				<th width="20%">Due Date</th>
+				<th width="20%">Budget</th>
+			</tr>
+			<% @tasks.each do |task| %>
+				<tr class="project">
+					<input type="hidden" value="<%= task.id %>"/>
+					<td>
+						<%= link_to projects_tasks_show_path(task) do %>
+							<h5><%= task.name %></h5>
+							<span><%= truncate task.description, :omission => "... (read more)", :length => 200 %></span>
+						<% end %>
+					</td>
+					<td><%= task.due_date %></td>
+					<td><%= task.budget %></td>
+				</tr>
+			<% end %>
+		</table>
+	</div>
+</div>

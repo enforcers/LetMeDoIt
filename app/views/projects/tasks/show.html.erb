@@ -1,0 +1,46 @@
+<h3>Show Task</h3>
+
+<div class="ym-grid">
+	<div class="ym-g20 ym-gl">
+		<div class="ym-gbox">a
+		</div>
+	</div>
+	<div class="ym-g80 ym-gr">
+		<div class="ym-gbox">
+			<div class="ym-grid">
+				<div class="ym-g40 ym-gl">
+					<div class="ym-gbox"><strong>Task Name</strong></div>
+				</div>
+				<div class="ym-g60 ym-gl">
+					<div class="ym-gbox"><%= @task.name %></div>
+				</div>
+			</div>
+			<div class="ym-grid">
+				<div class="ym-g40 ym-gl">
+					<div class="ym-gbox"><strong>Due Date</strong></div>
+				</div>
+				<div class="ym-g60 ym-gl">
+					<div class="ym-gbox"><%= @task.due_date %></div>
+				</div>
+			</div>
+			<div class="ym-grid">
+				<div class="ym-g40 ym-gl">
+					<div class="ym-gbox"><strong>Task Budget</strong></div>
+				</div>
+				<div class="ym-g60 ym-gl">
+					<div class="ym-gbox"><%= @task.budget %></div>
+				</div>
+			</div>
+			<div class="ym-grid">
+				<div class="ym-g40 ym-gl">
+					<div class="ym-gbox"><strong>Task Description</strong></div>
+				</div>
+				<div class="ym-g60 ym-gl">
+					<div class="ym-gbox"><%= @task.description %></div>
+				</div>
+			</div>
+			<%= link_to 'Edit', projects_tasks_edit_path(@task) %> |
+			<%= link_to 'Back', project_show_path(Project.find(@task.project_id)) %>
+		</div>
+	</div>
+</div>
