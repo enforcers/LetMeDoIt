@@ -1,0 +1,60 @@
+<h3>Categories</h3>
+<%= form_for [:admin, @category], :url => admin_categories_path, :html => { :class => "ym-form linearize-form ym-columnar" } do |f| -%>
+  <% if @category.errors.any? %>
+    <div class="box error">
+      <div id="error_explanation">
+        <h2><%= pluralize(@category.errors.count, "error") %> prohibited this category from being saved:</h2>
+        <ul>
+          <% @category.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <h6 class="ym-fbox-heading">New Category</h6>
+
+  <div class="ym-fbox-text">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="ym-fbox-select">
+    <%= f.label 'Parent category' %>
+    <%= select_tag "category[category_id]",
+      options_for_select({"None" => 0}) +
+      options_from_collection_for_select(@categories, :id, :name) %>
+  </div>
+
+  <div class="ym-fbox-button">
+    <%= f.submit "Save" %>
+  </div>
+<% end %>
+
+<table class="admin-categories">
+  <thead>
+    <tr>
+      <th>Category name</th>
+      <th class="ym-table-right">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @categories.each do |category| -%>
+    <tr>
+      <td><%= category.name %></td>
+      <td class="ym-table-right">
+        <%= link_to "Delete", admin_category_path(category), :class => "ym-button ym-delete", :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
+      </td>
+    </tr>
+    <% category.child_categories.each do |subcategory| -%>
+      <tr>
+        <td class="sub-category"><%= subcategory.name %></td>
+        <td class="ym-table-right">
+          <%= link_to "Delete", admin_category_path(subcategory), :class => "ym-button ym-delete", :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
+        </td>
+      </tr>
+    <% end %>
+  <% end -%>
+  </tbody>
+</table>

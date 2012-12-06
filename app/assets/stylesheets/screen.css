@@ -175,3 +175,7 @@ h1, h2, h3, h4, h5 {
 .icon-box.deadline {
   background: url(/images/icon_deadline.png) no-repeat;
 }
+
+.admin-categories .sub-category {
+  padding-left: 80px;
+}
