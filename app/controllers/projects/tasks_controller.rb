@@ -77,7 +77,7 @@ class Projects::TasksController < ApplicationController
     @task.destroy
 
     respond_to do |format|
-      format.html { redirect_to project_show_path(Project.find(@task.project_id)) }
+      format.html { redirect_to projects_show_path(Project.find(@task.project_id)) }
       format.json { head :no_content }
     end
   end

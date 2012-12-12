@@ -5,7 +5,7 @@ LetMeDoIt::Application.routes.draw do
   # PROJECTS
 
   scope "/projects", :module => "projects" do # Workaround for custom named helper
-    match '/show/:id' => 'projects#show', :as => :project_show
+    
   end
   
 
@@ -16,8 +16,9 @@ LetMeDoIt::Application.routes.draw do
     post '/new' => 'projects#create'
     get '/edit' => 'projects#edit'
     post '/edit' => 'projects#update'
-    post '/' => 'projects#create'
-    #match '/:id' => 'projects#index'
+    #post '/' => 'projects#create'
+    match '/show/:id' => 'projects#show', :as => :show
+    get '/:category_id' => 'projects#index', :as => :filter
 
     match 'tasks/show/:id' => 'tasks#show', :as => :tasks_show
     match 'tasks/edit/:id' => 'tasks#edit', :as => :tasks_edit

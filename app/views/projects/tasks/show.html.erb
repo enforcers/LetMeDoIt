@@ -40,7 +40,7 @@
 				</div>
 			</div>
 			<%= link_to 'Edit', projects_tasks_edit_path(@task) %> |
-			<%= link_to 'Back', project_show_path(Project.find(@task.project_id)) %>
+			<%= link_to 'Back', projects_show_path(Project.find(@task.project_id)) %>
 		</div>
 	</div>
 </div>

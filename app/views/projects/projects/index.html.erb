@@ -5,7 +5,7 @@
 			<div class="nav-wrapper">
 				<nav class="ym-vlist">
 					<ul>
-						<% if params.has_key?(:category) %>
+						<% if params.has_key?(:category_id) %>
 							<li>
 								<%= link_to "All", projects_path %>
 							</li>
@@ -17,11 +17,11 @@
 						<h6 class="ym-vtitle"><%= parent.name %></h6>
 							<ul>
 								<% parent.child_categories.each do |category| %>
-									<% if params[:category] == category.id.to_s %>
+									<% if params[:category_id] == category.to_param %>
 										<li class="active"><strong><%= category.name %></strong></li>
 									<% else %>
 										<li>
-											<%= link_to category.name, projects_path(:category => category) %>
+											<%= link_to category.name, projects_filter_path(category) %>
 										</li>
 									<% end %>
 								<% end %>
@@ -43,13 +43,13 @@
 					<tr class="project">
 						<input type="hidden" value="<%= project.id %>"/>
 						<td>
-							<%= link_to project_show_path(project) do %>
+							<%= link_to projects_show_path(project) do %>
 								<h5><%= project.name %></h5>
 								<span><%= truncate project.description, :omission => "... (read more)", :length => 200 %></span>
 							<% end %>
 						</td>
 						<td><%= link_to User.find_by_id(project.user_id).username, user_show_path(project.user_id) %></td>
-						<td>5/5</td>
+						<td><%= project.availableTasks %>/<%= project.tasks.count %></td>
 					</tr>
 				<% end %>
 			</table>
