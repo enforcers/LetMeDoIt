@@ -1,11 +1,12 @@
-<h3>Tasks</h3>
+<h4>Tasks</h4>
 <div class="ym-grid">
 	<div class="ym-gbox">
 		<table >
 			<tr>
-				<th width="60%">Task Name</th>
+				<th width="50%">Task Name</th>
 				<th width="20%">Due Date</th>
 				<th width="20%">Budget</th>
+				<th width="10%">Bids</th>
 			</tr>
 			<% @tasks.each do |task| %>
 				<tr class="project">
@@ -13,11 +14,12 @@
 					<td>
 						<%= link_to projects_tasks_show_path(task) do %>
 							<h5><%= task.name %></h5>
-							<span><%= truncate task.description, :omission => "... (read more)", :length => 200 %></span>
+							<!--<span><%= truncate task.description, :omission => "... (read more)", :length => 200 %></span>-->
 						<% end %>
 					</td>
 					<td><%= task.due_date %></td>
 					<td><%= task.budget %></td>
+					<td>0</td>
 				</tr>
 			<% end %>
 		</table>

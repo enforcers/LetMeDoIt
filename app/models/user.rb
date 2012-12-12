@@ -23,4 +23,8 @@ class User < ActiveRecord::Base
     end
   end
 
+  def contactName
+    return self.username.blank? ? self.email : self.username
+  end
+
 end

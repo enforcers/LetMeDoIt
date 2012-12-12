@@ -59,23 +59,7 @@
     <div class="tabbody">
       <p>
         <%= link_to "New Skill", new_skill_path, :class => "ym-button ym-add" %>
-        <table>
-          <tr>
-            <th>Name</th>
-            <th>Rating</th>
-            <th>Actions</th>
-          </tr>
-        <% @user.skills.order('LOWER(name)').each do |skill| %>
-          <tr>
-            <td><%= skill.name %></td>
-            <td><div class="skill-rating"><div class="stars" style="width: <%= skill.rating*12.5 %>px"></div></div></td>
-            <td>
-              <%= link_to 'Edit', edit_skill_path(skill), :class => "ym-button ym-edit" %>
-              <%= link_to 'Delete', skill, confirm: 'Are you sure?', method: :delete, :class => "ym-button ym-delete" %>
-            </td>
-          </tr>
-        <% end %>
-        </table>
+        <%= render :partial => 'skills/index', :locals =>{ :withActions => true } %>
       </p>
     </div>
   <h4 id="tab-preferences">Preferences</h4>

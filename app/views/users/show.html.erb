@@ -1,6 +1,6 @@
-<h3>Profile of <i><%= @user.username %></i></h3>
+<h3><%= @user.contactName %></h3>
 
-<p>
-  <b>ID:</b>
-  <%= @user.id %>
-</p>
+<h4>E-Mail</h4>
+<span><%= @user.email %></span>
+<h4>Skills</h4>
+<%= render 'skills/index' %>
