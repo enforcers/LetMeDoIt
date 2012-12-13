@@ -8,6 +8,7 @@
 
 Role.create(:name => "Admin")
 Role.create(:name => "Registered")
+User.create(:email => 'admin@admin.de', :password => 'admin5', :role_ids => [1,2])
 Category.create(:id => 1, :category_id => nil, :name => 'Web Development')
 Category.create(:id => 2, :category_id => nil, :name => 'Mobile Devices')
 Category.create(:id => 3, :category_id => nil, :name => 'Application Software')
