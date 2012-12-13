@@ -1,5 +1,5 @@
-<h2><%= @user.skills.inspect %></h2>
-<%= form_for [:admin, @user], :url => admin_user_path(@user), :html => { :class => "form-horizontal", :id => "edit_user" } do |f| -%>
+<h3>Edit User</h3>
+<%= form_for [:admin, @user], :url => admin_user_path(@user), :html => { :class => "ym-form linearize-form ym-columnar", :id => "edit_user" } do |f| -%>
   <input name="_method" type="hidden" value="put" />
   <%= render :partial => "form", :locals => {:f => f} %>
 <% end -%>

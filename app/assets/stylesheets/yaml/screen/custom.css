@@ -44,4 +44,8 @@
 	background-image: -o-linear-gradient(top, #6b90b5, #517da8);
 	background-image: linear-gradient(top, #6b90b5, #517da8);
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#6b90b5', EndColorStr='#517da8');
-};
+}
+
+table .ym-table-right {
+	text-align: right;
+}

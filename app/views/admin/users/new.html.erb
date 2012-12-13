@@ -1,3 +1,4 @@
-<%= form_for [:admin, @user], :url => admin_users_path, :html => { :class => :form } do |f| -%>
+<h3>New User</h3>
+<%= form_for [:admin, @user], :url => admin_users_path, :html => { :class => "ym-form linearize-form ym-columnar" } do |f| -%>
   <%= render :partial => "form", :locals => {:f => f} %>
 <% end -%>

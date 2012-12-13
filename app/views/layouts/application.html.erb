@@ -13,6 +13,7 @@
       <div id="site-header">
         <div id="site-user">
           <% if user_signed_in? %>
+            <%= link_to "Admin", admin_path, :class => "ym-button top-page" if is_admin(current_user) %>
             <%= link_to "My Profile", edit_user_registration_path(current_user), :class => "ym-button top-page" %>
             <%= link_to("Logout", destroy_user_session_path, :method=>"delete", :class => "ym-button top-page") %>  
           <%else%>

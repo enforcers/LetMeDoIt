@@ -111,6 +111,7 @@ h1, h2, h3, h4, h5 {
 
 .box { margin: 20px }
 .box h2 {
+  color: #000;
   font-size: 100%;
   font-weight: bold;
 }
@@ -173,4 +174,8 @@ h1, h2, h3, h4, h5 {
 
 .icon-box.deadline {
   background: url(/images/icon_deadline.png) no-repeat;
+}
+
+.admin-categories .sub-category {
+  padding-left: 80px;
 }
