@@ -3,7 +3,7 @@
 		<div class="ym-gbox">
 			<h3><%= @project.name %></h3>
 			<h4>Project Description</h4>
-			<div><%= @project.description %></div>
+			<div><%= raw @project.description %></div>
 			<%= render 'projects/tasks/index' %>
 
 			<% if current_user.id == @project.user_id %>

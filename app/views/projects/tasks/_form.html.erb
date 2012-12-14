@@ -1,13 +1,24 @@
- <%= form_for [:projects, @task] do |f| %>
-  <% if @task.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+<% content_for :javascript do %>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('#task_due_date').datepicker({dateFormat: 'yy-mm-dd', firstDay: 1, minDate: 0})
+    });
+  </script>
+<% end %>
 
-      <ul>
-      <% @task.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+<%= tinymce_assets %>
+<%= form_for [:projects, @task], :html => { :class => "ym-form linearize-form ym-columnar"} do |f| %>
+  <% if @task.errors.any? %>
+    <div class="box error">
+      <div id="error_explanation">
+        <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+        <ul>
+        <% @task.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
   <% end %>
 
@@ -18,7 +29,7 @@
   </div>
   <div class="ym-fbox-text">
     <%= f.label :due_date %>
-    <%= f.date_select :due_date %>
+    <%= f.text_field :due_date, :readonly => "readonly" %>
   </div>
   <div class="ym-fbox-text">
     <%= f.label :budget %>
@@ -26,9 +37,11 @@
   </div>
   <div class="ym-fbox-text">
     <%= f.label :description %>
-    <%= f.text_area :description %>
+    <%= f.text_area :description, :class => "tinymce" %>
   </div>
-  <div class="actions">
+  <div class="ym-fbox-button">
     <%= f.submit %>
   </div>
 <% end %>
+
+<%= tinymce %>

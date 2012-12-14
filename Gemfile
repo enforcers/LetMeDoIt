@@ -11,6 +11,7 @@ gem 'cancan'
 gem 'jquery-rails'
 gem 'execjs'
 gem 'therubyracer', :platform => :ruby
+gem 'tinymce-rails', :require => 'tinymce-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.

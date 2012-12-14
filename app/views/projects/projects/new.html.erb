@@ -1,3 +1,5 @@
+<%= tinymce_assets %>
+
 <h3>New Project</h3>
 
 <%= form_for(@project, :url => projects_new_path, :html => { :class => "ym-form linearize-form ym-columnar"}) do |f| %>
@@ -21,7 +23,7 @@
   </div>
   <div class="ym-fbox-text">
     <%= f.label :description %>
-    <%= f.text_area :description %>
+    <%= f.text_area :description, :class =>"tinymce" %>
   </div>
   <div class="ym-fbox-select">
     <%= f.label :category_id %>
@@ -32,3 +34,5 @@
     <%= f.submit %>
   </div>
 <% end %>
+
+<%= tinymce %>

@@ -45,10 +45,10 @@
 						<td>
 							<%= link_to projects_show_path(project) do %>
 								<h5><%= project.name %></h5>
-								<span><%= truncate project.description, :omission => "... (read more)", :length => 200 %></span>
+								<span><%= truncate sanitize(project.description, :tags => []), :omission => "... (read more)", :length => 200 %></span>
 							<% end %>
 						</td>
-						<td><%= link_to User.find_by_id(project.user_id).username, user_show_path(project.user_id) %></td>
+						<td><%= link_to User.find_by_id(project.user_id).contactName, user_show_path(project.user_id) %></td>
 						<td><%= project.availableTasks %>/<%= project.tasks.count %></td>
 					</tr>
 				<% end %>

@@ -14,3 +14,4 @@
 //= require jquery_ujs
 //= require_tree .
 //= require yaml/add-ons/accessible-tabs/jquery.tabs
+//= require jquery-ui-1.9.2.custom.min
