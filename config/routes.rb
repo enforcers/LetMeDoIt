@@ -20,14 +20,7 @@ LetMeDoIt::Application.routes.draw do
     match '/show/:id' => 'projects#show', :as => :show
     get '/:category_id' => 'projects#index', :as => :filter
 
-    match 'tasks/show/:id' => 'tasks#show', :as => :tasks_show
-    match 'tasks/edit/:id' => 'tasks#edit', :as => :tasks_edit
-    get 'tasks/' => 'tasks#index'
-    get 'tasks/new' => 'tasks#new'
-    post 'tasks/new' => 'tasks#create'
-    get 'tasks/edit' => 'tasks#edit'
-    post 'tasks/edit' => 'tasks#update'
-    post 'tasks/' => 'tasks#create'
+    resources :tasks
   end
 
   root :to => "home#index"
