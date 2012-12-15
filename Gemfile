@@ -31,7 +31,6 @@ end
 group :development, :test do
   gem 'debugger'
   gem 'sqlite3-ruby'
-  gem 'therubyracer'
 end
 
 

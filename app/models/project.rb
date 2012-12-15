@@ -14,4 +14,10 @@ class Project < ActiveRecord::Base
 		# implement later, counts tasks which are not flagged as finished
 		return 0
 	end
+
+	def is_owner(user)
+		unless user.nil?
+			return user.id == self.user_id
+		end
+	end
 end

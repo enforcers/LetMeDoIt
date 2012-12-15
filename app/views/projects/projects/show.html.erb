@@ -1,12 +1,13 @@
+
 <div class="ym-grid">
 	<div class="ym-g66 ym-gl">
 		<div class="ym-gbox">
 			<h3><%= @project.name %></h3>
 			<h4>Project Description</h4>
-			<div><%= raw @project.description %></div>
+			<div class="description"><%= raw @project.description %></div>
 			<%= render 'projects/tasks/index' %>
 
-			<% if current_user.id == @project.user_id %>
+			<% if @project.is_owner(current_user) %>
 				<p><%= link_to "Add Task", projects_tasks_new_path(:project_id=>@project.id), :class => "ym-button" %></p>
 			<% end %>
 		</div>

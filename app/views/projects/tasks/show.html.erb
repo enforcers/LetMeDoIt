@@ -1,46 +1,27 @@
-<h3>Show Task</h3>
+<h3><%= link_to @task.project.name, projects_show_path(@task.project) %> / <%= @task.name %></h3>
 
 <div class="ym-grid">
-	<div class="ym-g20 ym-gl">
-		<div class="ym-gbox">a
+	<div class="ym-g66 ym-gl">
+		<div class="ym-gbox">
+			<h4>Maximum Budget</h4>
+			<p><%= number_to_currency @task.budget, :unit => "€" %></p>
+			<h4>Task Description</h4>
+			<div class="description"><%= raw @task.description %></div>
 		</div>
 	</div>
-	<div class="ym-g80 ym-gr">
+	<div class="ym-g33 ym-gr">
 		<div class="ym-gbox">
-			<div class="ym-grid">
-				<div class="ym-g40 ym-gl">
-					<div class="ym-gbox"><strong>Task Name</strong></div>
-				</div>
-				<div class="ym-g60 ym-gl">
-					<div class="ym-gbox"><%= @task.name %></div>
-				</div>
+			<div class="icon-box deadline">
+				<h3><%= distance_of_time_in_words_to_now @task.due_date %></h3>
+				<span>left (<%= @task.due_date %>)</span>
 			</div>
-			<div class="ym-grid">
-				<div class="ym-g40 ym-gl">
-					<div class="ym-gbox"><strong>Due Date</strong></div>
-				</div>
-				<div class="ym-g60 ym-gl">
-					<div class="ym-gbox"><%= @task.due_date %></div>
-				</div>
+			<div class="icon-box offers">
+				<h3>0</h3>
+				<span>Bid(s) on this Task</span>
 			</div>
-			<div class="ym-grid">
-				<div class="ym-g40 ym-gl">
-					<div class="ym-gbox"><strong>Task Budget</strong></div>
-				</div>
-				<div class="ym-g60 ym-gl">
-					<div class="ym-gbox"><%= @task.budget %></div>
-				</div>
-			</div>
-			<div class="ym-grid">
-				<div class="ym-g40 ym-gl">
-					<div class="ym-gbox"><strong>Task Description</strong></div>
-				</div>
-				<div class="ym-g60 ym-gl">
-					<div class="ym-gbox"><%= @task.description %></div>
-				</div>
-			</div>
-			<%= link_to 'Edit', projects_tasks_edit_path(@task) %> |
-			<%= link_to 'Back', projects_show_path(Project.find(@task.project_id)) %>
+
+			<%= link_to 'Place bid', '', :class => "ym-button" %>
+			<%= link_to 'Edit Task', projects_tasks_edit_path(@task), :class => "ym-button" %>
 		</div>
 	</div>
 </div>

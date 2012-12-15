@@ -3,28 +3,23 @@ class Ability
 
   def initialize(user)
     user ||= User.new # guest user
+
     if user.role? :admin
       can :manage, :all
     elsif user.role? :registered
       # Grant rights for Skill Model
-      can :update, Skill do |skill|
-        skill.user_id == user.id
-      end
-      can :destroy, Skill do |skill|
-        skill.user_id == user.id
-      end
-      can :create, Skill
-      can :read, Skill
+      can [:update, :destroy], Skill, :user_id => user.id
+      can [:read, :create], Skill
 
       # Grant rights for Project Model
-      can :update, Project do |project|
-        project.user_id == user.id
+      can [:update, :destroy], Project, :user_id => user.id
+      can [:read, :create], Project
+
+      # Grant rights for Tasks Model
+      can :manage, Task do |task|
+        task.project.user_id == user.id
       end
-      can :destroy, Project do |project|
-        project.user_id == user.id
-      end
-      can :read, Project
-      can :create, Project
+      can :read, Task
     else
       can :read, :all
     end
