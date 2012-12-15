@@ -39,7 +39,7 @@
 					<div class="ym-gbox"><%= @task.description %></div>
 				</div>
 			</div>
-			<%= link_to 'Edit', projects_tasks_edit_path(@task) %> |
+			<%= link_to 'Edit', edit_projects_task_path(@task) %> |
 			<%= link_to 'Back', project_show_path(Project.find(@task.project_id)) %>
 		</div>
 	</div>

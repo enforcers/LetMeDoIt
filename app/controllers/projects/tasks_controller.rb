@@ -33,7 +33,7 @@ class Projects::TasksController < ApplicationController
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to projects_tasks_show_path(@task) }
+        format.html { redirect_to projects_task_path(@task) }
         format.json { render json: @task, status: :created, location: projects_tasks_show_path(@task) }
       else
         format.html { render action: "new" }
@@ -60,11 +60,11 @@ class Projects::TasksController < ApplicationController
 
   end
   def update
-    @task = task.find(params[:id])
+    @task = Task.find(params[:id])
 
     respond_to do |format|
       if @task.update_attributes(params[:task])
-        format.html { redirect_to projects_tasks_show_path(@task),  notice: 'task was successfully updated.' }
+        format.html { redirect_to projects_task_path(@task),  notice: 'task was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -73,7 +73,7 @@ class Projects::TasksController < ApplicationController
     end
   end
   def destroy
-    @task = task.find(params[:id])
+    @task = Task.find(params[:id])
     @task.destroy
 
     respond_to do |format|

@@ -11,7 +11,12 @@
     </div>
   <% end %>
 
-  <%= f.hidden_field :project_id, :value => params[:project_id] %>
+  <%=
+  if params.has_key?(:project_id)
+    f.hidden_field :project_id, :value => params[:project_id] 
+  end
+  %>
+
   <div class="ym-fbox-text">
     <%= f.label :name %>
     <%= f.text_field :name %>
