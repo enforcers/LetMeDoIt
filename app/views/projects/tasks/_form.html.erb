@@ -7,6 +7,7 @@
 <% end %>
 
 <%= tinymce_assets %>
+<% @task.project_id ||= params[:project_id] %>
 <%= form_for [:projects, @task], :html => { :class => "ym-form linearize-form ym-columnar"} do |f| %>
   <% if @task.errors.any? %>
     <div class="box error">
@@ -22,7 +23,7 @@
     </div>
   <% end %>
 
-  <%= f.hidden_field :project_id, :value => params[:project_id] %>
+  <%= f.hidden_field :project_id %>
   <div class="ym-fbox-text">
     <%= f.label :name %>
     <%= f.text_field :name %>

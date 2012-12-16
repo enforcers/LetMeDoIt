@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121204164749) do
+ActiveRecord::Schema.define(:version => 20121216114754) do
+
+  create_table "bids", :force => true do |t|
+    t.integer  "task_id"
+    t.integer  "user_id"
+    t.decimal  "amount"
+    t.text     "comment"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "categories", :force => true do |t|
     t.integer  "category_id"
@@ -63,6 +72,7 @@ ActiveRecord::Schema.define(:version => 20121204164749) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.date     "due_date"
+    t.integer  "bid_id"
   end
 
   add_index "tasks", ["project_id"], :name => "index_tasks_on_project_id"

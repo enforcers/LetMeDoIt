@@ -1,0 +1,14 @@
+<div id="new-bid-form" title="Place a new bid">
+	<%= form_for([:projects, Bid.new], :html => { :class => "ym-form linearize-form ym-columnar"}) do |f| %>
+	<%= f.hidden_field :user_id, :value => current_user.id %>
+	<%= f.hidden_field :task_id, :value => @task.id %>
+	<div class="ym-fbox-text">
+    	<%= f.label :amount %>
+    	<%= f.text_field :amount %>
+  	</div>
+  	<div class="ym-fbox-text">
+    	<%= f.label :comment %>
+    	<%= f.text_area :comment %>
+  	</div>
+	<% end %>
+</div>

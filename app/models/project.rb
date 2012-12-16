@@ -10,9 +10,8 @@ class Project < ActiveRecord::Base
 	validates :category_id,
 		:presence => true
 
-	def availableTasks
-		# implement later, counts tasks which are not flagged as finished
-		return 0
+	def available_tasks
+		return self.tasks.where("due_date >= '#{DateTime.now.to_date}'").count
 	end
 
 	def is_owner(user)

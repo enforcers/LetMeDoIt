@@ -21,6 +21,7 @@ LetMeDoIt::Application.routes.draw do
     get '/:category_id' => 'projects#index', :as => :filter
 
     resources :tasks
+    resources :bids
   end
 
   root :to => "home#index"
