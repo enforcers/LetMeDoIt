@@ -87,7 +87,9 @@
 				<span>Bid(s) on this Task</span>
 			</div>
 
-			<%= link_to 'Place bid', '#', :class => "ym-button", :id => "place-bid" %>
+			<% if @task.is_open? %>
+                <%= link_to 'Place bid', '#', :class => "ym-button", :id => "place-bid" %>
+            <% end %>
 			<% if can? :update, @task %>
 				<%= link_to 'Edit Task', edit_projects_task_path(@task), :class => "ym-button" %>
 			<% end %>
