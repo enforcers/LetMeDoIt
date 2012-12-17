@@ -44,14 +44,14 @@
     <tr>
       <td><%= category.name %></td>
       <td class="ym-table-right">
-        <%= link_to "Delete", admin_category_path(category), :class => "ym-button ym-delete", :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
+        <%= link_to "Delete", admin_category_path(category), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}", :class => "btn-delete" %>
       </td>
     </tr>
     <% category.child_categories.each do |subcategory| -%>
       <tr>
         <td class="sub-category"><%= subcategory.name %></td>
         <td class="ym-table-right">
-          <%= link_to "Delete", admin_category_path(subcategory), :class => "ym-button ym-delete", :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
+          <%= link_to "Delete", admin_category_path(subcategory), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}", :class => "btn-delete" %>
         </td>
       </tr>
     <% end %>

@@ -49,3 +49,7 @@
 table .ym-table-right {
 	text-align: right;
 }
+
+table .ym-table-right * {
+	float: right;
+}

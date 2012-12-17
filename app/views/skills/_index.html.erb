@@ -5,16 +5,16 @@
     <tr>
       <th>Name</th>
       <th>Rating</th>
-      <% if withActions %><th>Actions</th><% end %>
+      <% if withActions %><th class="ym-table-right">Actions</th><% end %>
     </tr>
   <% @user.skills.order('LOWER(name)').each do |skill| %>
     <tr>
       <td><%= skill.name %></td>
       <td><div class="skill-rating"><div class="stars" style="width: <%= skill.rating*12.5 %>px"></div></div></td>
       <% if withActions %>
-      <td>
-        <%= link_to 'Edit', edit_skill_path(skill), :class => "ym-button ym-edit" %>
-        <%= link_to 'Delete', skill, confirm: 'Are you sure?', method: :delete, :class => "ym-button ym-delete" %>
+      <td class="ym-table-right">
+        <%= link_to "Delete", skill, confirm: 'Are you sure?', method: :delete, :class => "btn-delete" %>
+        <%= link_to "Edit", edit_skill_path(skill), :title => "Edit", :class => "btn-edit" %>
       </td>
       <% end %>
     </tr>

@@ -1,7 +1,9 @@
 class Project < ActiveRecord::Base
-  belongs_to :user
-  belongs_to :category
-  has_many :tasks
+	belongs_to :user
+	belongs_to :category
+	has_many :tasks
+
+	self.per_page = 10
 
 	validates :name,
 		:presence => true
