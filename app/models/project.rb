@@ -21,4 +21,19 @@ class Project < ActiveRecord::Base
 			return user.id == self.user_id
 		end
 	end
+
+	def self.get_active
+		@active = Array.new
+
+		Project.all.each do |project|
+			project.tasks.each do |task|
+				if task.due_date >= DateTime.now
+					@active << project
+					break
+				end
+			end
+		end
+
+		return @active
+	end
 end

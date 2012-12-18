@@ -1,1 +1,45 @@
-<p>Find me in app/views/home/index.html.erb</p>
+<div class="ym-grid">
+	<div class="ym-g62 ym-gl">
+		<h3>What are we doing?</h3>
+		<span>blabla</span>
+		<h3>How it works</h3>
+		<span>blabla</span>
+		<div class="statistics">
+			<div class="ym-grid">
+				<div class="ym-g33 ym-gl">
+					<div class="cbox">
+						<span class="stat"><%= @active_projects %></span>
+						<span>Active projects</span>
+					</div>
+				</div>
+				<div class="ym-g33 ym-gl">
+					<div class="cbox">
+						<span class="stat"><%= @users_count %></span>
+						<span>Registered users</span>
+					</div>
+				</div>
+				<div class="ym-g33 ym-gl">
+					<div class="cbox">
+						<span class="stat">&oslash; <%= @average_bids_per_project %></span>
+						<span>Average bids per project</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="ym-g38 ym-gl">
+		<h3>Latest Projects</h3>
+		<div class="latest-projects">
+		<% @projects.each do |project| %>
+			<div class="cbox">
+				<div class="heading">
+					<strong><%= link_to truncate(project.name, :omission => "...", :length => 25), projects_show_path(project) %></strong>
+					<span class="created">by <%= link_to project.user.contactName, user_show_path(project.user) %> at <%= project.created_at.strftime("%Y-%m-%d %H:%M") %></span>
+					<em><%= link_to project.category.name, projects_filter_path(project.category) %></em>
+				</div>
+				<div class="description"><%= truncate sanitize(project.description, :tags => []), :omission => " ...", :length => 200 %></div>
+			</div>
+		<% end %>
+	</div>
+	</div>
+</div>
