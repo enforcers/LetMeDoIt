@@ -253,3 +253,32 @@ h1, h2, h3, h4, h5 {
 }
 
 .statistics .cbox { padding: 10px; margin: 10px; }
+
+.top-msg {
+  margin: -10px -10px 10px -10px;
+  border-bottom: 1px solid #ccc;
+  padding: 20px 10px 20px 70px;
+  background-repeat: no-repeat;
+  background-position: 10px center;
+}
+
+.top-msg.alert {
+  background-color: #FEEFB3;
+  background-image: url(/images/icon-alert.png);
+  border-color: #9F6000;
+  color: #9F6000;
+}
+
+.top-msg.error {
+  background-color: #FDE4E1;
+  background-image: url(/images/icon-error.png);
+  border-color: #FDE4E1;
+  color: #CB4721;
+}
+
+.top-msg.info {
+  background-color: #BDE5F8;
+  background-image: url(/images/icon-info.png);
+  border-color: #00529B;
+  color: #00529B;
+}
