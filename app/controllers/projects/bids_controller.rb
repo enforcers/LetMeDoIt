@@ -5,8 +5,8 @@ class Projects::BidsController < ApplicationController
 
 		respond_to do |format|
 		  if @bid.save
-		    format.html { redirect_to projects_task_path(@task) }
-		    format.json { render json: @task, status: :created, location: projects_tasks_show_path(@task) }
+		    format.html { redirect_to project_task_path(@task.project, @task) }
+		    format.json { render json: @task, status: :created, location: project_task_path(@task.project, @task) }
 		  else
 		    format.html { render action: "show" }
 		    format.json {

@@ -8,7 +8,7 @@
 			<%= render 'projects/tasks/index' %>
 
 			<% if @project.is_owner(current_user) %>
-				<p><%= link_to "Add Task", new_projects_task_path(:project_id=>@project.id), :class => "ym-button" %></p>
+				<p><%= link_to "Add Task", new_project_task_path(:project_id=>@project.id), :class => "ym-button" %></p>
 			<% end %>
 		</div>
 	</div>

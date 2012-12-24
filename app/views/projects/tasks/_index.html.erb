@@ -10,7 +10,7 @@
 			</tr>
 			<% @tasks.each do |task| %>
 				<tr class="project">
-					<td><%= link_to task.name, projects_task_path(task) %></td>
+					<td><%= link_to task.name, project_task_path(task.project, task) %></td>
 					<td><%= task.due_date %></td>
 					<td><%= number_to_currency task.budget, :unit => "€" %></td>
 					<td><%= task.bids.count %></td>

@@ -34,9 +34,9 @@
 		<% @projects.each do |project| %>
 			<div class="cbox">
 				<div class="heading">
-					<strong><%= link_to truncate(project.name, :omission => "...", :length => 25), projects_show_path(project) %></strong>
+					<strong><%= link_to truncate(project.name, :omission => "...", :length => 25), project_path(project) %></strong>
 					<span class="created">by <%= link_to project.user.contactName, user_show_path(project.user) %> at <%= project.created_at.strftime("%Y-%m-%d %H:%M") %></span>
-					<em><%= link_to project.category.name, projects_filter_path(project.category) %></em>
+					<em><%= link_to project.category.name, projects_path(:category_id => project.category) %></em>
 				</div>
 				<div class="description"><%= truncate sanitize(project.description, :tags => []), :omission => " ...", :length => 200 %></div>
 			</div>

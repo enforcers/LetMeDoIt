@@ -3,25 +3,10 @@ LetMeDoIt::Application.routes.draw do
   resources :categories
 
   # PROJECTS
-
-  scope "/projects", :module => "projects" do # Workaround for custom named helper
-    
-  end
-  
-
-
-  namespace :projects do
-    get '/' => 'projects#index'
-    get '/new' => 'projects#new'
-    post '/new' => 'projects#create'
-    get '/edit' => 'projects#edit'
-    post '/edit' => 'projects#update'
-    #post '/' => 'projects#create'
-    match '/show/:id' => 'projects#show', :as => :show
-    get '/:category_id' => 'projects#index', :as => :filter
-
-    resources :tasks
-    resources :bids
+  resources :projects, :controller => "projects/projects" do
+    resources :tasks, :controller => "projects/tasks" do
+      resources :bids, :controller => "projects/bids"
+    end
   end
 
   root :to => "home#index"

@@ -8,7 +8,7 @@
 
 <%= tinymce_assets %>
 <% @task.project_id ||= params[:project_id] %>
-<%= form_for [:projects, @task], :html => { :class => "ym-form linearize-form ym-columnar"} do |f| %>
+<%= form_for [@task.project, @task], :html => { :class => "ym-form linearize-form ym-columnar"} do |f| %>
   <% if @task.errors.any? %>
     <div class="box error">
       <div id="error_explanation">

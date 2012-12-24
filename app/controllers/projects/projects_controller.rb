@@ -43,8 +43,8 @@ class Projects::ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.save
-        format.html { redirect_to projects_show_path(@project) }
-        format.json { render json: @project, status: :created, location: projects_show_path(@project) }
+        format.html { redirect_to project_path(@project) }
+        format.json { render json: @project, status: :created, location: project_path(@project) }
       else
         format.html { render action: "new" }
         format.json {

@@ -2,7 +2,7 @@
 
 <h3>New Project</h3>
 
-<%= form_for(@project, :url => projects_new_path, :html => { :class => "ym-form linearize-form ym-columnar"}) do |f| %>
+<%= form_for(@project, :html => { :class => "ym-form linearize-form ym-columnar"}) do |f| %>
   <% if @project.errors.any? %>
     <div class="box error">
       <div id="error_explanation">

@@ -21,7 +21,7 @@
 										<li class="active"><strong><%= category.name %></strong></li>
 									<% else %>
 										<li>
-											<%= link_to category.name, projects_filter_path(category) %>
+											<%= link_to category.name, projects_path(:category_id => category) %>
 										</li>
 									<% end %>
 								<% end %>
@@ -43,7 +43,7 @@
 					<tr class="project">
 						<input type="hidden" value="<%= project.id %>"/>
 						<td>
-							<%= link_to projects_show_path(project) do %>
+							<%= link_to project_path(project) do %>
 								<h5><%= project.name %></h5>
 								<span><%= truncate sanitize(project.description, :tags => []), :omission => "... (read more)", :length => 200 %></span>
 							<% end %>
