@@ -26,7 +26,7 @@ group :assets do
 end
 
 group :production, :staging do
-	gem "mysql2"
+	gem "pg"
 end
 
 group :development, :test do
