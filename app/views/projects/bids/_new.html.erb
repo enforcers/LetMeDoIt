@@ -1,3 +1,52 @@
+<% content_for :javascript do %>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      var amount = $('#bid_amount'),
+        comment = $('#bid_comment'),
+        allFields = $([]).add(amount).add(comment);
+
+      $('#new-bid-form').dialog({
+        autoOpen: false,
+        height: 500,
+        width: 500,
+        modal: true,
+        resizable: false,
+        buttons: {
+          'Place this bid': function() {
+              $('#new_bid').submit();
+          },
+          Cancel: function() {
+            $(this).dialog('close');
+          }
+        },
+        close: function() {
+          allFields.val('').removeClass('ui-state-error');
+        }
+      });
+
+      $('#place-bid').click(function() {
+        $('#new-bid-form').dialog('open');
+      });
+    });
+  </script>
+<% end %>
+
+<% if !@bid.nil? %>
+  <% if @bid.errors.any? %>
+    <div class="box error">
+      <div id="error_explanation">
+        <h2><%= pluralize(@bid.errors.count, "error") %> prohibited this bid from being saved:</h2>
+
+        <ul>
+        <% @bid.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
 <div id="new-bid-form" title="Place a new bid">
 	<%= form_for([@task.project, @task, Bid.new], :html => { :class => "ym-form linearize-form ym-columnar"}) do |f| %>
   <% if user_signed_in? %>

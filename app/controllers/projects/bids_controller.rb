@@ -8,10 +8,10 @@ class Projects::BidsController < ApplicationController
 		    format.html { redirect_to project_task_path(@task.project, @task) }
 		    format.json { render json: @task, status: :created, location: project_task_path(@task.project, @task) }
 		  else
-		    format.html { render action: "show" }
+		    format.html { render "projects/tasks/show" }
 		    format.json {
 		      render json: {
-		        :'task.errors' => @task.errors
+		        :'bid.errors' => @bid.errors
 		      },
 		      status: :unprocessable_entity
 		    }

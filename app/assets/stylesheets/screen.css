@@ -176,6 +176,10 @@ h1, h2, h3, h4, h5 {
   background: url(/images/icon_deadline.png) no-repeat;
 }
 
+.icon-box.dollar {
+  background: url(/images/icon_dollar.png) no-repeat;
+}
+
 .admin-categories .sub-category {
   padding-left: 80px;
 }

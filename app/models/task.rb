@@ -16,4 +16,8 @@ class Task < ActiveRecord::Base
 	def is_open?
 		return self.accepted.nil? && self.due_date >= Date.today
 	end
+
+	def get_bid_for(user)
+		return self.bids.where(:user_id => user).first
+	end
 end
