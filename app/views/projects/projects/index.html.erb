@@ -1,50 +1,44 @@
 <h3>Projects</h3>
-<div class="ym-grid">
-	<div class="ym-g20 ym-gl">
-		<div class="ym-gbox">
-			<div class="nav-wrapper">
-				<nav class="ym-vlist">
-					<ul>
-						<% if params.has_key?(:category_id) %>
-							<li>
-								<%= link_to "All", projects_path %>
-							</li>
+<div class="row-fluid">
+	<div class="span3">
+		<ul class="nav nav-list">
+			<% if params.has_key?(:category_id) %>
+				<li>
+					<%= link_to "All", projects_path %>
+				</li>
+			<% else %>
+				<li class="active"><%= link_to "All", projects_path %></li>
+			<% end %>
+			<li class="divider"></li>
+			<% @categories.each do |parent| %>
+				<li class="nav-header"><%= parent.name %></li>
+					<% parent.child_categories.each do |category| %>
+						<% if params[:category_id] == category.to_param %>
+							<li class="active"><%= link_to category.name, projects_path(:category_id => category) %></li>
 						<% else %>
-							<li class="active"><strong>All</strong></li>
+							<li>
+								<%= link_to category.name, projects_path(:category_id => category) %>
+							</li>
 						<% end %>
-					</ul>
-					<% @categories.each do |parent| %>
-						<h6 class="ym-vtitle"><%= parent.name %></h6>
-							<ul>
-								<% parent.child_categories.each do |category| %>
-									<% if params[:category_id] == category.to_param %>
-										<li class="active"><strong><%= category.name %></strong></li>
-									<% else %>
-										<li>
-											<%= link_to category.name, projects_path(:category_id => category) %>
-										</li>
-									<% end %>
-								<% end %>
-							</ul>
 					<% end %>
-				</nav>
-			</div>
-		</div>
+				<li class="divider"></li>
+			<% end %>
+	</ul>
 	</div>
-	<div class="ym-g80 ym-gr">
-		<div class="ym-gbox">
-			<table >
-				<tr>
-					<th width="60%">Project Name</th>
-					<th width="20%">Client</th>
-					<th width="20%">Tasks Available</th>
-				</tr>
+	<div class="span9">
+		<table class="table table-hover">
+			<thead>
+				<th width="60%">Project Name</th>
+				<th width="20%">Client</th>
+				<th width="20%">Tasks Available</th>
+			</thead>
+			<tbody>
 				<% @projects.each do |project| %>
 					<tr class="project">
 						<input type="hidden" value="<%= project.id %>"/>
 						<td>
 							<%= link_to project_path(project) do %>
-								<h5><%= project.name %></h5>
+								<p><strong><%= project.name %></strong></p>
 								<span><%= truncate sanitize(project.description, :tags => []), :omission => "... (read more)", :length => 200 %></span>
 							<% end %>
 						</td>
@@ -52,8 +46,8 @@
 						<td><%= project.available_tasks %>/<%= project.tasks.count %></td>
 					</tr>
 				<% end %>
-			</table>
-			<%= will_paginate @projects %>
-		</div>
+			</tbody>
+		</table>
+		<%= will_paginate @projects %>
 	</div>
 </div>

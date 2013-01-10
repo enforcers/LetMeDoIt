@@ -8,13 +8,6 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require yaml/core/base.min
- *= require yaml/forms/gray-theme
- *= require yaml/screen/typography
- *= require yaml/add-ons/accessible-tabs/tabs
- *= require yaml/navigation/vlist
- *= require yaml/screen/custom
  *= require screen
- *= require tipsy
- *= require smoothness/jquery-ui-1.9.2.custom.min
+ *= require bootstrap.min
 */
