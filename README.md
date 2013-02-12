@@ -2,6 +2,13 @@ LetMeDoIt
 =========
 [Heroku App](http://letmedoit.herokuapp.com/)
 
+TODO
+----
+
++ My Profile
+	+ Create & Design _My Projects_ / _My Bids_
+
+
 Programs
 --------
 
@@ -31,4 +38,4 @@ Getting started
 	```
 	Mail: admin@admin.de
 	Pass: admin5
-	```
+	```_
