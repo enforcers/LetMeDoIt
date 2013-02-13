@@ -1,48 +1,62 @@
 <% content_for :javascript do %>
   <script type="text/javascript">
     $(document).ready(function(){
-      $('#task_due_date').datepicker({dateFormat: 'yy-mm-dd', firstDay: 1, minDate: 0})
+      $('#dp').datepicker()
     });
   </script>
 <% end %>
 
 <%= tinymce_assets %>
 <% @task.project_id ||= params[:project_id] %>
-<%= form_for [@task.project, @task], :html => { :class => "ym-form linearize-form ym-columnar"} do |f| %>
+<%= form_for [@task.project, @task], :html => { :class => "form-horizontal"} do |f| %>
   <% if @task.errors.any? %>
-    <div class="box error">
-      <div id="error_explanation">
-        <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+    <div class="alert">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <strong><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</strong>
 
-        <ul>
-        <% @task.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-        </ul>
-      </div>
+      <ul>
+      <% @task.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
     </div>
   <% end %>
 
   <%= f.hidden_field :project_id %>
-  <div class="ym-fbox-text">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+  <div class="control-group">
+    <%= f.label :name, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :name, :class => "input-xxlarge" %>
+    </div>
   </div>
-  <div class="ym-fbox-text">
-    <%= f.label :due_date %>
-    <%= f.text_field :due_date, :readonly => "readonly" %>
+  <div class="control-group">
+    <%= f.label :due_date, :class => "control-label" %>
+    <div class="controls">
+      <div id="dp" class="input-append date" data-date="<%= @task.due_date ||= Date.today %>" data-date-format="yyyy-mm-dd">
+        <%= f.text_field :due_date, :class => "span2", :readonly => "readonly", :value => @task.due_date ||= Date.today %>
+        <span class="add-on"><i class="icon-calendar"></i></span>
+      </div>
+    </div>
   </div>
-  <div class="ym-fbox-text">
-    <%= f.label :budget %>
-    <%= f.text_field :budget %>
+  <div class="control-group">
+    <%= f.label :budget, :class => "control-label" %>
+    <div class="controls">
+      <div class="input-prepend input-append">
+        <span class="add-on">€</span>
+        <%= f.text_field :budget, :class => "span2" %>
+        <span class="add-on">.00</span>
+      </div>
+    </div>
   </div>
-  <div class="ym-fbox-text">
-    <%= f.label :description %>
-    <%= f.text_area :description, :class => "tinymce" %>
+  <div class="control-group">
+    <%= f.label :description, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_area :description, :class => "tinymce input-xxlarge" %>
+    </div>
   </div>
-  <div class="ym-fbox-button">
-    <%= f.submit %>
-    <%= link_to "Cancel", :back, :class => "ym-button" %>
+  <div class="form-actions">
+    <%= f.submit :class => "btn btn-primary btn-large" %>
+    <%= link_to "Cancel", :back, :class => "btn btn-large" %>
   </div>
 <% end %>
 

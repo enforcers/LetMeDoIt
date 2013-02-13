@@ -1,19 +1,20 @@
 <% content_for :javascript do %>
   <script type="text/javascript">
     $(document).ready(function(){
-      $('.skill-rating').tipsy({
+      $('.skill-rating').tooltip({
+        placement: 'top',
         trigger: 'manual',
-        gravity: 'w'
+        animation: false
       });
 
       $('.skill-rating').mousemove(function(e) {
         var offset = $(this).offset();
         var x = e.pageX - offset.left + 1;
         var stars = Math.round(x*2/25)/2;
-        var text = $.strPad(stars + ' out of 5', 12);
+        var text = stars + ' out of 5';
         $('.skill-rating .stars').width(stars*25);
-        $(this).attr('original-title', text);
-        $(this).tipsy("show");
+        $(this).attr('data-original-title', text);
+        $(this).tooltip('show');
         $('#skill_rating').val(stars*2);
       });
 
@@ -22,17 +23,17 @@
         var offset = $(this).offset();
         var x = e.pageX - offset.left + 1;
         var stars = Math.round(x*2/25)/2;
-        var text = $.strPad(stars + ' out of 5', 12);
+        var text = stars + ' out of 5';
         $('.skill-rating .stars').width(stars*25);
-        $(this).attr('original-title', text);
-        $(this).tipsy("show");
+        $(this).attr('data-original-title', text);
+        $(this).tooltip('show');
         $('#skill_rating').val(stars*2);
       });
     });
   </script>
 <% end %>
 
-<%= form_for(@skill, :html => { :class => "ym-form linearize-form ym-columnar"}) do |f| %>
+<%= form_for(@skill, :html => { :class => "form-horizontal"}) do |f| %>
   <% if @skill.errors.any? %>
     <div class="box error">
       <div id="error_explanation">
@@ -46,19 +47,24 @@
     </div>
   <% end %>
 
-  <div class="ym-fbox-text">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-    <%= f.hidden_field :user_id, :value => current_user.id %>
-  </div>
-  <div class="ym-fbox-text">
-    <%= f.label :rating %>
-    <div class="skill-rating" style="float:left" original-title="test">
-      <div class="stars" style="width: <%=  @skill.rating ? @skill.rating * 12.5 : 0 %>px"></div>
+  <div class="control-group">
+    <%= f.label :name, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :name %>
+      <%= f.hidden_field :user_id, :value => current_user.id %>
     </div>
-    <%= f.hidden_field :rating %>
   </div>
-  <div class="ym-fbox-button">
-    <%= f.submit %>
+  <div class="control-group">
+    <%= f.label :rating, :class => "control-label" %>
+    <div class="controls">
+      <div class="skill-rating" style="float:left" title="test">
+        <div class="stars" style="width: <%=  @skill.rating ? @skill.rating * 12.5 : 0 %>px"></div>
+      </div>
+      <%= f.hidden_field :rating %>
+    </div>
+  </div>
+  <div class="form-actions">
+    <%= f.submit :class => "btn btn-primary btn-large" %>
+    <%= link_to 'Back', :back, :class => "btn btn-large" %>
   </div>
 <% end %>

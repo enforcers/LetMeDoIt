@@ -1,21 +1,21 @@
 <h4>Tasks</h4>
-<div class="ym-grid">
-	<div class="ym-gbox">
-		<table >
-			<tr>
-				<th width="50%">Task Name</th>
-				<th width="20%">Due Date</th>
-				<th width="20%">Budget</th>
-				<th width="10%">Bids</th>
-			</tr>
-			<% @tasks.each do |task| %>
-				<tr class="project">
-					<td><%= link_to task.name, project_task_path(task.project, task) %></td>
-					<td><%= task.due_date %></td>
-					<td><%= number_to_currency task.budget, :unit => "€" %></td>
-					<td><%= task.bids.count %></td>
-				</tr>
-			<% end %>
-		</table>
-	</div>
-</div>
+<table class="table table-hover">
+	<thead>
+		<tr>
+			<th width="50%">Task Name</th>
+			<th width="20%">Due Date</th>
+			<th width="20%">Budget</th>
+			<th width="10%">Bids</th>
+		</tr>
+	</thead>
+	<tbody>
+	<% @tasks.each do |task| %>
+		<tr class="project">
+			<td><%= link_to task.name, project_task_path(task.project, task) %></td>
+			<td><%= task.due_date %></td>
+			<td><%= number_to_currency task.budget, :unit => "€" %></td>
+			<td><%= task.bids.count %></td>
+		</tr>
+	<% end %>
+	</tbody>
+</table>
