@@ -13,28 +13,20 @@
       <div id="site-header">
         <div id="site-user">
           <%= render '/home/login' %>
-          <% if user_signed_in? %>
-            <%# link_to "Admin", admin_path, :class => "ym-button top-page" if is_admin(current_user) %>
-            <%# link_to "My Profile", edit_user_registration_path(current_user), :class => "ym-button top-page" %>
-            <%# link_to "Logout", destroy_user_session_path, :method => 'delete', :class => "ym-button top-page" %>  
-          <%else%>
-            <%# link_to "Login", new_user_session_path, :class => "ym-button top-page" %>
-            <%# link_to "Register", new_user_registration_path, :class => "ym-button top-page" %>  
-          <%end%>
         </div>
         <div id="site-logo"><a href="/" title="Home"><img src="/images/logo.png" alt="Home" id="logo"></a></div>
-        <div id="site-menu">
-          <ul class="menu">
-            <li class="leaf first">
-              <%= link_to 'Home', root_path %>
-            </li>
-            <li class="leaf">
-              <%= link_to 'Explore Projects', projects_path %>
-            </li>
-            <li class="leaf last">
-              <%= link_to 'Create a Project',new_project_path %>
-            </li>
-          </ul>
+        <div class="site-menu">
+          <div class="btn-group pull-left">
+            <%= link_to 'Home', root_path, :class => "btn btn-primary" %>
+            <%= link_to 'Explore Projects', projects_path, :class => "btn btn-primary" %>
+            <%= link_to 'Create a Project',new_project_path, :class => "btn btn-primary" %>
+          </div>
+          <% if user_signed_in? %>
+            <div class="btn-group pull-right">
+              <%= link_to 'My Projects', my_projects_path, :class => "btn btn-primary" %>
+              <%= link_to 'My Bids', my_bids_path, :class => "btn btn-primary" %>
+            </div>
+          <% end %>
         </div>
       </div>
       <div id="site-content">

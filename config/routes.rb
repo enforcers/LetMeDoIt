@@ -1,4 +1,7 @@
 LetMeDoIt::Application.routes.draw do
+
+  root :to => "home#index"
+
   resources :skills
   resources :categories
 
@@ -9,7 +12,8 @@ LetMeDoIt::Application.routes.draw do
     end
   end
 
-  root :to => "home#index"
+  match '/my-projects' => 'projects/projects#self', :as => :my_projects
+  match '/my-bids' => 'projects/bids#self', :as => :my_bids
 
   # PROFILES
   match '/' => 'home#index', :as => :user_root

@@ -67,6 +67,9 @@ class Projects::ProjectsController < ApplicationController
     end
   end
 
+  def self
+  end
+
   def edit
   end
 

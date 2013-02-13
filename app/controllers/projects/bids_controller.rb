@@ -18,4 +18,7 @@ class Projects::BidsController < ApplicationController
 		  end
 		end
 	end
+
+	def self
+	end
 end
