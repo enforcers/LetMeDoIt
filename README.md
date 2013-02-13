@@ -5,8 +5,13 @@ LetMeDoIt
 TODO
 ----
 
-+ My Profile
-	+ Create & Design _My Projects_ / _My Bids_
++ Rspec Tests - _Viktor_
++ My Projects / My Bids - _Viktor_ & _Christian_
++ Profile, about me, etc. - _Christian_
++ Projects, only valid - _Christian_
++ Upgrade administration backend - 
++ Bids validation -
++ Mail sending - _Christian_
 
 
 Programs
