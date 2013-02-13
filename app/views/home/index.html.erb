@@ -1,34 +1,34 @@
-<div class="ym-grid">
-	<div class="ym-g62 ym-gl">
+<div class="row-fluid">
+	<div class="span7">
 		<h3>What is &quot;Let me do IT&quot;?</h3>
 		<p>It is a platfom which aims to bring people together, who on the one hand want to get a certain problem in an IT manner solved, and on the other those who are willing to solve them.</p>
 		<h3>How it works</h3>
 		<p>Once registered on Let me do IT everyone is able to create their own projects, splitted up in different tasks. Other users can place offers on those tasks, while taking the customers budget into account. After a given deadline on each task, the customer can choose who to award with the contract.</p>
 		<p>Sure, there are many similar platforms out there. But our goal is to go in for quality work, and not to scare programmers away due to a low offer, so they don't even want to compete. Therefore the bids from programmers are only visible for the customer to avoid the undercut problem.</p>
 		<div class="statistics">
-			<div class="ym-grid">
-				<div class="ym-g33 ym-gl">
+			<div class="row-fluid">
+				<div class="span4">
 					<div class="cbox">
 						<span class="stat"><%= @active_projects %></span>
 						<span>Active projects</span>
 					</div>
 				</div>
-				<div class="ym-g33 ym-gl">
+				<div class="span4">
 					<div class="cbox">
 						<span class="stat"><%= @users_count %></span>
 						<span>Registered users</span>
 					</div>
 				</div>
-				<div class="ym-g33 ym-gl">
+				<div class="span4">
 					<div class="cbox">
 						<span class="stat">&oslash; <%= @average_bids_per_project %></span>
-						<span>Average bids per project</span>
+						<span>Bids per project</span>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="ym-g38 ym-gl">
+	<div class="span5">
 		<h3>Latest Projects</h3>
 		<div class="latest-projects">
 		<% @projects.each do |project| %>

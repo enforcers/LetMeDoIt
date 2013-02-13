@@ -1,23 +1,31 @@
 <% unless defined?(withActions); withActions = false; end %>
 
 <% unless @user.skills.empty? %>
-  <table>
-    <tr>
-      <th>Name</th>
-      <th>Rating</th>
-      <% if withActions %><th class="ym-table-right">Actions</th><% end %>
-    </tr>
-  <% @user.skills.order('LOWER(name)').each do |skill| %>
-    <tr>
-      <td><%= skill.name %></td>
-      <td><div class="skill-rating"><div class="stars" style="width: <%= skill.rating*12.5 %>px"></div></div></td>
-      <% if withActions %>
-      <td class="ym-table-right">
-        <%= link_to "Delete", skill, confirm: 'Are you sure?', method: :delete, :class => "btn-delete" %>
-        <%= link_to "Edit", edit_skill_path(skill), :title => "Edit", :class => "btn-edit" %>
-      </td>
-      <% end %>
-    </tr>
-  <% end %>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Rating</th>
+        <% if withActions %><th class="ym-table-right">Actions</th><% end %>
+      </tr>
+    </thead>
+    <tbody>
+    <% @user.skills.order('LOWER(name)').each do |skill| %>
+      <tr>
+        <td><%= skill.name %></td>
+        <td><div class="skill-rating"><div class="stars" style="width: <%= skill.rating*12.5 %>px"></div></div></td>
+        <% if withActions %>
+        <td class="ym-table-right">
+          <%= link_to skill, confirm: 'Are you sure?', method: :delete, :class => "btn" do %>
+            <i class="icon-trash"></i>
+          <% end %>
+          <%= link_to edit_skill_path(skill), :title => "Edit", :class => "btn" do %>
+            <i class="icon-pencil"></i>
+          <% end %>
+        </td>
+        <% end %>
+      </tr>
+    <% end %>
+    </tbody>
   </table>
 <% end %>

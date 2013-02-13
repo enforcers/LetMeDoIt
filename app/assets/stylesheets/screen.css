@@ -8,12 +8,6 @@ body, html {
   font-size: small;
 }
 
-a:link, a:visited, a:active, a:hover {
-  color: #369;
-  background-color: transparent;
-  text-decoration: none;
-}
-
 h1, h2, h3, h4, h5 {
   color: #369;
   margin-bottom: 5px;
@@ -45,7 +39,7 @@ h1, h2, h3, h4, h5 {
 #site-user {
   position: absolute;
   right: 0;
-  top: -5px;
+  top: -3px;
 }
 
 #site-logo {
@@ -145,39 +139,36 @@ h1, h2, h3, h4, h5 {
 
 .nav-wrapper { margin-top: 1.5em }
 
-.icon-box {
+.icons {
   margin-bottom: 30px;
   text-align: left;
   height: 72px;
   padding-left: 80px;
 }
 
-.icon-box h3 {
+.icons h3 {
   padding-top: 15px;
+  line-height: inherit;
 }
 
-.icon-box.person {
+.icons.person {
   background: url(/images/icon_person.png) no-repeat;
 }
 
-.icon-box.offers {
+.icons.offers {
   background: url(/images/icon_offers.png) no-repeat;
 }
 
-.icon-box.tasks {
+.icons.tasks {
   background: url(/images/icon_tasks.png) no-repeat;
 }
 
-.icon-box.clock {
+.icons.clock {
   background: url(/images/icon_clock.png) no-repeat;
 }
 
-.icon-box.deadline {
+.icons.deadline {
   background: url(/images/icon_deadline.png) no-repeat;
-}
-
-.icon-box.dollar {
-  background: url(/images/icon_dollar.png) no-repeat;
 }
 
 .admin-categories .sub-category {
@@ -285,4 +276,70 @@ h1, h2, h3, h4, h5 {
   background-image: url(/images/icon-info.png);
   border-color: #00529B;
   color: #00529B;
+}
+
+.categories-sidenav {
+  padding: 0;
+  background-color: #fff;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+  -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.065);
+     -moz-box-shadow: 0 1px 4px rgba(0,0,0,.065);
+          box-shadow: 0 1px 4px rgba(0,0,0,.065);
+}
+.categories-sidenav > li > a {
+  display: block;
+  width: 190px \9;
+  margin: 0 0 -1px;
+  padding: 8px 14px;
+  border: 1px solid #e5e5e5;
+}
+.categories-sidenav > .active > a {
+  position: relative;
+  z-index: 2;
+  padding: 9px 15px;
+  border: 0;
+  text-shadow: 0 1px 0 rgba(0,0,0,.15);
+  -webkit-box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
+     -moz-box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
+          box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
+}
+.categories-sidenav .nav-header {
+  display: block;
+  margin: 0 0 -1px;
+  padding: 8px 14px;
+  border: 1px solid #e5e5e5;
+  background-color: #f5f5f5;
+}
+/* Chevrons */
+.categories-sidenav .icon-chevron-right {
+  float: right;
+  margin-top: 2px;
+  margin-right: -6px;
+  opacity: .25;
+}
+.categories-sidenav > li > a:hover {
+  background-color: #f5f5f5;
+}
+.categories-sidenav a:hover .icon-chevron-right {
+  opacity: .5;
+}
+.categories-sidenav .active .icon-chevron-right,
+.categories-sidenav .active a:hover .icon-chevron-right {
+  background-image: url(/images/glyphicons-halflings-white.png);
+  opacity: 1;
+}
+.categories-sidenav.affix {
+  top: 40px;
+}
+.categories-sidenav.affix-bottom {
+  position: absolute;
+  top: auto;
+  bottom: 270px;
+}
+
+.nav-tabs > .active > a, .nav-tabs > .active > a:hover {
+  border-bottom-color: #fff;
+  background-color: transparent;
 }

@@ -2,7 +2,7 @@
 
 <h3>New Project</h3>
 
-<%= form_for(@project, :html => { :class => "ym-form linearize-form ym-columnar"}) do |f| %>
+<%= form_for(@project, :html => { :class => "form-horizontal"}) do |f| %>
   <% if @project.errors.any? %>
     <div class="box error">
       <div id="error_explanation">
@@ -17,21 +17,27 @@
   <% end %>
 
   <%= f.hidden_field :user_id, :value => current_user.id %>
-  <div class="ym-fbox-text">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+  <div class="control-group">
+    <%= f.label :name, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :name, :class => "input-xxlarge" %>
+    </div>
   </div>
-  <div class="ym-fbox-text">
-    <%= f.label :description %>
-    <%= f.text_area :description, :class =>"tinymce" %>
+  <div class="control-group">
+    <%= f.label :description, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_area :description, :class =>"tinymce input-xxlarge" %>
+    </div>
   </div>
-  <div class="ym-fbox-select">
-    <%= f.label :category_id %>
-    <%= grouped_collection_select(:project, :category_id, @categories, :child_categories, :name, :id, :name) %>
+  <div class="control-group">
+    <%= f.label :category_id, :class => "control-label" %>
+    <div class="controls">
+      <%= grouped_collection_select(:project, :category_id, @categories, :child_categories, :name, :id, :name) %>
+    </div>
   </div>
-  <h6 class="ym-fbox-heading">To make your project available, please create at least one task within the next form</h6>
-  <div class="ym-fbox-button">
-    <%= f.submit %>
+  <div class="form-actions">
+      <p>To make your project available, please create at least one task within the next form</p>
+      <%= f.submit :class => "btn btn-primary btn-large" %>
   </div>
 <% end %>
 

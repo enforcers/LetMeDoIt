@@ -1,65 +1,33 @@
-<% content_for :javascript do %>
-  <script type="text/javascript">
-    $(document).ready(function(){
-      var amount = $('#bid_amount'),
-        comment = $('#bid_comment'),
-        allFields = $([]).add(amount).add(comment);
-
-      $('#new-bid-form').dialog({
-        autoOpen: false,
-        height: 500,
-        width: 500,
-        modal: true,
-        resizable: false,
-        buttons: {
-          'Place this bid': function() {
-              $('#new_bid').submit();
-          },
-          Cancel: function() {
-            $(this).dialog('close');
-          }
-        },
-        close: function() {
-          allFields.val('').removeClass('ui-state-error');
-        }
-      });
-
-      $('#place-bid').click(function() {
-        $('#new-bid-form').dialog('open');
-      });
-    });
-  </script>
-<% end %>
-
-<% if !@bid.nil? %>
-  <% if @bid.errors.any? %>
-    <div class="box error">
-      <div id="error_explanation">
-        <h2><%= pluralize(@bid.errors.count, "error") %> prohibited this bid from being saved:</h2>
-
-        <ul>
-        <% @bid.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-        </ul>
-      </div>
+<div id="place-bid" class="modal hide fade" role="dialog" aria-hidden="true" tabindex="-1">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3>Place a new bid</h3>
+  </div>
+  <%= form_for([@task.project, @task, Bid.new], :html => { :class => "form-horizontal"}) do |f| %>
+  <div class="modal-body">
+    <% if user_signed_in? %>
+  	  <%= f.hidden_field :user_id, :value => current_user.id %>
+    <% end %>
+  	<%= f.hidden_field :task_id, :value => @task.id %>
+  	<div class="control-group">
+      	<%= f.label :amount, :class => "control-label" %>
+        <div class="controls">
+          <div class="input-prepend input-append">
+            <span class="add-on">€</span>
+            <%= f.text_field :amount, :class => "span2" %>
+            <span class="add-on">.00</span>
+          </div>
+        </div>
     </div>
+    <div class="control-group">
+      	<%= f.label :comment, :class => "control-label" %>
+        <div class="controls">
+      	 <%= f.text_area :comment, :rows => 6 %>
+        </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <%= f.submit "Place bid", :class => "btn btn-primary" %>
+  </div>
   <% end %>
-<% end %>
-
-<div id="new-bid-form" title="Place a new bid">
-	<%= form_for([@task.project, @task, Bid.new], :html => { :class => "ym-form linearize-form ym-columnar"}) do |f| %>
-  <% if user_signed_in? %>
-	  <%= f.hidden_field :user_id, :value => current_user.id %>
-  <% end %>
-	<%= f.hidden_field :task_id, :value => @task.id %>
-	<div class="ym-fbox-text">
-    	<%= f.label :amount %>
-    	<%= f.text_field :amount %>
-  	</div>
-  	<div class="ym-fbox-text">
-    	<%= f.label :comment %>
-    	<%= f.text_area :comment %>
-  	</div>
-	<% end %>
 </div>
