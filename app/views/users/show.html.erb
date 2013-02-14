@@ -4,5 +4,6 @@
 <span><%= @user.email %></span>
 <h4>About Me</h4>
 <span><%= @user.aboutMe %></span>
+<%= image_tag @user.photo.url(:medium) %>
 <h4>Skills</h4>
 <%= render 'skills/index' %>

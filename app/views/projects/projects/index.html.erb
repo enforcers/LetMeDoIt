@@ -52,7 +52,7 @@
 								<span><%= truncate sanitize(project.description, :tags => []), :omission => "... (read more)", :length => 200 %></span>
 							<% end %>
 						</td>
-						<td><%= link_to User.find_by_id(project.user_id).contactName, user_show_path(project.user_id) %></td>
+						<td><%= generate_hover_profile(User.find_by_id(project.user_id)) %></td>
 						<td><%= project.available_tasks %>/<%= project.tasks.count %></td>
 					</tr>
 				<% end %>

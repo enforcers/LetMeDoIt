@@ -12,7 +12,7 @@
 	</div>
 	<div class="span4">
 		<div class="icons person">
-			<h3><%= link_to User.find_by_id(@project.user_id).contactName, user_show_path(@project.user_id) %></h3>
+			<h3><%= generate_hover_profile(User.find_by_id(@project.user_id)) %></h3>
 			<span>Is your contact</span>
 		</div>
 		<div class="icons tasks">

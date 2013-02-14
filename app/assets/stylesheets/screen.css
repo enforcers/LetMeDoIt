@@ -338,3 +338,25 @@ h1, h2, h3, h4, h5 {
   border-bottom-color: #fff;
   background-color: transparent;
 }
+
+.popover-inner .photo {
+  float: left;
+  width: 50px;
+  height: 50px;
+}
+
+.popover-inner .profile-name {
+  float: left;
+  font-size: 15px;
+  line-height: 50px;
+  font-weight: bold;
+  color: #000;
+  padding: 0 10px;
+}
+
+.popover-inner .short {
+  padding: 5px;
+  font-size: 11px;
+  color: #999;
+  clear: both;
+}
