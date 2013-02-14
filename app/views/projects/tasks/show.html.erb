@@ -22,11 +22,7 @@
                     <tbody>
                     <% @task.bids.each do |bid| %>
                         <tr>
-<<<<<<< HEAD
                             <td><%= generate_hover_profile(bid.user) %></td>
-=======
-                            <td><%= link_to bid.user.contactName, user_show_path(bid.user) %></td>
->>>>>>> d4a90f3b882c147270beb0e75d3158e2d6791fc2
                             <td><%= number_to_currency bid.amount, :unit => "€" %></td>
                             <td><%= bid.comment %></td>
                             <td><%= f.radio_button :accepted, bid.id %></td>
