@@ -1,5 +1,5 @@
 <h3><%= @user.contactName %></h3>
-
+<%= image_tag @user.photo.url(:medium) %>
 <h4>E-Mail</h4>
 <span><%= @user.email %></span>
 <h4>Skills</h4>

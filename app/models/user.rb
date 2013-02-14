@@ -9,8 +9,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_attached_file :photo, :default_url => "/images/missing_:style.png", :styles => { :small => "50x50", :medium => "100x100" }
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :role_ids, :roles
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :role_ids, :roles, :photo
 
   self.per_page = 10
 

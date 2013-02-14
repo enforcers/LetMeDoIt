@@ -1,6 +1,11 @@
 LetMeDoIt::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
+  if RUBY_PLATFORM =~ /mswin/
+    Paperclip.options[:command_path] = 'C:\Program Files (x86)\ImageMagick-6.8.2-Q16'
+    Paperclip.options[:swallow_stderr] = false
+  end
+
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
