@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121216114754) do
+ActiveRecord::Schema.define(:version => 20130214145111) do
 
   create_table "bids", :force => true do |t|
     t.integer  "task_id"
@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(:version => 20121216114754) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "username"
+    t.string   "aboutMe"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
