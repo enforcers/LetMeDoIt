@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
 
   has_attached_file :photo, :default_url => "/images/missing_:style.png", :styles => { :small => "50x50", :medium => "100x100" }
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :role_ids, :roles, :photo
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :role_ids, :roles, :photo, :aboutMe
 
   self.per_page = 10
 

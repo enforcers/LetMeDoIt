@@ -4,7 +4,7 @@ class HomeController < ApplicationController
     
   	@users_count = User.all.count
   	@average_bids_per_project = (Bid.all.count.to_f / Project.all.count.to_f).round(1)
-  	@active_projects = Project.get_active.count
+  	@active_projects = Project.get_active.size
 
     respond_to do |format|
       format.html # index.html.erb

@@ -25,7 +25,7 @@
                             <td><%= generate_hover_profile(bid.user) %></td>
                             <td><%= number_to_currency bid.amount, :unit => "€" %></td>
                             <td><%= bid.comment %></td>
-                            <td><%= f.radio_button :accepted, bid.id %></td>
+                            <td><%= f.radio_button :accepted, bid.id, :disabled=> @task.bid_id!=nil ? true : false %></td>
                         </tr>
                     <% end %>
                     </tbody>
