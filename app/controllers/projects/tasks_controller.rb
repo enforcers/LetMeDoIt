@@ -59,11 +59,18 @@ class Projects::TasksController < ApplicationController
     @task = Task.find(params[:id])
 
   end
+  
   def update
     @task = Task.find(params[:id])
-
     respond_to do |format|
       if @task.update_attributes(params[:task])
+
+        #läuft beides nicht nicht
+        # if params.has_key(:bid_id)
+        if @task.bid_id > 0
+          Mailer.bid_accepted(@task)
+        end
+
         format.html { redirect_to project_task_path(@task.project, @task),  notice: 'task was successfully updated.' }
         format.json { head :no_content }
       else
@@ -72,6 +79,7 @@ class Projects::TasksController < ApplicationController
       end
     end
   end
+
   def destroy
     @task = Task.find(params[:id])
     @task.destroy
