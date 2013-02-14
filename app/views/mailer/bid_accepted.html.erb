@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>Your bid on :  <%= @task.name %> has been chosen</h1>
+    <p>
+      Your bid about <%= number_to_currency @bid.amount, :unit => "€" %> on <%= @task.name %> has been chosen.<br/>
+    </p>
+  </body>
+</html>

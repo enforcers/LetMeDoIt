@@ -1,78 +1,25 @@
-<% content_for :javascript do %>
-  <script type="text/javascript">
-    $(document).ready(function(){
-      var tabs = $('.jquery_tabs').accessibleTabs({
-        tabhead: 'h4',
-        fx: 'fadeIn',
-        syncheights: true
-      });
+<h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-      $('.ym-form input').tipsy();
-      <% if params[:showTab] %>
-        tabs.showAccessibleTabSelector('#<%= params[:showTab] %>');
-      <% end %>
-    });
-  </script>
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div><%= f.label :email %><br />
+  <%= f.email_field :email %></div>
+
+  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+  <%= f.password_field :password, :autocomplete => "off" %></div>
+
+  <div><%= f.label :password_confirmation %><br />
+  <%= f.password_field :password_confirmation %></div>
+
+  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+  <%= f.password_field :current_password %></div>
+
+  <div><%= f.submit "Update" %></div>
 <% end %>
 
-<div class="jquery_tabs">
-  <h4 id="tab-edit-profile">Edit Profile</h4>
-    <div class="tabbody">
-        <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => "ym-form linearize-form ym-columnar" }) do |f| %>
-          <% if resource.errors.any? %>
-            <div class="box error">
-              <%= devise_error_messages! %>
-            </div>
-          <% end %>
+<h3>Cancel my account</h3>
 
-          <div class="ym-fbox-text">
-            <%= f.label :email %>
-            <%= f.email_field :email %>
-          </div>
+<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>.</p>
 
-          <div class="ym-fbox-text">
-            <%= f.label :username %>
-            <%= f.text_field :username %>
-          </div>
-
-          <div class="ym-fbox-text">
-            <%= f.label :password, "Password" %>
-            <%= f.password_field :password, :autocomplete => "off", :'original-title' => "Leave blank if you don't want to change it" %>
-          </div>
-
-          <div class="ym-fbox-text">
-            <%= f.label :password_confirmation %>
-            <%= f.password_field :password_confirmation %>
-          </div>
-
-          <div class="ym-fbox-text">
-            <%= f.label :current_password, "Current Password" %>
-            <%= f.password_field :current_password, :'original-title' => "We need your current password to confirm your changes" %>
-          </div>
-
-          <div class="ym-fbox-button">
-            <%= f.submit "Update" %>
-          </div>
-        <% end %>
-    </div>
-  <h4 id="tab-projects">My Projects</h4>
-    <div class="tabbody">
-    </div>
-  <h4 id="tab-bids">My Bids</h4>
-    <div class="tabbody">
-    </div>
-  <h4 id="tab-skills">Skills</h4>
-    <div class="tabbody">
-      <p>
-        <%= link_to "New Skill", new_skill_path, :class => "ym-button ym-add" %>
-        <%= render :partial => 'skills/index', :locals =>{ :withActions => true } %>
-      </p>
-    </div>
-  <h4 id="tab-preferences">Preferences</h4>
-    <div class="tabbody">
-      <p>
-        <h3>Cancel my account</h3>
-        <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>.</p>
-      </p>
-    </div>
-</div>
+<%= link_to "Back", :back %>

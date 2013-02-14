@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>New bid on task:  <%= @task.name %></h1>
+    <p>
+      The user <%= @user.email %> placed a new bid of <%= number_to_currency @bid.amount, :unit => "€" %>.<br/>
+    </p>
+  </body>
+</html>
