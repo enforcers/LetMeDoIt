@@ -32,3 +32,6 @@ Getting started
 	Mail: admin@admin.de
 	Pass: admin5
 	```
+8 Gmail Account
+	user: letmedoit2013@gmail.com
+	pass: wasd1234
