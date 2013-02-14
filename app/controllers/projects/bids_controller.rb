@@ -5,6 +5,9 @@ class Projects::BidsController < ApplicationController
 
 		respond_to do |format|
 		  if @bid.save
+
+		  	Mailer.bid_notification(@bid).deliver
+
 		    format.html { redirect_to project_task_path(@task.project, @task) }
 		    format.json { render json: @task, status: :created, location: project_task_path(@task.project, @task) }
 		  else
@@ -21,4 +24,5 @@ class Projects::BidsController < ApplicationController
 
 	def self
 	end
+
 end

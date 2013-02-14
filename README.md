@@ -2,6 +2,7 @@ LetMeDoIt
 =========
 [Heroku App](http://letmedoit.herokuapp.com/)
 
+<<<<<<< HEAD
 TODO
 ----
 
@@ -14,6 +15,8 @@ TODO
 + Mail sending - _Christian_
 
 
+=======
+>>>>>>> origin/mail
 Programs
 --------
 
@@ -43,4 +46,11 @@ Getting started
 	```
 	Mail: admin@admin.de
 	Pass: admin5
+<<<<<<< HEAD
 	```_
+=======
+	```
+8 Gmail Account
+	user: letmedoit2013@gmail.com
+	pass: wasd1234
+>>>>>>> origin/mail
