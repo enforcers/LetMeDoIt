@@ -65,7 +65,7 @@
                                 <td><%= link_to bid.user.contactName, user_show_path(bid.user) %></td>
                                 <td><%= number_to_currency bid.amount, :unit => "€" %></td>
                                 <td><%= bid.comment %></td>
-                                <td><%= f.radio_button :accepted, bid.id %></td>
+                                <td><%= f.radio_button :bid_id, bid.id %></td>
                             </tr>
                         <% end %>
                     </table>

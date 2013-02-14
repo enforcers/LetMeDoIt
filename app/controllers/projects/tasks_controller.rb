@@ -47,10 +47,6 @@ class Projects::TasksController < ApplicationController
     end
   end
 
-  def accept_bid
-
-  end 
-
   def show
     @task = Task.find(params[:id])
     respond_to do |format|
@@ -69,8 +65,9 @@ class Projects::TasksController < ApplicationController
     respond_to do |format|
       if @task.update_attributes(params[:task])
 
-        #bid selected
-        if params.has_key?(:bid_id)
+        #läuft beides nicht nicht
+        # if params.has_key(:bid_id)
+        if @task.bid_id > 0
           Mailer.bid_accepted(@task)
         end
 
