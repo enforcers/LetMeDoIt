@@ -23,6 +23,16 @@ class Projects::BidsController < ApplicationController
 	end
 
 	def self
+		@bids = Bid.paginate(:page => params[:page], :conditions => ["user_id = ?", current_user], :order => "created_at DESC")
+    	respond_to do |format|
+
+	      format.html # index.html.erb
+	      format.json {
+	        render json: {
+	          :projects => @projects
+	        }
+	      }
+	    end
 	end
 
 end

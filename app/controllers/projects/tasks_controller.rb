@@ -65,10 +65,8 @@ class Projects::TasksController < ApplicationController
     respond_to do |format|
       if @task.update_attributes(params[:task])
 
-        #läuft beides nicht nicht
-        # if params.has_key(:bid_id)
-        if @task.bid_id > 0
-          Mailer.bid_accepted(@task)
+        if params.has_key(:bid_id)
+          Mailer.bid_accepted(@task).deliver
         end
 
         format.html { redirect_to project_task_path(@task.project, @task),  notice: 'task was successfully updated.' }
