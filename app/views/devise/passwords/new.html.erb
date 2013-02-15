@@ -3,12 +3,7 @@
 <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post, :class => "form-horizontal" }) do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="control-group">
-  	<%= f.label :email, :class => "control-label" %>
-  	<div class="controls">
-  		<%= f.email_field :email %>
-  	</div>
-  </div>
+  <%= f.bootstrap_email_field :email %>
 
   <div class="form-actions">
   	<%= f.submit "Send me reset password instructions", :class => "btn btn-primary btn-large" %>

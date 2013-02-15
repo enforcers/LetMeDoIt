@@ -4,30 +4,16 @@
     <h3>Place a new bid</h3>
   </div>
   <%= form_for([@task.project, @task, Bid.new], :html => { :class => "form-horizontal"}) do |f| %>
-  <div class="modal-body">
-    <% if user_signed_in? %>
-  	  <%= f.hidden_field :user_id, :value => current_user.id %>
-    <% end %>
-  	<%= f.hidden_field :task_id, :value => @task.id %>
-  	<div class="control-group">
-      	<%= f.label :amount, :class => "control-label" %>
-        <div class="controls">
-          <div class="input-prepend input-append">
-            <span class="add-on">€</span>
-            <%= f.text_field :amount, :class => "span2" %>
-            <span class="add-on">.00</span>
-          </div>
-        </div>
+    <div class="modal-body">
+      <% if user_signed_in? %>
+    	  <%= f.hidden_field :user_id, :value => current_user.id %>
+      <% end %>
+    	<%= f.hidden_field :task_id, :value => @task.id %>
+      <%= f.bootstrap_money_field :amount, :class => "span2" %>
+      <%= f.bootstrap_text_area :comment, :class => "input-xlarge", :rows => 6 %>
     </div>
-    <div class="control-group">
-      	<%= f.label :comment, :class => "control-label" %>
-        <div class="controls">
-      	 <%= f.text_area :comment, :rows => 6 %>
-        </div>
+    <div class="modal-footer">
+      <%= f.submit "Place bid", :class => "btn btn-primary" %>
     </div>
-  </div>
-  <div class="modal-footer">
-    <%= f.submit "Place bid", :class => "btn btn-primary" %>
-  </div>
   <% end %>
 </div>

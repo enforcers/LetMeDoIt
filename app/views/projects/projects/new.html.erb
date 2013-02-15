@@ -17,24 +17,12 @@
   <% end %>
 
   <%= f.hidden_field :user_id, :value => current_user.id %>
-  <div class="control-group">
-    <%= f.label :name, :class => "control-label" %>
-    <div class="controls">
-      <%= f.text_field :name, :class => "input-xxlarge" %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :description, :class => "control-label" %>
-    <div class="controls">
-      <%= f.text_area :description, :class =>"tinymce input-xxlarge" %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :category_id, :class => "control-label" %>
-    <div class="controls">
-      <%= grouped_collection_select(:project, :category_id, @categories, :child_categories, :name, :id, :name) %>
-    </div>
-  </div>
+  <%= f.bootstrap_text_field :name %>
+  <%= f.bootstrap_text_area :description, :class => "tinymce input-xxlarge" %>
+  <%= f.bootstrap_element :category_id,
+      grouped_collection_select(:project, :category_id, @categories, :child_categories, :name, :id, :name)
+  %>
+
   <div class="form-actions">
       <p>To make your project available, please create at least one task within the next form</p>
       <%= f.submit :class => "btn btn-primary btn-large" %>

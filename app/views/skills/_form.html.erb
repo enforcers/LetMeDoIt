@@ -47,13 +47,10 @@
     </div>
   <% end %>
 
-  <div class="control-group">
-    <%= f.label :name, :class => "control-label" %>
-    <div class="controls">
-      <%= f.text_field :name %>
-      <%= f.hidden_field :user_id, :value => current_user.id %>
-    </div>
-  </div>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+
+  <%= f.bootstrap_text_field :name %>
+
   <div class="control-group">
     <%= f.label :rating, :class => "control-label" %>
     <div class="controls">
