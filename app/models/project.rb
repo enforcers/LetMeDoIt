@@ -33,7 +33,6 @@ class Project < ActiveRecord::Base
 				end
 			end
 		end
-		#@active = Project.joins("inner join tasks on tasks.project_id = project.id where tasks.bid_id IS NULL and tasks.due_date >= ?",DateTime.now.to_date)
 		return @active
 	end
 

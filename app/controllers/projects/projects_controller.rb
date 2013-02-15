@@ -3,7 +3,7 @@ class Projects::ProjectsController < ApplicationController
 
   def index
   	@projects = params.has_key?(:category_id) ? 
-      Project.paginate(:page => params[:page], :conditions => ["category_id = ?", params[:category_id].to_i], :joins => ["inner join tasks on tasks.project_id = project.id where tasks.bid_id IS NULL and tasks.due_date >= ?",DateTime.now.to_date], :order => "created_at DESC") :
+      Project.paginate(:page => params[:page], :conditions => ["category_id = ?", params[:category_id].to_i], :order => "created_at DESC") :
       Project.paginate(:page => params[:page], :order => "created_at DESC")
 
     @categories = Category.where(:category_id => nil) # Only parent categories
