@@ -1,1 +1,24 @@
 <h3>My Bids</h3>
+<table class="table table-hover">
+	<thead>
+		<tr>
+			<th width="20%">Project / Task</th>
+			<th width="20%">Due Date</th>
+			<th width="20%">Amount</th>
+			<th width="40%">Comment</th>
+		</tr>
+	</thead>
+	<tbody>
+	<% @bids.each do |bid| 
+		@task = Task.find(bid.task_id)
+		@project = Project.find(@task.project_id)
+		%>
+		<tr class="project">
+			<td><%= link_to @project.name, @project %> / <%= link_to @task.name, project_task_path(@task.project, @task) %></td>
+			<td><%= @task.due_date %></td>
+			<td><%= number_to_currency bid.amount, :unit => "€" %></td>
+			<td><%= bid.comment %></td>
+		</tr>
+	<% end %>
+	</tbody>
+</table>

@@ -12,7 +12,7 @@ class Ability
       can [:read, :create], Skill
 
       # Grant rights for Project Model
-      can [:update, :destroy], Project, :user_id => user.id
+      can [:update, :destroy, :self], Project, :user_id => user.id
       can [:read, :create], Project
 
       # Grant rights for Tasks Model

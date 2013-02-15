@@ -1,0 +1,25 @@
+<div class="span9">
+	<table class="table table-hover">
+		<thead>
+			<th width="60%">Project Name</th>
+			<th width="20%">Client</th>
+			<th width="20%">Tasks Available</th>
+		</thead>
+		<tbody>
+			<% @projects.each do |project| %>
+				<tr class="project">
+					<input type="hidden" value="<%= project.id %>"/>
+					<td>
+						<%= link_to project_path(project) do %>
+							<p><strong><%= project.name %></strong></p>
+							<span><%= truncate sanitize(project.description, :tags => []), :omission => "... (read more)", :length => 200 %></span>
+						<% end %>
+					</td>
+					<td><%= generate_hover_profile(User.find_by_id(project.user_id)) %></td>
+					<td><%= project.available_tasks %>/<%= project.tasks.count %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+	<%= will_paginate @projects %>
+</div>

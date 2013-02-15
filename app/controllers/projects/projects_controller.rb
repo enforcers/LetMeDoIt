@@ -68,6 +68,16 @@ class Projects::ProjectsController < ApplicationController
   end
 
   def self
+    @projects = Project.paginate(:page => params[:page], :conditions => ["user_id = ?", current_user], :order => "created_at DESC")
+    respond_to do |format|
+
+      format.html # index.html.erb
+      format.json {
+        render json: {
+          :projects => @projects
+        }
+      }
+    end
   end
 
   def edit
