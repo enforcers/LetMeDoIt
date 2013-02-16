@@ -2,25 +2,15 @@
 
 <h3>New Project</h3>
 
-<%= form_for(@project, :html => { :class => "form-horizontal"}) do |f| %>
-  <% if @project.errors.any? %>
-    <div class="box error">
-      <div id="error_explanation">
-        <h2><%= pluralize(@project.errors.count, "error") %> prohibited this Project from being saved:</h2>
-        <ul>
-          <% @project.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
-  <% end %>
+<%= simple_form_for @project, :html => { :class => 'form-horizontal' }, :defaults => { :input_html => { :class => "span4" } } do |f| %>
 
   <%= f.hidden_field :user_id, :value => current_user.id %>
-  <%= f.bootstrap_text_field :name %>
-  <%= f.bootstrap_text_area :description, :class => "tinymce input-xxlarge" %>
-  <%= f.bootstrap_element :category_id,
-      grouped_collection_select(:project, :category_id, @categories, :child_categories, :name, :id, :name)
+  <%= f.input :name %>
+  <%= f.input :description, :as => :text, :input_html => { class: "tinymce"} %>
+  <%= f.input :category_id,
+      :collection => @categories,
+      :as => :grouped_select,
+      :group_method => :child_categories
   %>
 
   <div class="form-actions">
