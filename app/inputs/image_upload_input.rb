@@ -1,11 +1,7 @@
 class ImageUploadInput < SimpleForm::Inputs::FileInput 
   def input                    
     value = object.send(attribute_name) if object.respond_to? attribute_name
-    if value.present?
-    	d_class = "fileupload-exists"
-    else
-    	d_class = "fileupload-new"
-    end
+    d_class = (value.present?) ? "fileupload-exists" : "fileupload-new"
 
     template.content_tag(:div,
         template.content_tag(:div,
@@ -26,13 +22,5 @@ class ImageUploadInput < SimpleForm::Inputs::FileInput
         :class => "fileupload #{d_class}",
         :'data-provides' => "fileupload"
     )
-    #template.content_tag(:div,
-    #	super +
-    #	template.content_tag(:div, template.content_tag(:i, nil, :class => "icon-calendar"), :class => "add-on"),
-    #	:class => "input-append date",
-    #	:'data-date-format' => "yyyy-mm-dd",
-    #	:'data-date' => input_html_options[:value]
-    #)
-    #super # leave StringInput do the real rendering
   end
 end
