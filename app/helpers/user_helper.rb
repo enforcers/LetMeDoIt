@@ -17,7 +17,6 @@ module UserHelper
 							:content => inner_popover
 						}
 					}
-			html << '<script type="text/javascript">$(function() { $(".profile-hover").popover(); });</script>'.html_safe
 			return html
 		end
 	end
