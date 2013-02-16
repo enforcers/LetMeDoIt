@@ -33,23 +33,11 @@
   </script>
 <% end %>
 
-<%= form_for(@skill, :html => { :class => "form-horizontal"}) do |f| %>
-  <% if @skill.errors.any? %>
-    <div class="box error">
-      <div id="error_explanation">
-        <h2><%= pluralize(@skill.errors.count, "error") %> prohibited this skill from being saved:</h2>
-        <ul>
-          <% @skill.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
-  <% end %>
+<%= simple_form_for(@skill, :html => { :class => "form-horizontal"}, :defaults => { :input_html => { :class => "span4" } }) do |f| %>
 
   <%= f.hidden_field :user_id, :value => current_user.id %>
 
-  <%= f.bootstrap_text_field :name %>
+  <%= f.input :name %>
 
   <div class="control-group">
     <%= f.label :rating, :class => "control-label" %>

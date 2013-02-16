@@ -1,24 +1,12 @@
 <%= tinymce_assets %>
 <% @task.project_id ||= params[:project_id] %>
-<%= form_for [@task.project, @task], :html => { :class => "form-horizontal"} do |f| %>
-  <% if @task.errors.any? %>
-    <div class="alert">
-      <button type="button" class="close" data-dismiss="alert">&times;</button>
-      <strong><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</strong>
+<%= simple_form_for [@task.project, @task], :html => { :class => "form-horizontal" }, :defaults => { :input_html => { :class => "span4" } } do |f| %>
 
-      <ul>
-      <% @task.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <%= f.hidden_field :project_id %>
-  <%= f.bootstrap_text_field :name %>
-  <%= f.bootstrap_date_field :due_date, @task.due_date ||= Date.today.to_s %>
-  <%= f.bootstrap_money_field :budget, :class => "span2" %>
-  <%= f.bootstrap_text_area :description, :class => "tinymce input-xxlarge" %>
+  <%= f.input :project_id, :as => :hidden %>
+  <%= f.input :name %>
+  <%= f.input :due_date, :as => :date_picker %>
+  <%= f.input :budget, :as => :currency %>
+  <%= f.input :description, :as => :text, :input_html => { class: "tinymce"} %>
 
   <div class="form-actions">
     <%= f.submit :class => "btn btn-primary btn-large" %>
