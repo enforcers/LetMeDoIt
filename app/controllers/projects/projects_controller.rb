@@ -2,9 +2,17 @@ class Projects::ProjectsController < ApplicationController
   load_and_authorize_resource
 
   def index
-  	@projects = params.has_key?(:category_id) ? 
-      Project.get_active.paginate(:page => params[:page], :conditions => ["category_id = ?", params[:category_id].to_i], :order => "created_at DESC") :
-      Project.get_active.paginate(:page => params[:page], :order => "created_at DESC")
+    # Select only active projects
+    conditions = ""
+    conditions << "id IN (SELECT project_id FROM tasks WHERE due_date >= \"#{Date.today}\")"
+    conditions << " AND id IN (SELECT project_id FROM tasks WHERE bid_id IS NULL)"
+    conditions << (params.has_key?(:category_id) ? " AND category_id = #{params[:category_id].to_i}" : "")
+
+    @projects = Project.paginate(
+      :page => params[:page],
+      :conditions => conditions,
+      :order => "created_at DESC"
+    )
 
     @categories = Category.where(:category_id => nil) # Only parent categories
     respond_to do |format|
@@ -22,6 +30,7 @@ class Projects::ProjectsController < ApplicationController
   # GET /projects/new.json
   def new
     @project = Project.new
+    @project.tasks.build
     @categories = Category.where(:category_id => nil) # Only parent categories
 
     respond_to do |format|

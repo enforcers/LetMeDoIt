@@ -13,10 +13,22 @@
       :group_method => :child_categories
   %>
 
+  <h4>Create First Task</h4>
+  <div class="well">
+    <%= f.fields_for :tasks do |builder| %>
+      <%= builder.input :project_id, :as => :hidden %>
+      <%= builder.input :name %>
+      <%= builder.input :due_date, :as => :date_picker %>
+      <%= builder.input :budget, :as => :currency %>
+      <%= builder.input :description, :as => :text, :input_html => { class: "tinymce"} %>
+    <% end %>
+  </div>
+
   <div class="form-actions">
-      <p>To make your project available, please create at least one task within the next form</p>
+      <p>You can add more tasks later on.</p>
       <%= f.submit :class => "btn btn-primary btn-large" %>
   </div>
 <% end %>
+
 
 <%= tinymce %>

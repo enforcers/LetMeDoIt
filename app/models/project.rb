@@ -3,6 +3,8 @@ class Project < ActiveRecord::Base
 	belongs_to :category
 	has_many :tasks
 
+	accepts_nested_attributes_for :tasks
+
 	self.per_page = 10
 
 	validates :name,
