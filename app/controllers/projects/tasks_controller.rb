@@ -65,7 +65,7 @@ class Projects::TasksController < ApplicationController
     respond_to do |format|
       if @task.update_attributes(params[:task])
 
-        if params.has_key(:bid_id)
+        if params.has_key?(:bid_id)
           Mailer.bid_accepted(@task).deliver
         end
 

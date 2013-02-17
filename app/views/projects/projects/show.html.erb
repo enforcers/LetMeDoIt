@@ -1,7 +1,10 @@
+<ul class="breadcrumb">
+	<li><%= link_to "Projects", projects_path %> <span class="divider">/</span></li>
+    <li class="active"><%= @project.name %></li>
+</ul>
 
 <div class="row-fluid">
 	<div class="span8">
-		<h3><%= @project.name %></h3>
 		<h4>Project Description</h4>
 		<div class="description"><%= raw @project.description %></div>
 		<%= render 'projects/tasks/index' %>
