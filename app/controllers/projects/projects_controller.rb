@@ -4,7 +4,7 @@ class Projects::ProjectsController < ApplicationController
   def index
     # Select only active projects
     conditions = ""
-    conditions << "id IN (SELECT project_id FROM tasks WHERE due_date >= \"#{Date.today}\")"
+    conditions << "id IN (SELECT project_id FROM tasks WHERE due_date >= '#{Date.today}')"
     conditions << " AND id IN (SELECT project_id FROM tasks WHERE bid_id IS NULL)"
     conditions << (params.has_key?(:category_id) ? " AND category_id = #{params[:category_id].to_i}" : "")
 
