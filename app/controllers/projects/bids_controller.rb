@@ -7,6 +7,7 @@ class Projects::BidsController < ApplicationController
 		  if @bid.save
 
 		  	Mailer.bid_notification(@bid).deliver
+		  	Notification.fire(@bid.user, @bid, 1)
 
 		    format.html { redirect_to project_task_path(@task.project, @task) }
 		    format.json { render json: @task, status: :created, location: project_task_path(@task.project, @task) }

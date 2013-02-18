@@ -1,0 +1,7 @@
+<div>
+	You have received a new Bid on your
+	<%= link_to project.name, project_path(project) %>
+	<span class="divider">/</span>
+	<%= link_to task.name, project_task_path(project, task) %> Task
+	from <%= generate_hover_profile(user) %>
+</div>
