@@ -14,8 +14,6 @@ gem 'tinymce-rails', :require => 'tinymce-rails'
 gem 'will_paginate'
 gem 'paperclip', '~> 3.0'
 gem 'simple_form'
-gem 'activeadmin'
-gem "meta_search",    '>= 1.1.0.pre'
 
 # Gems used only for assets and not required
 # in production environments by default.
