@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user: 
+  bid: 
+  type: 1
+  shown: false
+
+two:
+  user: 
+  bid: 
+  type: 1
+  shown: false

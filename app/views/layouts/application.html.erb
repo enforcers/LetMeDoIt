@@ -25,7 +25,11 @@
             <div class="btn-group pull-right">
               <%= link_to 'My Projects', my_projects_path, :class => "btn btn-primary" %>
               <%= link_to 'My Bids', my_bids_path, :class => "btn btn-primary" %>
-              <a href="#" class="btn btn-primary">Notifications <span class="badge badge-success">5</span></a>
+              <% if (notification_count = Notification.pull(current_user).count) > 0 %>
+                <%= link_to my_notifications_path, :class => "btn btn-primary" do %>
+                  Notifications <span class="badge badge-success"><%= notification_count %></span>
+                <% end %>
+              <% end %>
             </div>
           <% end %>
         </div>

@@ -1,0 +1,18 @@
+<h3>Notifications</h3>
+<% @notifications.each do |notification| %>
+	<% user = notification.user %>
+	<% bid = notification.bid %>
+	<% task = bid.task %>
+	<% project = task.project %>
+	<div class="well">
+		<%= link_to "&times;".html_safe, notification_shown_path(:id => notification), :class => "close" %>
+		<%= render :partial => "users/notifications/ntype#{notification.ntype}",
+			:locals => {
+				:notification => notification,
+				:user => user,
+				:bid => bid,
+				:task => task,
+				:project => project
+			} %>
+	</div>
+<% end %>

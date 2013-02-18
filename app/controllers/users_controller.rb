@@ -7,4 +7,26 @@ class UsersController < ApplicationController
       format.json { render json: @skill }
     end
   end
+
+  def notifications
+    @user = current_user
+    @notifications = Notification.pull(@user)
+    #Notification.fire(current_user, Bid.find(1), 2)
+
+    respond_to do |format|
+      format.html # notifications.html.erb
+      format.json { render json: @skill }
+    end
+  end
+
+  def notification_shown
+  	@notification = Notification.find(params[:id])
+  	@notification.shown = true
+  	@notification.save
+
+    respond_to do |format|
+      format.html { redirect_to my_notifications_path }
+      format.json { head :no_content }
+    end
+  end
 end
