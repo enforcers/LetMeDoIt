@@ -3,7 +3,7 @@ class Admin::UsersController < Admin::AdminController
   # GET /users
   # GET /users.json
   def index
-    @users = User.paginate(:page => params[:page], order => "created_at DESC")
+    @users = User.paginate(:page => params[:page], :order => "created_at DESC")
 
     respond_to do |format|
       format.html # index.html.erb
