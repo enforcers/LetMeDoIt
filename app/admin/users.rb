@@ -6,8 +6,12 @@ ActiveAdmin.register User do
     column :email
     column "Last login", :last_sign_in_at
     column "Created at", :created_at
-    column "User", :roles
-    column "Admin", :roles
+    column "User" do |user|
+      user.role?("Registered") ? "&#10003;".html_safe : "&#10005;".html_safe
+    end
+    column "Admin" do |user|
+      user.role?("Admin") ? "&#10003;".html_safe : "&#10005;".html_safe
+    end
   end
 
   filter :email

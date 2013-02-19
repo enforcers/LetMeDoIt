@@ -2,7 +2,8 @@ class Project < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :category
 	has_many :tasks
-	scope :no_tasks, where(:id => :Project_id)
+	scope :no_tasks, includes(:tasks).where(:tasks => { :project_id => nil })
+
 
 	accepts_nested_attributes_for :tasks
 

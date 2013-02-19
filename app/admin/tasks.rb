@@ -1,9 +1,9 @@
 ActiveAdmin.register Task do
   index do
-    column "Project", :project_id do |project|
-        link_to project.id, [:admin, project]
+    column :project 
+    column :name do |task|
+        link_to task.name, [:admin, task]
       end
-    column :name
     column :description
     column :budget
     column "Deadline", :due_date
