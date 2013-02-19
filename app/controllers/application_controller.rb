@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   def authenticate_active_admin_user!
     authenticate_user! 
-    unless current_user.superadmin?
+    unless has_role?(current_user, "Admin")
       flash[:alert] = "Unauthorized Access!"
       redirect_to root_path 
     end
