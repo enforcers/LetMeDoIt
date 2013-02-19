@@ -1,9 +1,13 @@
 ActiveAdmin.register User do
   index do
-    column :username
+    column :username do |user|
+        link_to user.username, [:admin, user]
+      end
     column :email
-    column "last login", :last_sign_in_at
-    column "created at", :created_at
+    column "Last login", :last_sign_in_at
+    column "Created at", :created_at
+    column "User", :roles
+    column "Admin", :roles
   end
 
   filter :email
