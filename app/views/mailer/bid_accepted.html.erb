@@ -4,9 +4,10 @@
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   </head>
   <body>
-    <h1>Your bid on :  <%= @task.name %> has been chosen</h1>
+    <h1>Your bid on :  <%= @task.name %> has been accepted</h1>
     <p>
-      Your bid about <%= number_to_currency @bid.amount, :unit => "€" %> on <%= @task.name %> has been chosen.<br/>
+      Congratulations, your bid about <%= number_to_currency @bid.amount, :unit => "€" %> on the task <a href=<%= project_task_url(@task.project, @task, :host => HOST) %>><%= @task.name %></a> has been accepted.<br/>
+
     </p>
   </body>
 </html>
