@@ -39,7 +39,7 @@ Category.create(:id => 16, :category_id => 3, :name => 'Others')
 
 # Projects
 Project.create(:id => 1, :name => 'Twitter 2.0', :description => 'Redefining Twitter ... bla bla.', :category_id => 1, :user_id => 2)
-Project.create(:id => 2, :name => 'Facebook Fanpage', :description => 'Just a Fanpage for the Pilgrims.', :category_id => 7, :user_id => 4)
+Project.create(:id => 2, :name => 'Facebook Fanpage', :description => 'Just a Fanpage for the Pilgrims.', :category_id => 7, :user_id => 1)
 Project.create(:id => 3, :name => 'Dentist Website', :description => 'Hello, my name ist Dr. King Schulz and this is my horse Fritz. We need a Website ...', :category_id => 5, :user_id => 3)
 Project.create(:id => 4, :name => 'Bild 2.0', :description => 'One more Website with bullshit content please.', :category_id => 5, :user_id => 4)
 Project.create(:id => 5, :name => 'Pizza Service', :description => 'Website with CMS is needed.', :category_id => 4, :user_id => 4)
@@ -58,21 +58,27 @@ Project.create(:id => 16, :name => 'Twilight Fanpage', :description => 'Thats fo
 # Tasks
 Task.create(:id => 1, :name => 'Design', :description => 'Complete layout.', :budget => 1000, :project_id => 1, :due_date => '2013-04-17')
 Task.create(:id => 2, :name => 'Content', :description => 'Complete content.', :budget => 1300, :project_id => 1, :due_date => '2013-05-17')
-Task.create(:id => 3, :name => 'Engine', :description => 'Complete new engine.', :budget => 19817, :project_id => 9, :due_date => '2015-06-06')
+Task.create(:id => 3, :name => 'Engine', :description => 'Complete new engine.', :budget => 19817, :project_id => 1, :due_date => '2015-06-06', :bid_id => 7)
 Task.create(:id => 4, :name => 'Design & Layout', :description => 'Complete layout', :budget => 722, :project_id => 5, :due_date => '2013-05-20')
 Task.create(:id => 5, :name => 'Programming', :description => 'Complete programming', :budget => 99125, :project_id => 13, :due_date => '2018-02-10')
 Task.create(:id => 6, :name => 'Programming', :description => 'Complete programming', :budget => 3500, :project_id => 14, :due_date => '2013-07-28')
 Task.create(:id => 7, :name => 'Design & Layout', :description => 'Complete layout', :budget => 5000, :project_id => 14, :due_date => '2013-06-01')
-Task.create(:id => 8, :name => 'Programming', :description => 'Complete programming', :budget => 10000, :project_id => 8, :due_date => '2014-03-10')
+Task.create(:id => 8, :name => 'Programming', :description => 'Complete programming', :budget => 10000, :project_id => 2, :due_date => '2014-03-10')
 Task.create(:id => 9, :name => 'Design', :description => 'Complete ney layout', :budget => 1900, :project_id => 15, :due_date => '2013-03-07')
 Task.create(:id => 10, :name => 'Content', :description => 'Complete content', :budget => 50, :project_id => 4, :due_date => '2013-05-01')
 Task.create(:id => 11, :name => 'Content', :description => 'Complete content', :budget => 100, :project_id => 5, :due_date => '2013-08-10')
 Task.create(:id => 12, :name => 'Design', :description => 'Complete layout', :budget => 790, :project_id => 16, :due_date => '2013-09-20')
 
 # Bids
-Bid.create(:id => 1, :task_id => 3, :user_id => 3, :amount => 25000, :comment => 'I need money')
-Bid.create(:id => 2, :task_id => 3, :user_id => 6, :amount => 30000, :comment => 'I need money')
-Bid.create(:id => 3, :task_id => 8, :user_id => 7, :amount => 15000, :comment => 'I need money')
-Bid.create(:id => 4, :task_id => 7, :user_id => 6, :amount => 6500, :comment => 'I need money')
-Bid.create(:id => 5, :task_id => 5, :user_id => 7, :amount => 100000, :comment => 'I need money')
+Bid.create(:id => 1, :task_id => 3, :user_id => 3, :amount => 2500, :comment => 'I need money')
+Bid.create(:id => 2, :task_id => 3, :user_id => 6, :amount => 3000, :comment => 'I need money')
+Bid.create(:id => 3, :task_id => 8, :user_id => 7, :amount => 5000, :comment => 'I need money')
+Bid.create(:id => 4, :task_id => 8, :user_id => 6, :amount => 6500, :comment => 'I need money')
+Bid.create(:id => 5, :task_id => 5, :user_id => 7, :amount => 80000, :comment => 'I need money')
 Bid.create(:id => 6, :task_id => 11, :user_id => 2, :amount => 120, :comment => 'I need money')
+Bid.create(:id => 7, :task_id => 3, :user_id => 1, :amount => 2300, :comment => 'I need money')
+
+# Notifications
+Notification.create(:id => 1, :user_id => 1, :bid_id => 3, :ntype => 1, :shown => false)
+Notification.create(:id => 2, :user_id => 1, :bid_id => 4, :ntype => 1, :shown => false)
+Notification.create(:id => 3, :user_id => 1, :bid_id => 7, :ntype => 2, :shown => false)
