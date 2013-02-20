@@ -9,7 +9,7 @@ TODO
 + My Projects / My Bids - _Viktor_ & _Christian_
 + Profile, about me, etc. - _Christian_
 + Projects, only valid - _Christian_
-+ Upgrade administration backend - 
++ Upgrade administration backend - _Viktor_
 + Bids validation -
 + Mail sending - _Christian_
 

@@ -1,5 +1,7 @@
 LetMeDoIt::Application.routes.draw do
 
+  ActiveAdmin.routes(self)
+
   root :to => "home#index"
 
   resources :skills
@@ -22,11 +24,6 @@ LetMeDoIt::Application.routes.draw do
   devise_for :users, :path_names => {:sign_in => "login", :sign_out => "logout"}, :path => 'user'
   match '/users/:id' => 'users#show', :as => :user_show
 
-  namespace :admin do
-    match '/' => 'admin#dashboard'
-    resources :users
-    resources :categories
-  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
