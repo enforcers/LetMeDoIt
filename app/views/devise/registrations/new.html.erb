@@ -4,7 +4,8 @@
 
   <%= f.input :email, :as => :email %>
   <%= f.input :username %>
-  <%= f.input :aboutMe, :as => :text, :input_html => { :rows => 10 } %>
+  <%= f.input :about_me, :as => :text, :input_html => { :rows => 10 } %>
+  <%= f.input :photo, :as => :image_upload %>
   <%= f.input :password, :as => :password %>
   <%= f.input :password_confirmation, :as => :password %>
 

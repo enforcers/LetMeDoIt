@@ -4,7 +4,7 @@ module UserHelper
 			inner_popover = ""
 			inner_popover << "<div class=\"photo\">#{image_tag user.photo.url(:small)}</div>"
 			inner_popover << "<div class=\"profile-name\">#{user.contactName}</div>"
-			inner_popover << "<div class=\"short\">#{user.aboutMe}</div>"
+			inner_popover << "<div class=\"short\">#{user.about_me}</div>"
 			html = link_to user.contactName, user_show_path(user), {
 						:title => "",
 						:class => "profile-hover",
