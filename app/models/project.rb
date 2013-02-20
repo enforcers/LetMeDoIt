@@ -1,9 +1,12 @@
 class Project < ActiveRecord::Base
+	default_scope order('projects.created_at DESC')
+	scope :no_tasks, includes(:tasks).where(:tasks => { :project_id => nil })
+	scope :with_tasks, includes(:tasks).where("tasks.project_id IS NOT NULL")
+	scope :active, with_tasks.where(:tasks => { :bid_id => nil }).where("due_date >= '#{Date.today}'")
+
 	belongs_to :user
 	belongs_to :category
 	has_many :tasks
-	scope :no_tasks, includes(:tasks).where(:tasks => { :project_id => nil })
-
 
 	accepts_nested_attributes_for :tasks
 

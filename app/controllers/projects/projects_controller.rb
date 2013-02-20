@@ -2,16 +2,9 @@ class Projects::ProjectsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    # Select only active projects
-    conditions = ""
-    conditions << "id IN (SELECT project_id FROM tasks WHERE due_date >= '#{Date.today}')"
-    conditions << " AND id IN (SELECT project_id FROM tasks WHERE bid_id IS NULL)"
-    conditions << (params.has_key?(:category_id) ? " AND category_id = #{params[:category_id].to_i}" : "")
-
-    @projects = Project.paginate(
+    @projects = Project.active.paginate(
       :page => params[:page],
-      :conditions => conditions,
-      :order => "created_at DESC"
+      :conditions => (params.has_key?(:category_id) ? "category_id = #{params[:category_id].to_i}" : "")
     )
 
     @categories = Category.where(:category_id => nil) # Only parent categories
