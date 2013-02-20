@@ -75,10 +75,9 @@ Bid.create(:id => 2, :task_id => 3, :user_id => 6, :amount => 3000, :comment => 
 Bid.create(:id => 3, :task_id => 8, :user_id => 7, :amount => 5000, :comment => 'I need money')
 Bid.create(:id => 4, :task_id => 8, :user_id => 6, :amount => 6500, :comment => 'I need money')
 Bid.create(:id => 5, :task_id => 5, :user_id => 7, :amount => 80000, :comment => 'I need money')
-Bid.create(:id => 6, :task_id => 11, :user_id => 2, :amount => 120, :comment => 'I need money')
-Bid.create(:id => 7, :task_id => 3, :user_id => 1, :amount => 2300, :comment => 'I need money')
+Bid.create(:id => 6, :task_id => 3, :user_id => 1, :amount => 2300, :comment => 'I need money')
 
 # Notifications
 Notification.create(:id => 1, :user_id => 1, :bid_id => 3, :ntype => 1, :shown => false)
 Notification.create(:id => 2, :user_id => 1, :bid_id => 4, :ntype => 1, :shown => false)
-Notification.create(:id => 3, :user_id => 1, :bid_id => 7, :ntype => 2, :shown => false)
+Notification.create(:id => 3, :user_id => 1, :bid_id => 6, :ntype => 2, :shown => false)

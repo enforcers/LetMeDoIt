@@ -3,6 +3,6 @@
 	<%= link_to project.name, project_path(project) %>
 	<span class="divider">/</span>
 	<%= link_to task.name, project_task_path(project, task) %> Task
-	from <%= generate_hover_profile(user) %>
+	from <%= generate_hover_profile(project.user) %>
 	has been accepted.
 </div>
