@@ -367,3 +367,8 @@ h1, h2, h3, h4, h5 {
   line-height: 50px;
   margin-right: 10px;
 }
+
+.modal {
+  font-size: small;
+  white-space: normal;
+}

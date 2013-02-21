@@ -15,7 +15,8 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html # notifications.html.erb
-      format.json { render json: @skill }
+      format.js { render :layout => false }
+      format.json { render json: @notifications }
     end
   end
 
@@ -26,6 +27,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to my_notifications_path }
+      format.js { head :no_content }
       format.json { head :no_content }
     end
   end

@@ -26,7 +26,8 @@
               <%= link_to 'My Projects', my_projects_path, :class => "btn btn-primary" %>
               <%= link_to 'My Bids', my_bids_path, :class => "btn btn-primary" %>
               <% if (notification_count = Notification.pull(current_user).count) > 0 %>
-                <%= link_to my_notifications_path, :class => "btn btn-primary" do %>
+                <%= render "users/notifications/modal" %>
+                <%= link_to my_notifications_path, :class => "btn btn-primary", :'data-toggle' => "modal", :'data-target' => "#notifications", :'data-remote' => false do %>
                   Notifications <span class="badge badge-success"><%= notification_count %></span>
                 <% end %>
               <% end %>

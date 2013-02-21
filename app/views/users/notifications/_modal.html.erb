@@ -1,0 +1,32 @@
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("a[data-target='#notifications']").click(function() {
+			target = $($(this).attr('data-target') + ' .modal-body');
+			$.ajax({
+				url: $(this).attr('href') + '.js',
+				dataType: 'text',
+				success: function(data) {
+					target.html(data);
+					$(target).find('.close').click(function() {
+						well = $(this).parent();
+						$.ajax({
+							url: $(this).attr('href') + '.js',
+							success: function(data) {
+								well.fadeOut();
+							}
+						})
+						return false;
+					})
+				}
+			})
+		});
+	});
+</script>
+<div class="modal hide fade" id="notifications">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		<h3>Notifications</h3>
+	</div>
+	<div class="modal-body">
+	</div>
+</div>
