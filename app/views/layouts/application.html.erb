@@ -37,8 +37,11 @@
       </div>
       <div id="site-content">
         <div id="content-wrapper">
-          <%- flash.each do |name, msg| -%>
-            <%= content_tag :div, '<span class="icon"></span>'.html_safe + msg, :id => "flash_#{name}", :class => "top-msg #{name}" if msg.is_a?(String) %>
+          <%- flash.each do |type, msg| -%>
+            <%= content_tag :div, :class => "alert alert-#{type}" do %>
+              <%= content_tag(:button, "&times;".html_safe, :class => "close", :'data-dismiss' => "alert") %>
+              <%= content_tag(:div, msg) %>
+            <% end %>
           <%- end -%>
           <%= yield %>
         </div>

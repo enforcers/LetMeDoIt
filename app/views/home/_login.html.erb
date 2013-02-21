@@ -1,6 +1,9 @@
 	<script type="text/javascript">
 		$(function() {
 		  $('.dropdown-toggle').dropdown();
+		  $('.dropdown-toggle').click(function() {
+		  	$('#user_email').focus();
+		  })
 		  $('.dropdown-menu input, .dropdown-menu label').click(function(e) {
 		    e.stopPropagation();
 		  });

@@ -1,5 +1,7 @@
 <%= tinymce_assets %>
 
+<%= render_form_errors(@project.errors) %>
+
 <h3>New Project</h3>
 
 <%= simple_form_for @project, :html => { :class => 'form-horizontal' }, :defaults => { :input_html => { :class => "span4" } } do |f| %>

@@ -6,6 +6,8 @@
     <li class="active"><%= @task.name %></li>
 </ul>
 
+<%= render_form_errors(@task.errors, (@bid.errors unless @bid.nil?)) %>
+
 <div class="row-fluid">
 	<div class="span8">
 		<h4>Maximum Budget</h4>

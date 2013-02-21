@@ -71,7 +71,7 @@ class Projects::TasksController < ApplicationController
           Notification.fire(bid.user, bid, 2)
         end
 
-        format.html { redirect_to project_task_path(@task.project, @task),  notice: 'task was successfully updated.' }
+        format.html { redirect_to project_task_path(@task.project, @task),  notice: 'Task was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
