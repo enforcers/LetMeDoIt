@@ -24,6 +24,10 @@ LetMeDoIt::Application.routes.draw do
   devise_for :users, :path_names => {:sign_in => "login", :sign_out => "logout"}, :path => 'user'
   match '/users/:id' => 'users#show', :as => :user_show
 
+  # EXCEPTION HANDLING
+  match "/404", :to => "errors#not_found"
+  match "/422", :to => "errors#change_rejected"
+  match "/500", :to => "errors#internal_error"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

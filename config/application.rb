@@ -55,5 +55,8 @@ module LetMeDoIt
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # Set the exeptions application to own router
+    config.exceptions_app = self.routes
   end
 end

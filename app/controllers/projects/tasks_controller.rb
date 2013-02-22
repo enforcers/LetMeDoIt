@@ -1,5 +1,6 @@
 class Projects::TasksController < ApplicationController
-  #load_and_authorize_resource
+  load_and_authorize_resource
+
   # GET /projects/task/new
   # GET /projects/task/new.json
     def index
