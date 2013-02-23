@@ -37,6 +37,7 @@ Getting started
 	rake db:migrate
 	rake db:seed
 	rails server
+	before test: rake db:test:prepare
 	```
 6.	Goto [http://localhost:3000](http://localhost:3000)
 7.	Preset admin user

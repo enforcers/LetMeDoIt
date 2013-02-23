@@ -2,7 +2,14 @@ class Bid < ActiveRecord::Base
   belongs_to :task
   belongs_to :user
 
+  validates :user_id,
+    :presence => true
+
   validate :bid_within_range
+  
+  validates :task_id,
+    :presence => true
+
   validates :amount,
   	:numericality => true,
   	:presence => true
