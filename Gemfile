@@ -15,7 +15,8 @@ gem 'will_paginate'
 gem 'paperclip', '~> 3.0'
 gem 'simple_form'
 gem 'activeadmin'
-gem "meta_search",    '>= 1.1.0.pre'
+gem 'meta_search',    '>= 1.1.0.pre'
+gem 'rspec-rails', :group => [:test, :development]
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -29,8 +30,16 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+group :test do
+	gem 'factory_girl_rails'
+	gem 'capybara'
+	gem 'guard-rspec'
+	gem 'wdm', '~> 0.0.3'
+	gem 'faker'
+end
+
 group :production, :staging do
-	gem "pg"
+	gem 'pg'
 end
 
 group :development, :test do

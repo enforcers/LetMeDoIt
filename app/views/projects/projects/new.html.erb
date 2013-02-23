@@ -6,24 +6,28 @@
 
 <%= simple_form_for @project, :html => { :class => 'form-horizontal' }, :defaults => { :input_html => { :class => "span4" } } do |f| %>
 
-  <%= f.hidden_field :user_id, :value => current_user.id %>
-  <%= f.input :name %>
-  <%= f.input :description, :as => :text, :input_html => { class: "tinymce"} %>
-  <%= f.input :category_id,
-      :collection => @categories,
-      :as => :grouped_select,
-      :group_method => :child_categories
-  %>
+  <div id="project-fieldset">
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+    <%= f.input :name %>
+    <%= f.input :description, :as => :text, :input_html => { class: "tinymce"} %>
+    <%= f.input :category_id,
+        :collection => @categories,
+        :as => :grouped_select,
+        :group_method => :child_categories
+    %>
+  </div>
 
   <h4>Create First Task</h4>
   <div class="well">
-    <%= f.fields_for :tasks do |builder| %>
-      <%= builder.input :project_id, :as => :hidden %>
-      <%= builder.input :name %>
-      <%= builder.input :due_date, :as => :date_picker %>
-      <%= builder.input :budget, :as => :currency %>
-      <%= builder.input :description, :as => :text, :input_html => { class: "tinymce"} %>
-    <% end %>
+    <div id="task-fieldset">
+      <%= f.fields_for :tasks do |builder| %>
+        <%= builder.input :project_id, :as => :hidden %>
+        <%= builder.input :name %>
+        <%= builder.input :due_date, :as => :date_picker %>
+        <%= builder.input :budget, :as => :currency %>
+        <%= builder.input :description, :as => :text, :input_html => { class: "tinymce"} %>
+      <% end %>
+    </div>
   </div>
 
   <div class="form-actions">
