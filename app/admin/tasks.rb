@@ -1,11 +1,14 @@
 ActiveAdmin.register Task do
   index do
-    column :project 
-    column :name do |task|
-        link_to task.name, [:admin, task]
-      end
-    column :description
-    column :budget
-    column "Deadline", :due_date
+  	column :name
+  	column :project
+    column :budget, :sortable => :budget do |project|
+      div :class => "budget" do
+        number_to_currency project.budget
+        default_actions
+    end
+end
+  	column :created_at
+  	column "Deadline", :due_date
   end
 end
