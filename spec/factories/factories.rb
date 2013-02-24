@@ -30,4 +30,9 @@ FactoryGirl.define do
 		amount 500
 		comment Faker::Lorem.paragraphs(3)
 	end
+
+	factory :category do
+		category_id  nil
+		name Faker::Lorem.word
+	end
 end
