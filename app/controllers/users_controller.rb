@@ -10,10 +10,9 @@ class UsersController < ApplicationController
     end
   end
 
-  def notifications
+  def show_notifications
     @user = current_user
     @notifications = Notification.pull(@user)
-    #Notification.fire(current_user, Bid.find(1), 2)
 
     respond_to do |format|
       format.html # notifications.html.erb
@@ -22,8 +21,8 @@ class UsersController < ApplicationController
     end
   end
 
-  def notification_shown
-  	@notification = Notification.find(params[:id])
+  def destroy_notification
+  	@notification = Notification.find_by_id(params[:nid])
   	@notification.shown = true
   	@notification.save
 

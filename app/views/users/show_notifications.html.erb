@@ -3,7 +3,7 @@
 	<% task = bid.task %>
 	<% project = task.project %>
 	<div class="well">
-		<%= link_to "&times;".html_safe, notification_shown_path(:id => notification), :class => "close" %>
+		<%= link_to "&times;".html_safe, notification_shown_path(:nid => notification), :class => "close" %>
 		<%= render :partial => "users/notifications/ntype#{notification.ntype}",
 				:locals => {
 				:notification => notification,

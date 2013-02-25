@@ -12,7 +12,7 @@
 		<div class="description"><%= raw @task.description %></div>
         <% if @task.project.is_owner(current_user) && @task.bids.count > 0 %>
             <h4>Bids</h4>
-            <%= form_for([@task.project, @task], :html => { :class => "ym-form linearize-form ym-columnar"}) do |f| %>
+            <%= simple_form_for [@task.project, @task] do |f| %>
                 <table class="table table-hover">
                     <thead>
                         <tr>
@@ -28,7 +28,7 @@
                             <td><%= generate_hover_profile(bid.user) %></td>
                             <td><%= number_to_currency bid.amount, :unit => "€" %></td>
                             <td><%= bid.comment %></td>
-                            <td><%= f.radio_button :accepted, bid.id, :disabled=> @task.bid_id!=nil ? true : false %></td>
+                            <td><%= f.radio_button :accepted, bid.id, :disabled => !@task.bid_id.nil? %></td>
                         </tr>
                     <% end %>
                     </tbody>

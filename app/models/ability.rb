@@ -23,8 +23,14 @@ class Ability
       end
 
       # Grant rights for Tasks Model
-      can :manage, Task, :project => { :user_id => user.id }
+      can :create, Task, :project => { :user_id => user.id }
+      can [:update, :destroy], Task, :project => { :user_id => user.id }, :accepted => nil
       can :read, Task
+
+      can :read, User
+
+      # Notifications
+      can [:show_notifications, :destroy_notification], User, :user_id => user.id
     else
       can :read, :all
     end

@@ -16,8 +16,8 @@ LetMeDoIt::Application.routes.draw do
 
   match '/my-projects' => 'projects/projects#self', :as => :my_projects
   match '/my-bids' => 'projects/bids#self', :as => :my_bids
-  match '/notifications' => 'users#notifications', :as => :my_notifications
-  match '/notifications/shown/:id' => 'users#notification_shown', :as => :notification_shown
+  match '/notifications' => 'users#show_notifications', :as => :my_notifications
+  match '/notifications/shown/:nid' => 'users#destroy_notification', :as => :notification_shown
 
   # PROFILES
   match '/' => 'home#index', :as => :user_root

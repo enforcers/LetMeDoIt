@@ -87,7 +87,7 @@ module ApplicationHelper
 								link_to("Place bid", "#", :class => "btn btn-primary", :data => { :toggle => "modal", :target => "#place-bid" }),
 							:class => "btn-group")
 						end).to_s.html_safe +
-						(if can? :manage, active
+						(if can? :update, active
 							content_tag(:div,
 								link_to("Actions <i class=\"caret\"></i>".html_safe, "#", :class => "btn btn-primary dropdown-toggle", :'data-toggle' => "dropdown") +
 								content_tag(:ul,
