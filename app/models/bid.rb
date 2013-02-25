@@ -15,7 +15,9 @@ class Bid < ActiveRecord::Base
   	:numericality => true,
   	:presence => true
 
-  validates :user_id, :uniqueness => { :scope => :task_id, :message => "only one bid per task" }
+  validates :user_id,
+    :uniqueness => { :scope => :task_id, :message => "only one bid per task" },
+    :presence => true
 
   def bid_within_range
     return false if (amount.nil? || task.nil?)
