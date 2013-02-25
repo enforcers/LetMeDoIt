@@ -1,8 +1,16 @@
 # module for helping request specs
+require 'spec_helper'
+include Warden::Test::Helpers
+
 module SignIn
   # for use in request specs
-  def sign_in_as_a_valid_user
-    @user ||= FactoryGirl.create :user
-    post_via_redirect user_session_path, 'user[email]' => @user.email, 'user[password]' => @user.password
+
+  def create_logged_in_user
+    user ||= FactoryGirl.create :user
+    login(user)
+    user
+  end
+  def login(user)
+    login_as user, :scope => :user
   end
 end

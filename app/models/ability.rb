@@ -15,8 +15,12 @@ class Ability
       can [:update, :destroy, :self], Project, :user_id => user.id
       can [:read, :create], Project
 
+      # Grant rights for Bid Model
+      can [:create, :self], Bid
+
       # Grant rights for Tasks Model
       can :manage, Task, :project => { :user_id => user.id }
+
       can :read, Task
 
       can [:create, :self], Bid

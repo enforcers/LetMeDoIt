@@ -1,0 +1,6 @@
+test_project:
+ id: 1
+ description: Test project description
+ name: Test project name
+ category_id: 2
+ user_id: 1

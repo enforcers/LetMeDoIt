@@ -20,6 +20,8 @@ class Project < ActiveRecord::Base
 		:presence => true
 	validates :category_id,
 		:presence => true
+	validates :user_id,
+		:presence => true
 
 	def available_tasks
 		return self.tasks.where("due_date >= ? and bid_id IS NULL",DateTime.now.to_date).count

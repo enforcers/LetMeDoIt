@@ -45,6 +45,7 @@ class Projects::ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.save
+        flash[:success] = 'Project was successfully created.'
         format.html { redirect_to project_path(@project) }
         format.json { render json: @project, status: :created, location: project_path(@project) }
       else

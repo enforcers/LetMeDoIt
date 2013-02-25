@@ -1,0 +1,6 @@
+test_task:
+ id: 1
+ description: Test task description
+ name: Test task name
+ project_id: 1
+ due_date: 2015-02-01

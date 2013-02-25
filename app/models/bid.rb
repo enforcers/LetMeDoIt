@@ -7,6 +7,10 @@ class Bid < ActiveRecord::Base
   scope :declined, joins(:task).where("tasks.bid_id IS NOT NULL AND tasks.bid_id != bids.id")
 
   validate :bid_within_range
+
+  validates :task_id,
+    :presence => true
+
   validates :amount,
   	:numericality => true,
   	:presence => true
@@ -14,8 +18,10 @@ class Bid < ActiveRecord::Base
   validates :user_id, :uniqueness => { :scope => :task_id, :message => "only one bid per task" }
 
   def bid_within_range
+    return false if (amount.nil? || task.nil?)
   	if amount <= 0 || amount > task.budget
   		self.errors[:base] << "Please ensure that your bid is in range for the budget."
   	end
   end
 end
+
