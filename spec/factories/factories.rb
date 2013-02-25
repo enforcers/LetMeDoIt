@@ -12,7 +12,7 @@ FactoryGirl.define do
 	factory :project do 
 		name Faker::Name.name
 		description Faker::Lorem.paragraphs(3)
-		user_id :user
+		user
 		category_id 1
 	end
 
@@ -20,14 +20,14 @@ FactoryGirl.define do
 		name Faker::Name.name
 		description Faker::Lorem.paragraphs(3)
 		budget 2500.00
-		project_id :project_id
+		project
 		due_date Date.tomorrow()
 	end
 
 	factory :bid do
 		amount 1500.00
-		task_id :task
-		user_id :user
+		task
+		user
 		comment Faker::Lorem.paragraphs(3)
 	end
 end

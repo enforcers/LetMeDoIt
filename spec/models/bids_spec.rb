@@ -3,12 +3,8 @@ require 'spec_helper'
 
 describe "Bid" do
 	before(:each) do
-		@bid = FactoryGirl.create(:bid, amount: 500)
+		@bid = FactoryGirl.create(:bid)
 		@task = Task.find(@bid.task_id)
-	end
-	it "should be valid" do
-		@task.inspect
-		@bid.should be_valid
 	end
 
 	it "needs a user" do

@@ -17,11 +17,8 @@ class Bid < ActiveRecord::Base
   validates :user_id, :uniqueness => { :scope => :task_id, :message => "only one bid per task" }
 
   def bid_within_range
-    puts '#######################'
-    puts amount ### = nil 
-    puts task.budget
-
-  	if amount <= 0 || amount > @task.budget
+    return false if (amount.nil? || task.nil?)
+  	if amount <= 0 || amount > task.budget
   		self.errors[:base] << "Please ensure that your bid is in range for the budget."
   	end
   end
