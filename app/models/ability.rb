@@ -16,10 +16,10 @@ class Ability
       can [:read, :create], Project
 
       # Grant rights for Tasks Model
-      can :manage, Task do |task|
-        task.project.user_id == user.id
-      end
+      can :manage, Task, :project => { :user_id => user.id }
       can :read, Task
+
+      can [:create, :self], Bid
     else
       can :read, :all
     end

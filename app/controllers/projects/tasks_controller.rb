@@ -1,5 +1,5 @@
 class Projects::TasksController < ApplicationController
-  load_and_authorize_resource
+  load_and_authorize_resource :except => [:new]
 
   # GET /projects/task/new
   # GET /projects/task/new.json
