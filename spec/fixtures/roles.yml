@@ -1,0 +1,10 @@
+
+# Roles
+registered:
+  id: 1
+  name: Registered
+
+administrator:
+  id: 2
+  name: Administrator
+

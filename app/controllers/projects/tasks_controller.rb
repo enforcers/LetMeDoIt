@@ -34,6 +34,7 @@ class Projects::TasksController < ApplicationController
 
     respond_to do |format|
       if @task.save
+        flash[:success] = 'Task was successfully created.'
         format.html { redirect_to project_task_path(@task.project, @task) }
         format.json { render json: @task, status: :created, location: project_task_path(@task.project, @task) }
       else

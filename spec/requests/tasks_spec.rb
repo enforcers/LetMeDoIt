@@ -1,43 +1,47 @@
 require 'rspec'
 require 'spec_helper'
 
-describe "Task" do
-	before(:each) do
-		@task = FactoryGirl.create(:task)
-	end
-	it "needs a project" do
-		@task.project_id = nil
-		@task.should_not be_valid
-		@task.project_id = 1
-		@task.should be_valid
-	end
+describe "Task - " do
+	describe "Registered User" do
+		it 'adds a new task to his project' do
+			@user = create_logged_in_user
+			@project = FactoryGirl.create(:project , user_id: @user.id )
 
-	it "needs a name" do
-		@task.name = nil
-		@task.should_not be_valid
-		@task.name = 'test task'
-		@task.should be_valid
-	end
+			visit project_path(@project)
 
-	it "needs a description" do
-		@task.description = nil
-		@task.should_not be_valid
-		@task.description = 'test task description blabla'
-		@task.should be_valid
-	end
+			page.should have_content('Task(s) on this project')
 
-	it "needs a due date" do
-		@task.due_date = nil
-		@task.should_not be_valid
-		@task.due_date = '2013-05-06'
-		@task.should be_valid
-	end
+			click_on('Add Task')
+			fill_in "Name", :with => "new Task Name"
+			fill_in "Description", :with => "new Task Description"
+			click_on('Create Task')
 
-	it "is valid" do
+			page.should have_content('Task was successfully created.')
+		end
+		it 'adds a task to others Project' do
+			@user = create_logged_in_user
+			@project = FactoryGirl.create(:project)
+			page.should_not have_button('Add Task')
 
-		@task.due_date = Date.yesterday()
-		@task.should be_valid
+		end
 
-		
+		it 'edits his own task' do
+			@user = create_logged_in_user
+			@project = FactoryGirl.create(:project , user_id: @user.id )
+			@task = FactoryGirl.create(:task, project_id: @project.id)
+			visit project_task_path(@project, @task)
+			click_on('Edit Task')
+			click_on('Update Task')
+			page.should_not have_button('Task was successfully updated.')
+		end
+
+		it 'edits others task' do
+			@user = create_logged_in_user
+			@task = FactoryGirl.create(:task)
+			@project = Project.find(@task.project_id)
+			visit project_task_path(@project, @task)
+			page.should_not have_button('Edit Task')
+
+		end
 	end
 end

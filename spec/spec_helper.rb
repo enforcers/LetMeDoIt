@@ -22,7 +22,8 @@ RSpec.configure do |config|
   # examples within a transaction, remove the following line or assign false
   # instead of true.
   config.use_transactional_fixtures = true
-
+  config.fixture_path = "#{::Rails.root}/spec/fixtures"
+  config.global_fixtures = :all
   # If true, the base class of anonymous controllers will be inferred
   # automatically. This will be the default behavior in future versions of
   # rspec-rails.
@@ -33,7 +34,6 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
-  config.include(MailerMacros)
   config.include Capybara::DSL
   config.include(SignIn)
 end

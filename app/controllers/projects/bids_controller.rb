@@ -7,7 +7,7 @@ class Projects::BidsController < ApplicationController
 
 		respond_to do |format|
 		  if @bid.save
-
+		  	flash[:success] = 'Bid has been placed.'
 		  	Mailer.bid_notification(@bid).deliver
 		  	Notification.fire(@task.project.user, @bid, 1)
 

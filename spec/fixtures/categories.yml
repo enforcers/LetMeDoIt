@@ -1,0 +1,8 @@
+mac:
+  id: 1
+  name: Mac
+
+mac2:
+  id: 2
+  name: Mac2
+  category_id: 1

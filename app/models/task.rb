@@ -13,8 +13,8 @@ class Task < ActiveRecord::Base
 	validates :due_date,
 		:presence => true
 
-	validates :project_id,
-		:presence => true
+	# validates :project_id,
+	# 	:presence => true
 
 	def is_open?
 		return self.accepted.nil? && self.due_date >= Date.today
