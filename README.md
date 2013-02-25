@@ -4,15 +4,22 @@ LetMeDoIt
 
 TODO
 ----
++ Seed prüfen/erweitern
+	```
+	1. skills
+	2. evtl bilder
 
-+ Rspec Tests - _Viktor_
-+ My Projects / My Bids - _Viktor_ & _Christian_
-+ Profile, about me, etc. - _Christian_
-+ Projects, only valid - _Christian_
-+ Upgrade administration backend - _Viktor_
-+ Bids validation -
-+ Mail sending - _Christian_
+	```
 
++ markierung/anzeige wenn eigenes gebot vorhanden auf task/project übersichten
++ Rspec Tests 
+	```
+	1. Request spec task,project delete
+	2. request spec project edit
+	3. div model specs (validates prüfen)
+	4. mail specs (in request specs??)
+	```
++ ???
 
 Programs
 --------
