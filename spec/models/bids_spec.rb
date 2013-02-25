@@ -23,9 +23,8 @@ describe "Bid" do
 	end
 
 	it "needs a task" do
-		@bid.task_id = nil
-		@bid.should_not be_valid
-		@bid.task_id = @task.id
 		@bid.should be_valid
+		@bid.task_id = nil
+		@bid.should_not be_valid		
 	end
 end
