@@ -41,9 +41,9 @@ module ApplicationHelper
 
 		content_tag :ul,
 			content_tag(:li, link_to("Projects", projects_path) + content_tag(:span, "/", :class => "divider")) +
-			if active.instance_of? Project
-				content_tag(:li, link_to(active.category.name, projects_path(:category_id => active.category)) + content_tag(:span, "/", :class => "divider")) +
+			(if active.instance_of? Project
 				if step.nil?
+					content_tag(:li, link_to(active.category.name, projects_path(:category_id => active.category)) + content_tag(:span, "/", :class => "divider")) +
 					content_tag(:li, active.name, :class => "active")
 				else
 					content_tag(:li, step.to_s, :class => "active")
@@ -55,7 +55,6 @@ module ApplicationHelper
 					content_tag(:li, active.name, :class => "active")
 				else
 					content_tag(:li, link_to(active.project.name, project_path(active.project)) + content_tag(:span, "/", :class => "divider")) +
-					content_tag(:li, link_to(active.name, project_task_path(active.project, active)) + content_tag(:span, "/", :class => "divider")) +
 					content_tag(:li, step.to_s, :class => "active")
 				end
 			elsif (active.nil? && !step.nil?)
@@ -65,8 +64,8 @@ module ApplicationHelper
 				else
 					content_tag(:li, step.to_s, :class => "active")
 				end
-			end +
-			if buttons
+			end).to_s.html_safe +
+			(if buttons
 				content_tag(:div,
 					if active.instance_of? Project
 						if can? :update, active
@@ -76,19 +75,19 @@ module ApplicationHelper
 									content_tag(:li, link_to("Edit Project", edit_project_path(active))) +
 									content_tag(:li, link_to("Delete Project", project_path(active), :method => :delete, :confirm => "Are you sure?")) +
 									content_tag(:li, nil, :class => "divider") +
-									if can? :create, Task
+									(if can? :create, Task
 										content_tag(:li, link_to("Add Task", new_project_task_path(active)))
-									end,
+									end).to_s.html_safe,
 								:class => "dropdown-menu"),
 							:class => "btn-group")
 						end
 					elsif active.instance_of? Task
-						if can? :create, active.bids.build
+						(if can? :create, active.bids.build
 							content_tag(:div,
 								link_to("Place bid", "#", :class => "btn btn-primary", :data => { :toggle => "modal", :target => "#place-bid" }),
 							:class => "btn-group")
-						end +
-						if can? :manage, active
+						end).to_s.html_safe +
+						(if can? :manage, active
 							content_tag(:div,
 								link_to("Actions <i class=\"caret\"></i>".html_safe, "#", :class => "btn btn-primary dropdown-toggle", :'data-toggle' => "dropdown") +
 								content_tag(:ul,
@@ -96,10 +95,10 @@ module ApplicationHelper
 									content_tag(:li, link_to("Delete Task", project_task_path(active.project, active), :method => :delete, :confirm => "Are you sure?")),
 								:class => "dropdown-menu"),
 							:class => "btn-group")
-						end
+						end).to_s.html_safe
 					end,
 				:class => "pull-right")
-			end,
+			end).to_s.html_safe,
 		:class => "breadcrumb"
 	end
 end
