@@ -16,7 +16,11 @@ class Ability
       can [:read, :create], Project
 
       # Grant rights for Bid Model
-      can [:create, :self], Bid
+      can :self, Bid
+      can :create, Bid do |bid|
+        (bid.task.bids & Bid.for_user(user)).blank? &&
+        bid.task.project.user != user
+      end
 
       # Grant rights for Tasks Model
       can :manage, Task, :project => { :user_id => user.id }

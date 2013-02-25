@@ -342,3 +342,8 @@ h1, h2, h3, h4, h5 {
   font-size: small;
   white-space: normal;
 }
+
+.breadcrumb {
+  height: 30px;
+  line-height: 30px;
+}

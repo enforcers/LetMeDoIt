@@ -84,8 +84,31 @@ class Projects::ProjectsController < ApplicationController
   end
 
   def edit
+    @project = Project.find(params[:id])
+    @categories = Category.where(:category_id => nil)
+  end
+  
+  def update
+    @project = Project.find(params[:id])
+
+    respond_to do |format|
+      if @project.update_attributes(params[:project])
+        format.html { redirect_to project_path(@project),  notice: 'Project was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @project.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
-  def update
+  def destroy
+    @project = Project.find(params[:id])
+    @project.destroy
+
+    respond_to do |format|
+      format.html { redirect_to root_path, notice: 'Project was successfully deleted.' }
+      format.json { head :no_content }
+    end
   end
 end

@@ -1,8 +1,8 @@
 <%= tinymce_assets %>
 
-<%= breadcrumb(@project, :step => "New Project") %>
-
 <%= render_form_errors(@project.errors) %>
+
+<h3>Edit Project</h3>
 
 <%= simple_form_for @project, :html => { :class => 'form-horizontal' }, :defaults => { :input_html => { :class => "span4" } } do |f| %>
 
@@ -15,19 +15,6 @@
         :as => :grouped_select,
         :group_method => :child_categories
     %>
-  </div>
-
-  <h4>Create First Task</h4>
-  <div class="well">
-    <div id="task-fieldset">
-      <%= f.fields_for :tasks do |builder| %>
-        <%= builder.input :project_id, :as => :hidden %>
-        <%= builder.input :name %>
-        <%= builder.input :due_date, :as => :date_picker %>
-        <%= builder.input :budget, :as => :currency %>
-        <%= builder.input :description, :as => :text, :input_html => { class: "tinymce"} %>
-      <% end %>
-    </div>
   </div>
 
   <div class="form-actions">

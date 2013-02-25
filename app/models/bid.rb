@@ -23,5 +23,9 @@ class Bid < ActiveRecord::Base
   		self.errors[:base] << "Please ensure that your bid is in range for the budget."
   	end
   end
+
+  def self.for_user(user)
+    return where(:user_id => user)
+  end
 end
 

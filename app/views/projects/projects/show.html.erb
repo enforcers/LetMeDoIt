@@ -1,17 +1,10 @@
-<ul class="breadcrumb">
-	<li><%= link_to "Projects", projects_path %> <span class="divider">/</span></li>
-    <li class="active"><%= @project.name %></li>
-</ul>
+<%= breadcrumb @project, :buttons => true %>
 
 <div class="row-fluid">
 	<div class="span8">
 		<h4>Project Description</h4>
 		<div class="description"><%= raw @project.description %></div>
 		<%= render 'projects/tasks/index' %>
-
-		<% if @project.is_owner(current_user) %>
-			<p><%= link_to "Add Task", new_project_task_path(:project_id=>@project.id), :class => "btn" %></p>
-		<% end %>
 	</div>
 	<div class="span4">
 		<div class="icons person">

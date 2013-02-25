@@ -1,5 +1,5 @@
-<%= render_form_errors(@task.errors) %>
+<%= breadcrumb @task, :step => "Edit Task" %>
 
-<h3>Edit Task</h3>
+<%= render_form_errors(@task.errors) %>
 
 <%= render 'form' %>

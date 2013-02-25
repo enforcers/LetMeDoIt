@@ -1,10 +1,6 @@
 <%= render "projects/bids/new" %>
 
-<ul class="breadcrumb">
-    <li><%= link_to "Projects", projects_path %> <span class="divider">/</span></li>
-    <li><%= link_to @task.project.name, project_path(@task.project) %> <span class="divider">/</span></li>
-    <li class="active"><%= @task.name %></li>
-</ul>
+<%= breadcrumb @task, :buttons => true %>
 
 <%= render_form_errors(@task.errors, (@bid.errors unless @bid.nil?)) %>
 
@@ -52,12 +48,5 @@
 			<h3><%= @task.bids.count %></h3>
 			<span>Bid(s) on this Task</span>
 		</div>
-
-		<% if can?(:create, Bid) && @task.is_open? && !@task.project.is_owner(current_user) %>
-            <%= link_to 'Place bid', '#', :class => "btn btn-primary btn-large", :'data-toggle' => "modal", :'data-target' => "#place-bid" %>
-        <% end %>
-		<% if can? :update, @task %>
-			<%= link_to 'Edit Task', edit_project_task_path(@task.project, @task), :class => "btn" %>
-		<% end %>
 	</div>
 </div>

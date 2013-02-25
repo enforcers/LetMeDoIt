@@ -1,5 +1,6 @@
 class Projects::TasksController < ApplicationController
-  load_and_authorize_resource :except => [:new]
+  load_and_authorize_resource :project # :except => [:new]
+  load_and_authorize_resource :task, :through => :project, :shallow => true
 
   # GET /projects/task/new
   # GET /projects/task/new.json
@@ -17,7 +18,7 @@ class Projects::TasksController < ApplicationController
 
   def new
     @task = Task.new
-    #@project = Project.find(params[:project_id])
+    @task.project = Project.find(params[:project_id])
 
     respond_to do |format|
       format.html # new.html.erb

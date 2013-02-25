@@ -1,5 +1,6 @@
 class Projects::BidsController < ApplicationController
-	load_and_authorize_resource
+	load_and_authorize_resource :task
+	load_and_authorize_resource :bid, :through => :task, :shallow => true
 
 	def create
 		@bid = Bid.new(params[:bid])
