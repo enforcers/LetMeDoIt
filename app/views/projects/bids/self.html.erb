@@ -1,25 +1,29 @@
 <h3>My Bids</h3>
-<table class="table table-hover">
-	<thead>
-		<tr>
-			<th width="20%">Project / Task</th>
-			<th width="20%">Due Date</th>
-			<th width="20%">Amount</th>
-			<th width="40%">Comment</th>
-		</tr>
-	</thead>
-	<tbody>
-	<% @bids.each do |bid| 
-		@task = Task.find(bid.task_id)
-		@project = Project.find(@task.project_id)
+<ul class="nav nav-pills">
+	<li class="<%= "active" if params[:show] == "open" || params[:show].blank? %>">
+		<%= link_to "Open",
+			my_bids_path(:show => :open),
+			:data => { :toggle => "tabajax", :target => "#open" }, :remote => true
 		%>
-		<tr class="project">
-			<td><%= link_to @project.name, @project %> / <%= link_to @task.name, project_task_path(@task.project, @task) %></td>
-			<td><%= @task.due_date %></td>
-			<td><%= number_to_currency bid.amount, :unit => "€" %></td>
-			<td><%= bid.comment %></td>
-		</tr>
-	<% end %>
-	</tbody>
-	<%= will_paginate @bids %>
-</table>
+	</li>
+	<li class="<%= "active" if params[:show] == "accepted" %>">
+		<%= link_to "Accepted",
+			my_bids_path(:show => :accepted),
+			:data => { :toggle => "tabajax", :target => "#accepted" }, :remote => true
+		%>
+	</li>
+	<li class="<%= "active" if params[:show] == "declined" %>">
+		<%= link_to "Declined",
+			my_bids_path(:show => :declined),
+			:data => { :toggle => "tabajax", :target => "#declined" }, :remote => true
+		%>
+	</li>
+</ul>
+
+<div class="tab-content">
+	<div class="tab-pane active" id="open">
+		<%= render :file => "projects/bids/mybids-table" %>
+	</div>
+	<div class="tab-pane" id="accepted"></div>
+	<div class="tab-pane" id="declined"></div>
+</div>

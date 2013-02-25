@@ -1,0 +1,29 @@
+<% unless @bids.blank? %>
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>Project</th>
+				<th>Task</th>
+				<th>Due Date</th>
+				<th>Amount</th>
+				<th>Comment</th>
+			</tr>
+		</thead>
+		<tbody>
+		<% @bids.each do |bid|
+			task = bid.task
+			project = task.project
+			%>
+			<tr class="project">
+				<td><%= link_to project.name, project_path(project) %></td>
+				<td><%= link_to task.name, project_task_path(task.project, task) %></td>
+				<td><%= task.due_date %></td>
+				<td><%= number_to_currency bid.amount, :unit => "€" %></td>
+				<td><%= bid.comment %></td>
+			</tr>
+		<% end %>
+		</tbody>
+	</table>
+
+	<%= paginate @bids %>
+<% end %>

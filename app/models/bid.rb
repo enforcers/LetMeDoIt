@@ -2,6 +2,10 @@ class Bid < ActiveRecord::Base
   belongs_to :task
   belongs_to :user
 
+  scope :open, joins(:task).where(:tasks => { :bid_id => nil })
+  scope :accepted, joins(:task).where(:tasks => { :bid_id => "bid.id" })
+  scope :declined, joins(:task).where("tasks.bid_id IS NOT NULL AND tasks.bid_id != bids.id")
+
   validate :bid_within_range
   validates :amount,
   	:numericality => true,

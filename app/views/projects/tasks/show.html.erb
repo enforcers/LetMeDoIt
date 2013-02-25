@@ -53,8 +53,8 @@
 			<span>Bid(s) on this Task</span>
 		</div>
 
-		<% if @task.is_open? && !@task.project.is_owner(current_user) %>
-            <%= link_to 'Place bid', '#', :class => "btn btn-primary", :'data-toggle' => "modal", :'data-target' => "#place-bid" %>
+		<% if can? :create, @bid && task.is_open? && !@task.project.is_owner(current_user) %>
+            <%= link_to 'Place bid', '#', :class => "btn btn-primary btn-large", :'data-toggle' => "modal", :'data-target' => "#place-bid" %>
         <% end %>
 		<% if can? :update, @task %>
 			<%= link_to 'Edit Task', edit_project_task_path(@task.project, @task), :class => "btn" %>

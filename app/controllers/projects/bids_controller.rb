@@ -26,10 +26,27 @@ class Projects::BidsController < ApplicationController
 	end
 
 	def self
-		@bids = Bid.paginate(:page => params[:page], :conditions => ["user_id = ?", current_user], :order => "created_at DESC")
+		@bids = case params[:show]
+			when "accepted"
+				Bid.accepted.where(:user_id => current_user)
+			when "declined"
+				Bid.declined.where(:user_id => current_user)
+			else # open
+				Bid.open.where(:user_id => current_user)
+		end
+
+		@bids = @bids.paginate(:page => params[:page])
+
     	respond_to do |format|
 
-	      format.html # index.html.erb
+	      format.html do
+	      	if request.xhr?
+	      		render 'mybids-table', :layout => false
+	      	else
+	      		render # index.html.erb
+	      	end
+	      end
+
 	      format.json {
 	        render json: {
 	          :projects => @projects
@@ -37,5 +54,4 @@ class Projects::BidsController < ApplicationController
 	      }
 	    end
 	end
-
 end
