@@ -50,12 +50,7 @@ describe "Bid" do
 
 			page.should_not have_content('Error')
 
-			within("#new_bid") do
-				fill_in "Amount", :with => 123
-				click_button('Place bid')
-			end
-
-			page.should have_content('only one bid per task')
+			page.should have_button('Place bid')
 		end
 
 	end

@@ -17,9 +17,10 @@ describe "Projects - " do
 			within("#task-fieldset") do
 				fill_in "Name", :with => "Test Task"
 				fill_in "Description", :with => "Test Description"
+				fill_in "Budget", :with => "500"
 			end
 
-			click_button("Create Project")
+			click_on("Create Project")
 
 			page.should have_content('Project was successfully created.')
 

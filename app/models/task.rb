@@ -14,7 +14,9 @@ class Task < ActiveRecord::Base
 		:presence => true
 
 	validates :budget,
-		:numericality => true
+		:numericality => true,
+		:presence => true
+
 
 	# validates :project_id,
 	# 	:presence => true
