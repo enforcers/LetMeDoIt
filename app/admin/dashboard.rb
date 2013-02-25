@@ -21,12 +21,14 @@ ActiveAdmin::Dashboards.build do
 
   section "Recent Bids" do
   	table_for Bid.order("created_at desc").limit(5) do
-  		column :user do |bid|
-  			link_to bid.user, [:admin, bid]
-  		end
+  		column :user 
   		column :task
   		column :created_at
-  		column :amount
+  		    column :amount, :sortable => :amount do |bid|
+      div :class => "amount" do
+        number_to_currency(bid.amount, :unit => "&euro;", :format => "%n%u", :separator => ",", :delimiter => ".")
+    end
+    end
   	end
   end
 end
