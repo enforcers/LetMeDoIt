@@ -13,8 +13,14 @@ class Mailer < ActionMailer::Base
   def bid_accepted(task)
     @task = task
     @bid = Bid.find(@task.bid_id)
-    @user = User.find(@bid.user_id)
-    mail(:to => @user.email, :subject => "Your bid on has been accepted")
+    @user = @bid.user
+    mail(:to => @user.email, :subject => "Your bid on #{task.name} has been accepted")
+  end
+
+  def bid_declined(task, bid)
+    @task = task
+    @user = bid.user
+    mail(:to => @user.email, :subject => "Unfortunately your bid on #{task.name} has been declined")
   end
 
 end

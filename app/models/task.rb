@@ -2,6 +2,8 @@ class Task < ActiveRecord::Base
   belongs_to :project
   has_many :bids
 
+  after_save :create_notification
+
   alias_attribute :accepted, :bid_id
 
 	validates :name,
@@ -20,6 +22,22 @@ class Task < ActiveRecord::Base
 
 	# validates :project_id,
 	# 	:presence => true
+
+	def create_notification
+		unless self.bid_id.nil?
+			accepted = Bid.find(self.bid_id)
+
+			self.bids.each do |bid|
+				if bid == accepted
+					Mailer.bid_accepted(self).deliver
+					Notification.fire(bid.user, bid, 2)
+				else
+					Mailer.bid_declined(self).deliver
+					Notification.fire(bid.user, bid, 3)
+				end
+			end
+		end
+	end
 
 	def is_open?
 		return self.accepted.nil? && self.due_date >= Date.today

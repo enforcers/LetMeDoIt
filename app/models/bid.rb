@@ -6,6 +6,8 @@ class Bid < ActiveRecord::Base
   scope :accepted, joins(:task).where(:tasks => { :bid_id => "bid.id" })
   scope :declined, joins(:task).where("tasks.bid_id IS NOT NULL AND tasks.bid_id != bids.id")
 
+  after_save :create_notification
+
   validate :bid_within_range
 
   validates :task_id,
@@ -18,6 +20,11 @@ class Bid < ActiveRecord::Base
   validates :user_id,
     :uniqueness => { :scope => :task_id, :message => "only one bid per task" },
     :presence => true
+
+  def create_notification
+    Mailer.bid_notification(self).deliver
+    Notification.fire(self.task.project.user, self, 1)
+  end
 
   def bid_within_range
     return false if (amount.nil? || task.nil?)

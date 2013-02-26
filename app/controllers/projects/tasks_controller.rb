@@ -67,13 +67,6 @@ class Projects::TasksController < ApplicationController
     @task = Task.find(params[:id])
     respond_to do |format|
       if @task.update_attributes(params[:task])
-
-        if params[:task].has_key?(:accepted)
-          Mailer.bid_accepted(@task).deliver
-          bid = Bid.find(params[:task][:accepted])
-          Notification.fire(bid.user, bid, 2)
-        end
-
         format.html { redirect_to project_task_path(@task.project, @task),  notice: 'Task was successfully updated.' }
         format.json { head :no_content }
       else
