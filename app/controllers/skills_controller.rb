@@ -24,7 +24,7 @@ class SkillsController < ApplicationController
 
     respond_to do |format|
       if @skill.save
-        format.html { redirect_to edit_user_registration_path(current_user, :showTab => 'tab-skills') }
+        format.html { redirect_to edit_user_registration_path(current_user, :show => 'skills') }
         format.json { render json: @skill, status: :created, location: edit_user_registration_path(current_user) }
       else
         format.html { render action: "new" }
@@ -40,7 +40,7 @@ class SkillsController < ApplicationController
 
     respond_to do |format|
       if @skill.update_attributes(params[:skill])
-        format.html { redirect_to edit_user_registration_path(current_user, :showTab => 'tab-skills') }
+        format.html { redirect_to edit_user_registration_path(current_user, :show => 'skills') }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -56,7 +56,7 @@ class SkillsController < ApplicationController
     @skill.destroy
 
     respond_to do |format|
-      format.html { redirect_to edit_user_registration_path(current_user, :showTab => 'tab-skills') }
+      format.html { redirect_to edit_user_registration_path(current_user, :show => 'skills') }
       format.json { head :no_content }
     end
   end

@@ -2,16 +2,21 @@
 <table class="table table-hover">
 	<thead>
 		<tr>
-			<th width="50%">Task Name</th>
+			<th width="10%">&nbsp;</th>
+			<th width="45%">Task Name</th>
 			<th width="20%">Due Date</th>
-			<th width="20%">Budget</th>
+			<th width="15%">Budget</th>
 			<th width="10%">Bids</th>
 		</tr>
 	</thead>
 	<tbody>
 	<% @tasks.each do |task| %>
 		<tr class="project">
-			<td><%= link_to task.name, project_task_path(task.project, task) %><% if !task.is_open? %> <i class="icon-lock"></i><% end %></td>
+			<td>
+				<% unless task.is_open? %><i class="icon-lock" title="Task closed"></i><% end %>
+				<% unless task.get_bid_for(current_user).blank? %><i class="icon-tag" title="You got a bid on this task"></i><% end %>
+			</td>
+			<td><%= link_to task.name, project_task_path(task.project, task) %></td>
 			<td><%= task.due_date %></td>
 			<td><%= number_to_currency task.budget, :unit => "€" %></td>
 			<td><%= task.bids.count %></td>

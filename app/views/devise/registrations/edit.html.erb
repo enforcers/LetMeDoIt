@@ -1,21 +1,16 @@
-<% content_for :javascript do %>
-  <script type="text/javascript">
-    $(document).ready(function(){
-      $('#myprofile-tabs a').click(function (e) {
-        e.preventDefault();
-        $(this).tab('show');
-      });
-    });
-  </script>
-<% end %>
-
 <ul class="nav nav-tabs" id="myprofile-tabs">
-  <li class="active"><a href="#edit-profile">Edit Profile</a></li>
-  <li><a href="#skills">My Skills</a></li>
-  <li><a href="#preferences">Preferences</a></li>
+  <li class="<%= "active" if params[:show] == "edit-profile" || params[:show].blank? %>">
+    <%= link_to "Edit Profile", edit_user_registration_path(current_user, :show => "edit-profile"), :data => { :toggle => "tab", :target => "#edit-profile" } %>
+  </li>
+  <li class="<%= "active" if params[:show] == "skills" %>">
+    <%= link_to "My Skills", edit_user_registration_path(current_user, :show => "skills"), :data => { :toggle => "tab", :target => "#skills" } %>
+  </li>
+  <li class="<%= "active" if params[:show] == "preferences" %>">
+    <%= link_to "Preferences", edit_user_registration_path(current_user, :show => "skills"), :data => { :toggle => "tab", :target => "#preferences" } %>
+  </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane fade in active" id="edit-profile">
+  <div class="tab-pane <%= "active" if params[:show] == "edit-profile" || params[:show].blank? %>" id="edit-profile">
     <%= render_form_errors(resource.errors) %>
     <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => "form-horizontal", :multipart => true }, :defaults => { :input_html => { :class => "span4" } }) do |f| %>
 
@@ -32,13 +27,13 @@
       </div>
     <% end %>
   </div>
-  <div class="tab-pane fade" id="skills">
+  <div class="tab-pane <%= "active" if params[:show] == "skills" %>" id="skills">
     <p>
       <%= link_to "New Skill", new_skill_path, :class => "ym-button ym-add" %>
       <%= render :partial => 'skills/index', :locals =>{ :withActions => true } %>
     </p>
   </div>
-  <div class="tab-pane fade" id="preferences">
+  <div class="tab-pane <%= "active" if params[:show] == "preferences" %>" id="preferences">
     <p>
       <h3>Cancel my account</h3>
       <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>.</p>

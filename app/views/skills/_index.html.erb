@@ -6,7 +6,7 @@
       <tr>
         <th>Name</th>
         <th>Rating</th>
-        <% if withActions %><th class="ym-table-right">Actions</th><% end %>
+        <% if withActions %><th class="text-right">Actions</th><% end %>
       </tr>
     </thead>
     <tbody>
@@ -15,12 +15,12 @@
         <td><%= skill.name %></td>
         <td><div class="skill-rating"><div class="stars" style="width: <%= skill.rating*12.5 %>px"></div></div></td>
         <% if withActions %>
-        <td class="ym-table-right">
-          <%= link_to skill, confirm: 'Are you sure?', method: :delete, :class => "btn" do %>
-            <i class="icon-trash"></i>
-          <% end %>
+        <td class="text-right">
           <%= link_to edit_skill_path(skill), :title => "Edit", :class => "btn" do %>
             <i class="icon-pencil"></i>
+          <% end %>
+          <%= link_to skill, confirm: 'Are you sure?', method: :delete, :class => "btn" do %>
+            <i class="icon-trash"></i>
           <% end %>
         </td>
         <% end %>

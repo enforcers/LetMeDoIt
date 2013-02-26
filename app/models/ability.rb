@@ -19,6 +19,7 @@ class Ability
       can :self, Bid
       can :create, Bid do |bid|
         (bid.task.bids & Bid.for_user(user)).blank? &&
+        bid.task.accepted.nil? &&
         bid.task.project.user != user
       end
 
