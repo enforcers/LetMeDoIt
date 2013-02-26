@@ -36,6 +36,7 @@ group :test do
 	gem 'guard-rspec'
 	gem 'wdm', '~> 0.0.3'
 	gem 'faker'
+  gem 'email_spec'
 end
 
 group :production, :staging do

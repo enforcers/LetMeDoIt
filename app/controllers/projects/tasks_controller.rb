@@ -84,6 +84,7 @@ class Projects::TasksController < ApplicationController
       format.html { redirect_to project_path(@task.project) }
       format.json { head :no_content }
     end
+    flash[:success] = 'Task was successfully deleted.'
   end
 
 end
