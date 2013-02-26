@@ -42,7 +42,17 @@ describe "Task - " do
 			@project = Project.find(@task.project_id)
 			visit project_task_path(@project, @task)
 			page.should_not have_button('Edit Task')
-
+		
+		end
+		Capybara.current_driver = :selenium
+		it 'delete own task', js: true do
+			@user = create_logged_in_user
+			@project = FactoryGirl.create(:project , user_id: @user.id )
+			@task = FactoryGirl.create(:task, project_id: @project.id)
+			visit project_task_path(@project, @task)
+			click_on('Delete Task')
+			page.evaluate_script('window.confirm = function() { return true; }')
+			page.should have_content('Task was successfully deleted.')
 		end
 	end
 end
