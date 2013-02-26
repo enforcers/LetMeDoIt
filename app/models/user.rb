@@ -4,7 +4,8 @@ class User < ActiveRecord::Base
   before_save :setup_role
 
   has_and_belongs_to_many :roles
-  has_many :posts
+  has_many :projects
+  has_many :bids
   has_many :skills
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
