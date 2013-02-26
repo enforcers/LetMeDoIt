@@ -5,7 +5,13 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     # If this show page is only for the currently logged in user change it to @user = current_user
     respond_to do |format|
-      format.html # show.html.erb
+      format.html do
+        if request.xhr?
+          render 'show-ajax', :layout => false
+        else
+          render # index.html.erb
+        end
+      end
       format.json { render json: @skill }
     end
   end

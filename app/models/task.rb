@@ -32,7 +32,7 @@ class Task < ActiveRecord::Base
 					Mailer.bid_accepted(self).deliver
 					Notification.fire(bid.user, bid, 2)
 				else
-					Mailer.bid_declined(self).deliver
+					Mailer.bid_declined(self, bid).deliver
 					Notification.fire(bid.user, bid, 3)
 				end
 			end

@@ -1,23 +1,5 @@
 module UserHelper
 	def generate_hover_profile (user = nil)
-		if !user.nil?
-			inner_popover = ""
-			inner_popover << "<div class=\"photo\">#{image_tag user.photo.url(:small)}</div>"
-			inner_popover << "<div class=\"profile-name\">#{user.contactName}</div>"
-			inner_popover << "<div class=\"short\">#{user.about_me}</div>"
-			html = link_to user.contactName, user_show_path(user), {
-						:title => "",
-						:class => "profile-hover",
-						:data => {
-							:toggle => "popover",
-							:trigger => "hover",
-							:placement => "top",
-							:container => "body",
-							:html => "true",
-							:content => inner_popover
-						}
-					}
-			return html
-		end
+		return link_to(user.contactName, user_show_path(user), :class => "profile-hover") unless user.nil?
 	end
 end

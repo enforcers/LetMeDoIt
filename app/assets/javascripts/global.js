@@ -2,7 +2,6 @@ $(document).ready(function(){
 
 	$('.controls .date').datepicker()
 	$('.controls input').tooltip({placement: 'right'});
-	$('.profile-hover').popover();
 
 	$('[data-toggle="tabajax"]').click(function(e) {
 		e.preventDefault();
@@ -11,4 +10,23 @@ $(document).ready(function(){
 		var target = $(this).attr('data-target');
 		$(target).load(loadurl, function() { $this.tab('show') });
 	});
+
+	$('.profile-hover').bind("hover", function() {
+		$this = $(this);
+		$this.unbind("hover");
+
+		$.ajax({
+			url: $this.attr('href'),
+			success: function(data) {
+				$this.popover({
+					placement: 'top',
+					animation: 'fade',
+					html: true,
+					content: data,
+					trigger: 'hover'
+				}).popover('show')
+			}
+		});
+	});
+
 });

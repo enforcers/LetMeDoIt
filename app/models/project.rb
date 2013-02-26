@@ -12,7 +12,7 @@ class Project < ActiveRecord::Base
 
 	accepts_nested_attributes_for :tasks
 
-	self.per_page = 10
+	self.per_page = 6
 
 	validates :name,
 		:presence => true

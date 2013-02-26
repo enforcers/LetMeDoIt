@@ -1,0 +1,12 @@
+<div class="photo"><%= image_tag(@user.photo.url(:small)) %></div>
+<div class="profile-name"><%= @user.contactName %></div>
+<div class="short">
+	<span><%= @user.about_me %></span>
+	<div>
+		<strong>Skills</strong>
+		<% @user.skills.each do |skill| %>
+			<div><%= skill.name %></div>
+			<div class="skill-rating"><div class="stars" style="width: <%= skill.rating*12.5 %>px"></div></div>
+		<% end %>
+	</div>
+</div>

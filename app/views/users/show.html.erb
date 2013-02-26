@@ -1,11 +1,14 @@
-<h3><%= @user.contactName %></h3>
+<ul class="breadcrumb">
+	<li class="active">Users<span class="divider">/</span></li>
+	<li class="active"><%= @user.contactName %></li>
+</ul>
 
+<div class="pull-right"><%= image_tag @user.photo.url(:medium), :class => "img-polaroid" %></div>
 <h4>E-Mail</h4>
 <span><%= @user.email %></span>
 <h4>Username</h4>
 <span><%= @user.username %></span>
 <h4>About Me</h4>
 <span><%= @user.about_me %></span>
-<%= image_tag @user.photo.url(:medium) %>
 <h4>Skills</h4>
 <%= render 'skills/index' %>
