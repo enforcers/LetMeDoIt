@@ -1,4 +1,5 @@
 ActiveAdmin.register Bid do
+  menu false
   index do
   	column :user
   	column :task

@@ -1,4 +1,5 @@
 ActiveAdmin.register Task do
+  menu false
   index do
   	column :name do |task|
         link_to task.name, [:admin, task]

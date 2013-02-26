@@ -1,5 +1,5 @@
 ActiveAdmin::Dashboards.build do
-  section "Recent Projects" do
+  section "Recent Projects", :priority => 1 do
     table_for Project.order("created_at desc").limit(5) do
       column :name do |project|
         link_to project.name, [:admin, project]
@@ -9,7 +9,7 @@ ActiveAdmin::Dashboards.build do
     strong { link_to "View All Projects", admin_projects_path }
   end
 
-  section "Recent Tasks" do
+  section "Recent Tasks", :priority => 2 do
   	table_for Task.order("created_at desc").limit(5) do
   		column :name do |task|
   			link_to task.name, [:admin, task]
@@ -17,9 +17,10 @@ ActiveAdmin::Dashboards.build do
   		column :project
   		column :created_at
   	end
+
   end
 
-  section "Recent Bids" do
+  section "Recent Bids", :priority => 3 do
   	table_for Bid.order("created_at desc").limit(5) do
   		column :user 
   		column :task
