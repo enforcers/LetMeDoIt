@@ -55,7 +55,7 @@ ActiveAdmin.setup do |config|
   #
   # This setting changes the method which Active Admin calls
   # within the controller.
-  config.authentication_method = :authenticate_active_user!
+  config.authentication_method = :authenticate_active_admin_user!
 
 
   # == Current User
@@ -84,7 +84,7 @@ ActiveAdmin.setup do |config|
   # link. For example :get, :delete, :put, etc..
   #
   # Default:
-  config.logout_link_method = :delete
+  config.logout_link_method = 'delete'
 
   # == Root
   #
@@ -140,6 +140,8 @@ ActiveAdmin.setup do |config|
   #
   # To load a javascript file:
   #   config.register_javascript 'my_javascript.js'
+  config.register_javascript 'jquery.js'
+  config.register_javascript 'jquery_ujs.js'
 
 
   # == CSV options
