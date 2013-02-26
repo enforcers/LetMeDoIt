@@ -10,7 +10,14 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_attached_file :photo, :default_url => "/images/missing_:style.png", :styles => { :small => "50x50", :medium => "100x100" }
+  #has_attached_file :photo, :default_url => "/images/missing_:style.png", :styles => { :small => "50x50", :medium => "100x100" }
+  has_attached_file :photo, 
+    :default_url => "/images/missing_:style.png",
+    :storage => :dropbox,
+    :dropbox_credentials => "#{::Rails.root}/config/dropbox.yml",
+    :styles => { :small => "50x50", :medium => "100x100" },
+    :dropbox_options => {:path => proc { |style| "#{style}/#{id}_#{photo.original_filename}" }}
+
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :role_ids, :roles, :photo, :about_me
 
