@@ -1,11 +1,16 @@
 ActiveAdmin.register Task do
+  menu false
   index do
-    column :project 
-    column :name do |task|
+  	column :name do |task|
         link_to task.name, [:admin, task]
       end
-    column :description
-    column :budget
-    column "Deadline", :due_date
+  	column :project
+    column :budget, :sortable => :budget do |task|
+      div :class => "budget" do
+        number_to_currency(task.budget, :unit => "&euro;", :format => "%n%u", :separator => ",", :delimiter => ".")
+    end
+end
+  	column :created_at
+  	column "Deadline", :due_date
   end
 end

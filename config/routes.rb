@@ -6,6 +6,7 @@ LetMeDoIt::Application.routes.draw do
 
   resources :skills
   resources :categories
+  resources :users
 
   # PROJECTS
   resources :projects, :controller => "projects/projects" do
@@ -23,6 +24,7 @@ LetMeDoIt::Application.routes.draw do
   match '/' => 'home#index', :as => :user_root
   devise_for :users, :path_names => {:sign_in => "login", :sign_out => "logout"}, :path => 'user'
   match '/users/:id' => 'users#show', :as => :user_show
+  match '/user/logout' => 'users#logout', :as => :logout
 
   # EXCEPTION HANDLING
   match "/404", :to => "errors#not_found"

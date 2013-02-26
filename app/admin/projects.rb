@@ -1,5 +1,6 @@
 ActiveAdmin.register Project do
-scope :no_tasks
+  scope :no_tasks
+
 
   index do
   	column :name do |project|
@@ -8,8 +9,8 @@ scope :no_tasks
   	column :category
   	column :description
   	column "Created at", :created_at
+    default_actions
   end
-
   filter :name
 
 show do
@@ -22,10 +23,16 @@ show do
 
   panel "Tasks" do
    table_for project.tasks do
-    column :name
+    column :name do |task|
+        link_to task.name, [:admin, task]
+      end
     column :description
-    column :due_date
-    column :budget
+    column  "Deadline", :due_date
+    column :budget, :sortable => :budget do |project|
+      div :class => "budget" do
+        number_to_currency(project.budget, :unit => "&euro;", :format => "%n%u", :separator => ",", :delimiter => ".")
+      end
+    end
    end
   end
  end

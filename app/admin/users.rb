@@ -12,6 +12,7 @@ ActiveAdmin.register User do
     column "Admin" do |user|
       user.role?("Admin") ? "&#10003;".html_safe : "&#10005;".html_safe
     end
+    default_actions
   end
 
   filter :email
