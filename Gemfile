@@ -44,6 +44,7 @@ end
 
 group :production, :staging do
 	gem 'pg'
+  gem 'thin'
 end
 
 group :development, :test do

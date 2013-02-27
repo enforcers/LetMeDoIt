@@ -11,22 +11,24 @@ $(document).ready(function(){
 		$(target).load(loadurl, function() { $this.tab('show') });
 	});
 
-	$('.profile-hover').bind("hover", function() {
+	$('.profile-hover').hover(function() {
 		$this = $(this);
-		$this.unbind("hover");
+		//$this.unbind("hover");
 
-		$.ajax({
-			url: $this.attr('href'),
-			success: function(data) {
-				$this.popover({
-					placement: 'top',
-					animation: 'fade',
-					html: true,
-					content: data,
-					trigger: 'hover'
-				}).popover('show')
-			}
-		});
+		if ($this.data('popover') == null) {
+			$.ajax({
+				url: $this.attr('href'),
+				success: function(data) {
+					$this.popover({
+						placement: 'top',
+						animation: 'fade',
+						html: true,
+						content: data,
+						trigger: 'hover'
+					}).popover('show')
+				}
+			});
+		}
 	});
 
 });
