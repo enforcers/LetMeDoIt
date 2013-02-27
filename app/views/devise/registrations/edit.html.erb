@@ -18,8 +18,8 @@
       <%= f.input :username %>
       <%= f.input :about_me, :as => :text, :input_html => { :rows => 10 } %>
       <%= f.input :photo, :as => :image_upload %>
-      <%= f.input :password, :as => :password, :hint => "Leave blank if you don't want to change it" %>
-      <%= f.input :password_confirmation, :as => :password %>
+      <%= f.input :change_password, :as => :password %>
+      <%= f.input :password_confirmation, :as => :password, :hint => "Leave blank if you don't want to change it" %>
       <%= f.input :current_password, :hint => "We need your current password to confirm your changes" %>
 
       <div class="form-actions">
