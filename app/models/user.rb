@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
     :storage => :dropbox,
     :dropbox_credentials => "#{::Rails.root}/config/dropbox.yml",
     :styles => { :small => "50x50", :medium => "100x100" },
-    :dropbox_options => {:path => proc { |style| "#{style}/#{id}_#{photo.original_filename}" }}
+    :dropbox_options => {:path => proc { |style| "#{style}/#{id}_#{Digest::MD5.hexdigest(photo.updated_at.to_i.to_s)}" }, :unique_filename => true}
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :role_ids, :roles, :photo, :about_me

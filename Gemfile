@@ -19,6 +19,7 @@ gem 'simple_form'
 gem 'activeadmin'
 gem 'meta_search',    '>= 1.1.0.pre'
 gem 'rspec-rails', :group => [:test, :development]
+gem 'faker'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -37,7 +38,6 @@ group :test do
 	gem 'capybara'
 	gem 'guard-rspec'
 	gem 'wdm', '~> 0.0.3'
-	gem 'faker'
   gem 'email_spec'
 end
 
