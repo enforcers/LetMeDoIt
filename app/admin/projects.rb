@@ -1,39 +1,34 @@
 ActiveAdmin.register Project do
-  scope :no_tasks
+  menu :priority => 3
 
+  scope :all, :default => true
+  scope :active
+  scope :no_tasks
 
   index do
   	column :name do |project|
-        link_to project.name, [:admin, project]
-      end
+      link_to project.name, admin_project_path(project)
+    end
+    column :user
   	column :category
-  	column :description
-  	column "Created at", :created_at
+  	column :description, :sortable => false do |project|
+      truncate(project.description)
+    end
+  	column :created_at
     default_actions
   end
   filter :name
+  filter :user
 
-show do
-  attributes_table do
-   row :name
-   row :description
-   row :user
-   row :created_at
-  end
-
-  panel "Tasks" do
-   table_for project.tasks do
-    column :name do |task|
-        link_to task.name, [:admin, task]
-      end
-    column :description
-    column  "Deadline", :due_date
-    column :budget, :sortable => :budget do |project|
-      div :class => "budget" do
-        number_to_currency(project.budget, :unit => "&euro;", :format => "%n%u", :separator => ",", :delimiter => ".")
+  show do |project|
+    attributes_table do
+      row :name
+      row :description
+      row :user
+      row :created_at
+      row :tasks do
+        link_to "Show", admin_project_tasks_path(project)
       end
     end
-   end
   end
- end
 end

@@ -1,13 +1,16 @@
 ActiveAdmin.register Bid do
-  menu false
+  belongs_to :task
+
   index do
   	column :user
   	column :task
   	column :amount, :sortable => :amount do |bid|
-      div :class => "amount" do
-        number_to_currency(bid.amount, :unit => "&euro;", :format => "%n%u", :separator => ",", :delimiter => ".")
+      number_to_currency(bid.amount, :unit => "&euro;")
     end
+  	column :comment, :sortable => false do |bid|
+      truncate(bid.comment)
     end
-  	column :comment
+    column :created_at
+    default_actions
   end
 end

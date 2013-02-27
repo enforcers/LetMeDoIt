@@ -1,5 +1,6 @@
 class Category < ActiveRecord::Base
 	default_scope order('id ASC')
+	scope :parents_only, where(:category_id => nil)
 
 	has_many :child_categories,
 		:class_name => "Category",

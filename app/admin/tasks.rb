@@ -1,16 +1,36 @@
 ActiveAdmin.register Task do
-  menu false
+  belongs_to :project
+
   index do
   	column :name do |task|
-        link_to task.name, [:admin, task]
-      end
-  	column :project
-    column :budget, :sortable => :budget do |task|
-      div :class => "budget" do
-        number_to_currency(task.budget, :unit => "&euro;", :format => "%n%u", :separator => ",", :delimiter => ".")
+      link_to task.name, admin_project_task_path(task.project, task)
     end
-end
-  	column :created_at
-  	column "Deadline", :due_date
+    column :project
+    column :description, :sortable => false do |task|
+      truncate(task.description)
+    end
+    column :budget do |task|
+      number_to_currency(task.budget, :unit => "&euro;")
+    end
+  	column :due_date
+    column :created_at
+    default_actions
   end
+
+  show do |task|
+    attributes_table do
+      row :name
+      row :description
+      row :budget
+      row :created_at
+      row :bids do
+        link_to "Show", admin_task_bids_path(task)
+      end
+    end
+  end
+
+  filter :name
+  filter :project
+  filter :due_date
+  filter :budget
 end
