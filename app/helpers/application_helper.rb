@@ -82,7 +82,7 @@ module ApplicationHelper
 							:class => "btn-group")
 						end
 					elsif active.instance_of? Task
-						(if can? :create, active.bids.build
+						(if (can?(:create, active.bids.build) & active.bids.pop) # removing temporary bid buildt from can? check
 							content_tag(:div,
 								link_to("Place bid", "#", :class => "btn btn-primary", :data => { :toggle => "modal", :target => "#place-bid" }),
 							:class => "btn-group")

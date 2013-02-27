@@ -33,9 +33,11 @@
                     <% end %>
                     </tbody>
                 </table>
-                <div class="ym-fbox-button">
-                    <%= f.submit "Accept selected bid", :class => "btn btn-primary" %>
-                </div>
+                <% if can? :update, @task %>
+                    <div class="form-actions">
+                        <%= f.submit "Accept selected bid", :class => "btn btn-primary" %>
+                    </div>
+                <% end %>
             <% end %>
         <% end %>
 	</div>
