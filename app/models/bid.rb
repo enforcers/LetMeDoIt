@@ -3,7 +3,7 @@ class Bid < ActiveRecord::Base
   belongs_to :user
 
   scope :open, joins(:task).where(:tasks => { :bid_id => nil })
-  scope :accepted, joins(:task).where(:tasks => { :bid_id => "bid.id" })
+  scope :accepted, joins(:task).where("tasks.bid_id = bids.id")
   scope :declined, joins(:task).where("tasks.bid_id IS NOT NULL AND tasks.bid_id != bids.id")
 
   after_save :create_notification
