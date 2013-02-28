@@ -4,9 +4,9 @@
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   </head>
   <body>
-    <h1>New bid on task: <a href=<%= project_task_url(@task.project, @task, :host => HOST) %>><%= @task.name %></a></h1>
+    <h1>New bid on task: <a href=<%= project_task_url(@task.project, @task) %>><%= @task.name %></a></h1>
     <p>
-      The user <a href=<%= user_show_url(@user, :host => HOST) %>><%= @user.email %></a> placed a new bid of <%= number_to_currency @bid.amount, :unit => "€" %>.<br/>
+      The user <a href=<%= user_show_url(@user) %>><%= @user.email %></a> placed a new bid of <%= number_to_currency @bid.amount, :unit => "€" %>.<br/>
 
     </p>
   </body>

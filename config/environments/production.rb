@@ -1,7 +1,7 @@
 LetMeDoIt::Application.configure do
 
   # heroku?
-  HOST = 'letmedoit.herokuapp.com'
+  config.action_mailer.default_url_options = { :host => "letmedoit.herokuapp.com" }
   
   # Settings specified here will take precedence over those in config/application.rb
 

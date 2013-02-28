@@ -2,11 +2,6 @@ class Mailer < ActionMailer::Base
 
   default from: "letmedoit2013@gmail.com"
 
-  def sign_up_email(user)
-    @user = user
-    mail(:to => user.email, :subject => "Let me do IT - Registration")   
-  end
-
   def bid_notification(bid)
     @bid = bid
   	@task = Task.find(bid.task_id)

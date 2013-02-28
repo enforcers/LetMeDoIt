@@ -6,7 +6,7 @@
   <body>
     <h1>Unfortunately your bid on :  <%= @task.name %> has been declined</h1>
     <p>
-      We're sorry, but your bid on the task <a href=<%= project_task_url(@task.project, @task, :host => HOST) %>><%= @task.name %></a> has been declined. The client chose someone else.<br/>
+      We're sorry, but your bid on the task <a href=<%= project_task_url(@task.project, @task) %>><%= @task.name %></a> has been declined. The client chose someone else.<br/>
     </p>
   </body>
 </html>

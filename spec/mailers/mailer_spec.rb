@@ -9,7 +9,7 @@ describe "confirmation email" do
     reset_email
     user = FactoryGirl.create(:user)
     email = user.email
-    last_email.should include(email)
+    last_email.to.should include(email)
   end
 end
 
