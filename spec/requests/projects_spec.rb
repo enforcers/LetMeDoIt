@@ -14,15 +14,11 @@ describe "Projects - " do
 			visit new_project_path
 			page.should_not have_content("not authorized")
 			within("#project-fieldset") do
-				fill_in "Name", :with => "Test Project"
-				fill_in "Description", :with => "Test Description"
-				select "Mac2", :from => "Category"
+				fill_project_form
 			end
 
 			within("#task-fieldset") do
-				fill_in "Name", :with => "Test Task"
-				fill_in "Description", :with => "Test Description"
-				fill_in "Budget", :with => "500"
+				fill_task_form
 			end
 
 			click_on("Create Project")
