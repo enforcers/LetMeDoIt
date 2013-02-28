@@ -7,7 +7,7 @@ class Projects::ProjectsController < ApplicationController
       :conditions => (params.has_key?(:category_id) ? "category_id = #{params[:category_id].to_i}" : "")
     )
 
-    @categories = Category.where(:category_id => nil) # Only parent categories
+    @categories = Category.parents_only
     respond_to do |format|
       format.html # index.html.erb
       format.json {
@@ -24,7 +24,7 @@ class Projects::ProjectsController < ApplicationController
   def new
     @project = Project.new
     @project.tasks.build
-    @categories = Category.where(:category_id => nil) # Only parent categories
+    @categories = Category.parents_only
 
     respond_to do |format|
       format.html # new.html.erb
@@ -41,7 +41,7 @@ class Projects::ProjectsController < ApplicationController
   # POST /projects.json
   def create
     @project = Project.new(params[:project])
-    @categories = Category.where(:category_id => nil) # Only parent categories
+    @categories = Category.parents_only
 
     respond_to do |format|
       if @project.save
@@ -85,7 +85,7 @@ class Projects::ProjectsController < ApplicationController
 
   def edit
     @project = Project.find(params[:id])
-    @categories = Category.where(:category_id => nil)
+    @categories = Category.parents_only
   end
   
   def update
