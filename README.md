@@ -2,7 +2,15 @@
 =========
 LetMeDoIt is a platfom system which aims to bring people together, who on the one hand want to get a certain problem in an IT manner solved, and on the other those who are willing to solve them.
 
-Developers: [Viktor Fast](https://github.com/myiagi), [Christian Lange](https://github.com/langec), [Lorenz Mintert](https://github.com/mintert)
+#### Developers
+---------------
+[Viktor Fast](https://github.com/myiagi), [Christian Lange](https://github.com/langec), [Lorenz Mintert](https://github.com/mintert)
+
+Resources
+---------
++ [Heroku App](http://letmedoit.herokuapp.com/)
++ [Mindmap [.pdf]](http:/github.com/enforcers/LetMeDoIt/raw/master/Mindmap.pdf)
++ [Mindmeister Mindmap](http://www.mindmeister.com/maps/show/233221656)
 
 Quick start
 ----------
@@ -18,11 +26,10 @@ Quick start
 
 + ImageMagick is required to resize Profile Photos (Image upload)
 	+ if you are using windows update this line in development.rb to your ImageMagick folder
+		
 		```ruby
 		Paperclip.options[:command_path] = 'C:\Program Files (x86)\ImageMagick-6.8.2-Q16'
-    
 		```
-
 
 After setup you can access the Admin user with ``admin@admin.de``/``admin5``. You may change those login data as soon as possible.
 
@@ -51,10 +58,9 @@ Development
 + [Railsinstaller](http://railsinstaller.org/)
 + [github for Windows](http://windows.github.com/)
 + [Sublime Text](http://sublimetext.com)
-+ [Mindmeister Mindmap](http://www.mindmeister.com/maps/show/233221656)
 
-#### Getting started ####
----------------
+#### Getting started
+--------------------
 
 1.	Install above mentioned software
 2.	Synchronize project with github ("Clone in Windows"-Button)
