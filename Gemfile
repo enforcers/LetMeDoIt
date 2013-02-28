@@ -16,7 +16,7 @@ gem 'paperclip', '~> 3.0'
 #gem 'dropbox'
 gem 'paperclip-dropbox'
 gem 'simple_form'
-gem 'activeadmin'
+gem 'activeadmin', '0.5.1'
 gem 'meta_search',    '>= 1.1.0.pre'
 gem 'rspec-rails', :group => [:test, :development]
 gem 'faker'
@@ -50,6 +50,7 @@ end
 group :development, :test do
   gem 'debugger'
   gem 'sqlite3-ruby'
+  gem 'shoulda-matchers'
 end
 
 
