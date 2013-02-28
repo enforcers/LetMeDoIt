@@ -50,7 +50,7 @@ namespace :db do
 			rand(max_per_user).times do
 				Project.create(:name => Faker::Lorem.sentence(1),
 					:description => Faker::Lorem.paragraph(20),
-					:category => Category.where(:category_id => nil).sample,
+					:category => Category.where("category_id IS NOT NULL").sample,
 					:user => user)
 			end
 		end
