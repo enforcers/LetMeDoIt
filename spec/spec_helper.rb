@@ -37,7 +37,5 @@ RSpec.configure do |config|
   config.order = "random"
   config.include Capybara::DSL
   config.include(SignIn)
-
-  config.include(EmailSpec::Helpers)
-  config.include(EmailSpec::Matchers)
+  config.include(MailerMacros)
 end
