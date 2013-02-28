@@ -21,6 +21,7 @@ LetMeDoIt::Application.routes.draw do
 
   # PROFILES
   match '/' => 'home#index', :as => :user_root
+  devise_for :users, controllers: { registrations: "registrations" }
   devise_for :users, :path_names => {:sign_in => "login", :sign_out => "logout"}, :path => 'user'
   match '/users/:id' => 'users#show', :as => :user_show
 

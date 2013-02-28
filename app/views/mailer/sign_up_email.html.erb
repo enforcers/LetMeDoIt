@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1><p>Welcome <%= @user.username %>!</p></a></h1>
+
+	<p>You can edit your account through the link below:</p>
+
+	<p><a href=<%= edit_user_registration_path(@user, :host => HOST) %>><%= 'Edit profile' %></p>
+  </body>
+</html>
