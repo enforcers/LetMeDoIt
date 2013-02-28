@@ -20,17 +20,21 @@ describe "Bid" do
 		@bid.should validate_presence_of(:amount)	
 	end
 
-#	it "needs an amount within the range" do
-#		@budget = task.budget
-#		@bid.should ensure_inclusion_of(:amount).in_range(1..:budget)
-#	end
+	it "needs an amount within the range" do 
+  		@bid.should be_valid
+  		@bid.amount = 0
+  		@bid.should_not be_valid
+  		@bid.amount = @task.budget + 1
+  		@bid.should_not be_valid
+	end
 
 	it "amount is numeric" do
 		@bid.should validate_numericality_of(:amount)
 	end
 
-	# it "exists only once per user and task" do
-	# 	@user = FactoryGirl.create(:user)
-	# 	@bid.should validate_uniqueness_of(@bid.user_id).scoped_to(@bid.task_id)
-	# end
+	it "exists only once per user and task" do
+		@bid2 = FactoryGirl.create(:bid, task_id: @task.id)
+  		@bid2.user_id = @bid.user_id
+  		@bid2.should_not be_valid
+	end
 end

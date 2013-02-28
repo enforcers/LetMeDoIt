@@ -14,7 +14,7 @@ class Bid < ActiveRecord::Base
     :presence => true
 
   validates :amount,
-  	:numericality => true,
+  	:numericality => { :greater_than => 0 },
   	:presence => true
 
   validates :user_id,
