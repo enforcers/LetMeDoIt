@@ -43,8 +43,7 @@ group :test do
 end
 
 group :production, :staging do
-	#gem 'pg'
-  gem 'mysql'
+  gem 'pg'
   gem 'thin'
 end
 
