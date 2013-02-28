@@ -12,9 +12,7 @@ describe "Task - " do
 			visit project_path(@project)
 			page.should have_content('Task(s) on this project')
 			click_on('Add Task')
-			fill_in "Name", :with => "new Task Name"
-			fill_in "Description", :with => "new Task Description"
-			fill_in "Budget", :with => "500"
+			fill_task_form
 			click_on('Create Task')
 			page.should have_content('Task was successfully created.')
 		end
