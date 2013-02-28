@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   has_many :bids
   has_many :skills
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   #has_attached_file :photo, :default_url => "/images/missing_:style.png", :styles => { :small => "50x50", :medium => "100x100" }
   has_attached_file :photo, 

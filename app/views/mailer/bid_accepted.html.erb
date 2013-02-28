@@ -6,7 +6,7 @@
   <body>
     <h1>Your bid on :  <%= @task.name %> has been accepted</h1>
     <p>
-      Congratulations, your bid about <%= number_to_currency @bid.amount, :unit => "€" %> on the task <a href=<%= project_task_url(@task.project, @task, :host => HOST) %>><%= @task.name %></a> has been accepted.<br/>
+      Congratulations, your bid about <%= number_to_currency @bid.amount, :unit => "€" %> on the task <a href=<%= project_task_url(@task.project, @task) %>><%= @task.name %></a> has been accepted.<br/>
 
     </p>
   </body>

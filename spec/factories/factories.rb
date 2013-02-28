@@ -7,6 +7,7 @@ FactoryGirl.define do
 		username Faker::Name.name
 		password "secret"
 		role_ids [1]
+		after(:create) { |user| user.confirm! }
 	end
 
 	factory :project do 
