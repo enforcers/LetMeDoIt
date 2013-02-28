@@ -1,7 +1,5 @@
 LetMeDoIt::Application.configure do
 
-  # heroku?
-  config.action_mailer.default_url_options = { :host => "letmedoit.herokuapp.com" }
   
   # Settings specified here will take precedence over those in config/application.rb
 
@@ -53,7 +51,7 @@ LetMeDoIt::Application.configure do
   # config.assets.precompile += %w( search.js )
 
   # Disable delivery errors, bad email addresses will be ignored
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.default_url_options = { :host => 'letmedoit.herokuapp.com' }
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
