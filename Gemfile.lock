@@ -49,6 +49,8 @@ GEM
     bourbon (3.1.0)
       sass (>= 3.2.0)
       thor
+    bourne (1.1.2)
+      mocha (= 0.10.5)
     builder (3.0.4)
     cancan (1.6.8)
     capybara (2.0.2)
@@ -137,8 +139,11 @@ GEM
       activerecord (~> 3.1)
       activesupport (~> 3.1)
       polyamorous (~> 0.5.0)
+    metaclass (0.0.1)
     method_source (0.8.1)
     mime-types (1.19)
+    mocha (0.10.5)
+      metaclass (~> 0.0.1)
     multi_json (1.5.0)
     nokogiri (1.5.6)
     nokogiri (1.5.6-x86-mingw32)
@@ -216,6 +221,9 @@ GEM
       multi_json (~> 1.0)
       rubyzip
       websocket (~> 1.0.4)
+    shoulda-matchers (1.4.2)
+      activesupport (>= 3.0.0)
+      bourne (~> 1.1.2)
     simple_form (2.0.4)
       actionpack (~> 3.0)
       activemodel (~> 3.0)
@@ -254,7 +262,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
-  activeadmin
+  activeadmin (= 0.5.1)
   cancan
   capybara
   coffee-rails (~> 3.2.1)
@@ -273,6 +281,7 @@ DEPENDENCIES
   rails (= 3.2.0)
   rspec-rails
   sass-rails (~> 3.2.3)
+  shoulda-matchers
   simple_form
   sqlite3-ruby
   tinymce-rails
