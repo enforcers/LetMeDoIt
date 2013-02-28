@@ -1,36 +1,28 @@
 require 'rspec'
 require 'spec_helper'
 
-describe "Projects" do
+describe "Project" do
 	before(:each) do
 		@project = FactoryGirl.create(:project)
 	end
 
-	it "needs a user" do
-		@project.user_id = nil
-		@project.should_not be_valid
-		@project.user_id = 1
-		@project.should be_valid
+	it "belongs to a user" do
+		@project.should belong_to(:user)
+	end
+
+	it "belongs to a category" do
+		@project.should belong_to(:category)	
+	end	
+
+	it "has many tasks" do
+		@project.should have_many(:tasks)
 	end
 
 	it "needs a description" do
-		@project.description = nil
-		@project.should_not be_valid
-		@project.description = 'test project description'
-		@project.should be_valid
+		@project.should validate_presence_of(:description)	
 	end
 
 	it "needs a name" do
-		@project.name = nil
-		@project.should_not be_valid
-		@project.name = 'test project'
-		@project.should be_valid
-	end
-
-	it "needs a category" do
-		@project.category_id = nil
-		@project.should_not be_valid
-		@project.category_id = 1
-		@project.should be_valid
+		@project.should validate_presence_of(:name)	
 	end
 end

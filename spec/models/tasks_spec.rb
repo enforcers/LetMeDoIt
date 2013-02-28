@@ -5,36 +5,39 @@ describe "Task" do
 	before(:each) do
 		@task = FactoryGirl.create(:task)
 	end
-	# it "needs a project" do
-	# 	@task.project_id = nil
-	# 	@task.should_not be_valid
-	# 	@task.project_id = 1
-	# 	@task.should be_valid
-	# end
 
-	it "needs a name" do
-		@task.name = nil
-		@task.should_not be_valid
-		@task.name = 'test task'
-		@task.should be_valid
+	it "belongs to a project" do
+		@task.should belong_to(:project)
 	end
 
-	it "needs a description" do
-		@task.description = nil
-		@task.should_not be_valid
-		@task.description = 'test task description blabla'
-		@task.should be_valid
+	it "has many bids" do
+		@task.should have_many(:bids)
 	end
 
-	it "needs a due date" do
-		@task.due_date = nil
-		@task.should_not be_valid
-		@task.due_date = '2013-05-06'
-		@task.should be_valid
+	it "needs an name" do
+		@task.should validate_presence_of(:name)	
+	end
+
+	it "needs an description" do
+		@task.should validate_presence_of(:description)	
+	end
+
+	it "needs an due date" do
+		@task.should validate_presence_of(:due_date)	
+	end
+
+	it "needs an budget" do
+		@task.should validate_presence_of(:budget)	
+	end
+
+	it "budget is numeric" do
+		@task.should validate_numericality_of(:budget)
 	end
 
 	it "is valid" do
 		@task.due_date = Date.yesterday()
 		@task.should be_valid		
 	end
+
+
 end
