@@ -31,7 +31,7 @@ namespace :db do
 				:password => "password",
 				:about_me => Faker::Lorem.sentence(10),
 				:role_ids => [2],
-				:photo => URI.parse("http://lorempixel.com/100/100/"))
+				:photo => URI.parse("http://lorempixel.com/100/100/")).confirm!
 		end
 	end
 

@@ -15,7 +15,7 @@ User.create(:username => "Administrator",
 	:email => "admin@admin.de",
 	:password => "admin5",
 	:role_ids => [1,2],
-	:photo => URI.parse("http://lorempixel.com/100/100/"))
+	:photo => URI.parse("http://lorempixel.com/100/100/")).confirm!
 
 # Categories
 Category.create(:category_id => nil, :name => 'Web Development')
